@@ -9,7 +9,9 @@
     "sourceMap": true,
     "strict": true,
     "experimentalDecorators": true,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false
   },
