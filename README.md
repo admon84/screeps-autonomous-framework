@@ -1,6 +1,16 @@
-# Screeps Typescript Starter
+# Screeps TypeScript Starter + KasamiBot Architecture
 
-Screeps Typescript Starter is a starting point for a Screeps AI written in Typescript. It provides everything you need to start writing your AI whilst leaving `main.ts` as empty as possible.
+Screeps TypeScript Starter is a starting point for a Screeps AI written in Typescript.
+
+This forked project includes the KasamiBot architecture source code to provide you with additional groundwork for building your own Screeps AI.
+
+## Architecture
+
+Managers are used to prioritize your component logic.  
+* The CoreManager is the entry point for the code which controls other Managers.  
+* Using Managers you can organize Roles and functionality to run in priority order based on Game.cpu.bucket.  
+
+This code will equip you with the same features explained in the Tutorial (Harvester Role, Upgrader Role, Builder Role, Spawn Logic, Tower Logic, Memory Cleanup) and a foundation you can use to build your own Screeps AI with TypeScript.
 
 ## Basic Usage
 
