@@ -85,20 +85,26 @@ function getCpuLimit(): number {
     if (Game.cpu.bucket > 9900) {
         return Game.cpu.limit * 1.6;
     }
-    if (Game.cpu.bucket > 9600) {
+    if (Game.cpu.bucket > 9500) {
         return Game.cpu.limit * 1.3;
     }
-    if (Game.cpu.bucket > 9200) {
+    if (Game.cpu.bucket > 9000) {
         return Game.cpu.limit * 1.1;
     }
-    if (Game.cpu.bucket > 8600) {
+    if (Game.cpu.bucket > 5000) {
+        return Game.cpu.limit;
+    }
+    if (Game.cpu.bucket > 4000) {
         return Game.cpu.limit * 0.9;
     }
-    if (Game.cpu.bucket > 8000) {
+    if (Game.cpu.bucket > 3000) {
         return Game.cpu.limit * 0.8;
     }
-    if (Game.cpu.bucket > 7000) {
+    if (Game.cpu.bucket > 2000) {
         return Game.cpu.limit * 0.7;
+    }
+    if (Game.cpu.bucket > 1000) {
+        return Game.cpu.limit * 0.6;
     }
     return Game.cpu.limit * 0.5;
 }
