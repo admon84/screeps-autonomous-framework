@@ -28,7 +28,7 @@ export function getMaxTierHeavyWorker(energy: number): number {
 }
 
 /**
- * Calculates the total cost for a body
+ * Calculate the total cost for a creep body
  */
 export function getCostForBody(body: BodyPartConstant[]): number {
     let cost = 0;
@@ -56,7 +56,7 @@ function getMaxTier(energy: number, bodyfunction: Function, maxTier: number): nu
 }
 
 /**
- * Provides cost for each bodypart
+ * Determine cost for each creep body part
  */
 function getCostForBodypart(part: BodyPartConstant): number {
     if (part in BODYPART_COST) {
@@ -66,7 +66,7 @@ function getCostForBodypart(part: BodyPartConstant): number {
 }
 
 /**
- * Add parts to a body array
+ * Add parts to a creep body array
  */
 function addToBody(body: BodyPartConstant[], count: number, parts: BodyPartConstant[]): BodyPartConstant[] {
     for (let i = 0; i < count; i++) {

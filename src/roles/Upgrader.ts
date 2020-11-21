@@ -4,7 +4,7 @@
  * Upgrade Controllers with energy to increase the Controller Level
  */
 
-import { log } from "../tools/Logger";
+import * as _Common from "../rolelib/common";
 
 enum State {
     HarvestEnergy = 1,
@@ -24,7 +24,7 @@ export function run(creep: Creep) {
             runUpgradeController(creep);
             break;
         default:
-            log.error(`Creep ${creep.name} has unkown state: ${creep.getState()}`, creep.room.name);
+            _Common.logCreepStateWarning(creep);
             creep.setState(State.HarvestEnergy);
             break;
     }
@@ -32,8 +32,9 @@ export function run(creep: Creep) {
 
 function runHarvestEnergy(creep: Creep) {
     if (creep.isFull()) {
-        creep.setState(State.UpgradeController);
         creep.say("⚡ upgrade");
+        creep.setState(State.UpgradeController);
+        runUpgradeController(creep);
         return;
     }
 
@@ -45,8 +46,9 @@ function runHarvestEnergy(creep: Creep) {
 
 function runUpgradeController(creep: Creep) {
     if (creep.isEnergyEmpty()) {
-        creep.setState(State.HarvestEnergy);
         creep.say("🔄 harvest");
+        creep.setState(State.HarvestEnergy);
+        runHarvestEnergy(creep);
         return;
     }
 

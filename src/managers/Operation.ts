@@ -8,6 +8,8 @@ import * as OperationTest from "../operations/Test";
 import { OperationType } from "../enums/operationtype";
 import { IOperationData } from "../operations/_OperationData";
 
+import { log } from "../tools/Logger";
+
 export class OperationManager extends Manager {
     private roomService: RoomService;
     private creepService: CreepService;
@@ -43,8 +45,8 @@ export class OperationManager extends Manager {
                         operation.active = false;
                     }
                     break;
-                // Add more Operations here!
-                // You can pass roomService or creepService to use in your operations
+                // Add additional Operations here
+                // You can pass roomService and/or creepService to use in your operation
             }
         }
     }
@@ -55,7 +57,7 @@ export class OperationManager extends Manager {
         }
         const removed = _.remove(Memory.operations, (o: IOperationData) => o.active === false);
         if (removed.length) {
-            console.log("Removed " + removed.length + " inactive operations.");
+            log.error(`Removed ${removed.length} inactive operations.`);
         }
     }
 }

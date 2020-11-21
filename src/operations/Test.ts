@@ -13,6 +13,8 @@ import { ManagerPriority } from "../managers/_Manager";
 import { OperationType } from "../enums/operationtype";
 import { IOperationData } from "./_OperationData";
 
+import { log } from "../tools/Logger";
+
 export enum VictoryCondition {
     Gametime = 1
 }
@@ -22,7 +24,7 @@ export class Data implements IOperationData {
     active = true;
     victoryCondition: VictoryCondition;
     victoryValue: any;
-    // You can add additional Operation Data props here!
+    // You can add additional Operation Data props here
 }
 
 export function run(operation: Data, pri: ManagerPriority): void {
@@ -36,7 +38,7 @@ export function run(operation: Data, pri: ManagerPriority): void {
 export function victoryConditionReached(operation: Data): boolean {
     if (operation.victoryCondition === VictoryCondition.Gametime) {
         if (Game.time > operation.victoryValue) {
-            console.log("Test Operation finished at tick " + Game.time);
+            log.info("Test Operation finished at tick " + Game.time);
             operation.active = false;
             return true;
         }
@@ -48,5 +50,5 @@ function testMethod(operation: Data): void {
     if (Game.time > operation.victoryValue) {
         return;
     }
-    console.log("Test Operation is active at tick " + Game.time);
+    log.info("Test Operation is active at tick " + Game.time);
 }

@@ -1,7 +1,7 @@
 import "../prototypes/creep";
 import "../prototypes/room";
 import "../prototypes/roomposition";
-// Import additional prototypes here!
+// Import additional prototypes here
 
 import { Manager, ManagerPriority } from "./_Manager";
 
@@ -16,14 +16,18 @@ import { UpgradeManager } from "./Upgrade";
 import { CreepService } from "../services/Creep";
 import { RoomService } from "../services/Room";
 
+import { LogLevel } from "../enums/loglevel";
+
+import { log } from "../tools/Logger";
+
 export function run() {
     if (Memory.settings === undefined) {
         Memory.settings = {};
-        console.log("Bot Loaded.");
+        log.warning("==== Script Loaded ====");
     }
     if (Memory.settings.loggingLevel === undefined) {
-        Memory.settings.loggingLevel = 6;
-        console.log("Verbose Logging Enabled.");
+        Memory.settings.loggingLevel = LogLevel.Verbose;
+        log.debug("Verbose logging enabled.");
     }
     if (Memory.settings.user === undefined) {
         Memory.settings.user = getUserName();
@@ -40,7 +44,7 @@ export function run() {
         new UpgradeManager(roomService, creepService),
         new BuildManager(roomService, creepService),
         new OperationManager(roomService, creepService)
-        // Create other managers and add them here!
+        // Create other managers and add them here
     ];
     const spawnManager = new SpawnManager(roomService);
 

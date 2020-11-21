@@ -46,7 +46,7 @@ export class SpawnManager extends Manager {
         });
 
         const order = room.memory.orders.shift() as Order;
-        const name = OrdersUtilities.makeRoleName(order.memory.role) + "#" + OrdersUtilities.makeRandomCreepId();
+        const name = Role[order.memory.role] + OrdersUtilities.getUniqueId();
 
         if (room.name !== spawn.room.name) {
             order.memory.homeroom = room.name;
@@ -62,7 +62,7 @@ export class SpawnManager extends Manager {
                 spawn.room.name
             );
         } else {
-            // log.alert(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
+            // log.warning(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
             room.memory.orders.unshift(order);
         }
     }

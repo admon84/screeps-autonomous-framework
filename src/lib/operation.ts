@@ -3,6 +3,8 @@ import * as OperationTest from "../operations/Test";
 import { IOperationData } from "../operations/_OperationData";
 import { OperationType } from "../enums/operationtype";
 
+import { log } from "../tools/Logger";
+
 function addOperation(operation: IOperationData) {
     if (Memory.operations === undefined) {
         Memory.operations = [];
@@ -32,6 +34,6 @@ export function createTestOperation(): boolean {
     op.victoryCondition = OperationTest.VictoryCondition.Gametime;
     op.victoryValue = Game.time + 50;
     addOperation(op);
-    console.log("Starting basic test operation for 50 ticks");
+    log.info("Starting basic test operation for 50 ticks");
     return true;
 }
