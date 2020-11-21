@@ -2,7 +2,9 @@
  * SimpleWorkers are balanced with equal parts WORK, CARRY, and MOVE
  */
 export function getSimpleWorkerBody(tier: number): BodyPartConstant[] {
-    if (tier > 16) { tier = 16; }
+    if (tier > 16) {
+        tier = 16;
+    }
     return addToBody([], tier, [WORK, CARRY, MOVE]);
 }
 export function getMaxTierSimpleWorker(energy: number): number {
@@ -13,7 +15,9 @@ export function getMaxTierSimpleWorker(energy: number): number {
  * HeavyWorkers have more WORK, less CARRY, and need roads to MOVE effectively
  */
 export function getHeavyWorkerBody(tier: number): BodyPartConstant[] {
-    if (tier > 16) { tier = 16; }
+    if (tier > 16) {
+        tier = 16;
+    }
     let body: BodyPartConstant[] = [];
     body = addToBody(body, Math.floor(tier / 2), [WORK, WORK, MOVE]);
     body = addToBody(body, Math.ceil(tier / 2), [WORK, CARRY, MOVE]);
@@ -28,7 +32,7 @@ export function getMaxTierHeavyWorker(energy: number): number {
  */
 export function getCostForBody(body: BodyPartConstant[]): number {
     let cost = 0;
-    for (let bodypart of body) {
+    for (const bodypart of body) {
         cost += getCostForBodypart(bodypart);
     }
     return cost;
@@ -41,7 +45,7 @@ function getMaxTier(energy: number, bodyfunction: Function, maxTier: number): nu
     let tier = 0;
     let maxReached = false;
     for (let i = 1; !maxReached; i++) {
-        let cost = getCostForBody(bodyfunction(i));
+        const cost = getCostForBody(bodyfunction(i));
         if (cost > energy || i > maxTier) {
             maxReached = true;
         } else {
@@ -66,7 +70,7 @@ function getCostForBodypart(part: BodyPartConstant): number {
  */
 function addToBody(body: BodyPartConstant[], count: number, parts: BodyPartConstant[]): BodyPartConstant[] {
     for (let i = 0; i < count; i++) {
-        for (let part of parts) {
+        for (const part of parts) {
             body.push(part);
         }
     }

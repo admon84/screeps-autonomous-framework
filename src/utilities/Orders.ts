@@ -1,4 +1,4 @@
-import {Role} from "../enums/role";
+import { Role } from "../enums/role";
 
 export function makeRoleName(role: Role): string {
     return Role[role];

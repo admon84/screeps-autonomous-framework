@@ -4,11 +4,11 @@
  * Build construction sites into structures
  */
 
-import {log} from "../tools/Logger";
+import { log } from "../tools/Logger";
 
 enum State {
     HarvestEnergy = 1,
-    Construct = 2,
+    Construct = 2
 }
 
 export function run(creep: Creep) {
@@ -16,7 +16,7 @@ export function run(creep: Creep) {
         creep.setState(State.HarvestEnergy);
     }
 
-    switch(creep.getState()) {
+    switch (creep.getState()) {
         case State.HarvestEnergy:
             runHarvestEnergy(creep);
             break;
@@ -33,15 +33,15 @@ export function run(creep: Creep) {
 function runHarvestEnergy(creep: Creep) {
     if (creep.isFull()) {
         creep.setState(State.Construct);
-        creep.say('🚧 build');
+        creep.say("🚧 build");
         return;
     }
 
     const sources = creep.room.getSources();
-    let targetSource = sources[0];
+    const targetSource = sources[0];
     if (targetSource instanceof Source) {
         if (creep.harvest(targetSource) === ERR_NOT_IN_RANGE) {
-            creep.moveTo(targetSource, {visualizePathStyle: {stroke: '#ffaa00'}});
+            creep.moveTo(targetSource, { visualizePathStyle: { stroke: "#ffaa00" } });
         }
     }
 }
@@ -49,14 +49,14 @@ function runHarvestEnergy(creep: Creep) {
 function runConstruct(creep: Creep) {
     if (creep.isEnergyEmpty()) {
         creep.setState(State.HarvestEnergy);
-        creep.say('🔄 harvest');
+        creep.say("🔄 harvest");
         return;
     }
 
-    var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+    const targets = creep.room.find(FIND_CONSTRUCTION_SITES);
     if (targets.length) {
         if (creep.build(targets[0]) === ERR_NOT_IN_RANGE) {
-            creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+            creep.moveTo(targets[0], { visualizePathStyle: { stroke: "#ffffff" } });
         }
     }
 }

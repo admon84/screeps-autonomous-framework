@@ -4,11 +4,11 @@
  * Harvest energy from Sources and transfer it to structures
  */
 
-import {log} from "../tools/Logger";
+import { log } from "../tools/Logger";
 
 enum State {
     HarvestEnergy = 1,
-    TransferEnergy = 2,
+    TransferEnergy = 2
 }
 
 export function run(creep: Creep) {
@@ -16,7 +16,7 @@ export function run(creep: Creep) {
         creep.setState(State.HarvestEnergy);
     }
 
-    switch(creep.getState()) {
+    switch (creep.getState()) {
         case State.HarvestEnergy:
             runHarvestEnergy(creep);
             break;
@@ -33,14 +33,14 @@ export function run(creep: Creep) {
 function runHarvestEnergy(creep: Creep) {
     if (creep.isFull()) {
         creep.setState(State.TransferEnergy);
-        creep.say('⚡ transfer');
+        creep.say("⚡ transfer");
         return;
     }
 
     const source = getTargetSource(creep);
     if (source instanceof Source) {
         if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
-            creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
+            creep.moveTo(source, { visualizePathStyle: { stroke: "#ffaa00" } });
         }
     }
 }
@@ -48,22 +48,24 @@ function runHarvestEnergy(creep: Creep) {
 function runTransferEnergy(creep: Creep) {
     if (creep.isEnergyEmpty()) {
         creep.setState(State.HarvestEnergy);
-        creep.say('🔄 harvest');
+        creep.say("🔄 harvest");
         return;
     }
 
-    var targets = creep.room.find(FIND_STRUCTURES, {
-        filter: (structure) => {
-            return (structure.structureType === STRUCTURE_EXTENSION ||
-                structure.structureType === STRUCTURE_SPAWN ||
-                structure.structureType === STRUCTURE_TOWER) &&
-                structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+    const targets = creep.room.find(FIND_STRUCTURES, {
+        filter: structure => {
+            return (
+                (structure.structureType === STRUCTURE_EXTENSION ||
+                    structure.structureType === STRUCTURE_SPAWN ||
+                    structure.structureType === STRUCTURE_TOWER) &&
+                structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+            );
         }
     }) as Structure[];
 
     if (targets.length) {
-        if (creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-            creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+        if (creep.transfer(targets[0], RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+            creep.moveTo(targets[0], { visualizePathStyle: { stroke: "#ffffff" } });
         }
     }
 }

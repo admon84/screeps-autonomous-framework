@@ -1,21 +1,20 @@
-import {Manager, ManagerPriority} from "../managers/_Manager";
+import { Manager, ManagerPriority } from "./_Manager";
 
 import * as ProfileUtilities from "../utilities/Profiles";
 
 import * as Builder from "../roles/Builder";
 
-import {CreepService} from "../services/Creep";
-import {RoomService} from "../services/Room";
+import { CreepService } from "../services/Creep";
+import { RoomService } from "../services/Room";
 
 import * as OrdersRepository from "../repository/Orders";
 
-import {Order} from "../classes/Order";
+import { Order } from "../classes/Order";
 
-import {Role} from "../enums/role";
-import {Priority} from "../enums/priority";
+import { Role } from "../enums/role";
+import { Priority } from "../enums/priority";
 
 export class BuildManager extends Manager {
-
     private roomService: RoomService;
     private creepService: CreepService;
 
@@ -27,7 +26,7 @@ export class BuildManager extends Manager {
         this.creepService = creepService;
     }
 
-    run (pri: ManagerPriority): void {
+    run(pri: ManagerPriority): void {
         if (pri === ManagerPriority.Low) {
             this.creepService.runCreeps(Role.Builder, Builder.run);
 
@@ -41,7 +40,7 @@ export class BuildManager extends Manager {
     }
 
     private organizeStructureBuilding(rooms: Room[]) {
-        for (let room of rooms) {
+        for (const room of rooms) {
             this.orderBuilder(room);
         }
     }

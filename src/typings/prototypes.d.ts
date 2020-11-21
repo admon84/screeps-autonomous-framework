@@ -20,7 +20,7 @@ interface Room {
 }
 
 interface RoomPosition {
-    isBorder(pos: RoomPosition): boolean;
-    isBorderOrNextToBorder(pos: RoomPosition): boolean;
-    isNextToBorder(pos: RoomPosition): boolean;
+    isBorder(): boolean;
+    isBorderOrNextToBorder(): boolean;
+    isNextToBorder(): boolean;
 }

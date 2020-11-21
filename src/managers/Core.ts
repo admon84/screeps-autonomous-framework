@@ -3,28 +3,27 @@ import "../prototypes/room";
 import "../prototypes/roomposition";
 // Import additional prototypes here!
 
-import {Manager, ManagerPriority} from "../managers/_Manager";
+import { Manager, ManagerPriority } from "./_Manager";
 
-import {MemoryManager} from "../managers/Memory";
-import {OperationManager} from "../managers/Operation";
-import {TowerManager} from "../managers/Tower";
-import {SpawnManager} from "../managers/Spawn";
-import {HarvestManager} from "../managers/Harvest";
-import {BuildManager} from "../managers/Build";
-import {UpgradeManager} from "../managers/Upgrade";
+import { MemoryManager } from "./Memory";
+import { OperationManager } from "./Operation";
+import { TowerManager } from "./Tower";
+import { SpawnManager } from "./Spawn";
+import { HarvestManager } from "./Harvest";
+import { BuildManager } from "./Build";
+import { UpgradeManager } from "./Upgrade";
 
-import {CreepService} from "../services/Creep";
-import {RoomService} from "../services/Room";
+import { CreepService } from "../services/Creep";
+import { RoomService } from "../services/Room";
 
 export function run() {
-
     if (Memory.settings === undefined) {
         Memory.settings = {};
-        console.log('Bot Loaded.');
+        console.log("Bot Loaded.");
     }
     if (Memory.settings.loggingLevel === undefined) {
         Memory.settings.loggingLevel = 6;
-        console.log('Verbose Logging Enabled.');
+        console.log("Verbose Logging Enabled.");
     }
     if (Memory.settings.user === undefined) {
         Memory.settings.user = getUserName();
@@ -36,39 +35,39 @@ export function run() {
     const cpuLimit = getCpuLimit();
     const managerList: Manager[] = [
         new MemoryManager(),
-        new TowerManager(roomService, creepService),
+        new TowerManager(roomService),
         new HarvestManager(roomService, creepService),
         new UpgradeManager(roomService, creepService),
         new BuildManager(roomService, creepService),
-        new OperationManager(roomService, creepService),
+        new OperationManager(roomService, creepService)
         // Create other managers and add them here!
     ];
     const spawnManager = new SpawnManager(roomService);
 
-    for (let manager of managerList) {
+    for (const manager of managerList) {
         runManager(manager, ManagerPriority.Critical, ManagerPriority.Critical);
     }
-    
-    for (let manager of managerList) {
+
+    for (const manager of managerList) {
         if (Game.cpu.getUsed() < cpuLimit) {
             runManager(manager, ManagerPriority.Standard, ManagerPriority.Standard);
         }
     }
 
-    for (let manager of managerList) {
+    for (const manager of managerList) {
         if (Game.cpu.getUsed() < cpuLimit) {
             runManager(manager, ManagerPriority.Low, ManagerPriority.Low);
         }
     }
 
-    for (let manager of managerList) {
+    for (const manager of managerList) {
         if (Game.cpu.getUsed() < cpuLimit) {
             runManager(manager, ManagerPriority.Trivial, ManagerPriority.Trivial);
         }
     }
 
     if (Game.cpu.bucket > 9500) {
-        for (let manager of managerList) {
+        for (const manager of managerList) {
             if (Game.cpu.getUsed() < cpuLimit) {
                 runManager(manager, ManagerPriority.Overflow, ManagerPriority.Overflow);
             }
@@ -104,11 +103,11 @@ function getCpuLimit(): number {
     return Game.cpu.limit * 0.5;
 }
 
-function runManager(component: Manager | Function, pri: ManagerPriority, ... args: any[]) {
+function runManager(component: Manager | Function, pri: ManagerPriority, ...args: any[]) {
     if (component instanceof Manager) {
         component.run(pri);
     } else {
-        component(... args);
+        component(...args);
     }
 }
 

@@ -1,14 +1,14 @@
-# Screeps TypeScript Starter + KasamiBot Architecture
+# Screeps TypeScript Starter + KBot Architecture
 
 Screeps TypeScript Starter is a starting point for a Screeps AI written in Typescript.
 
-This forked project includes the KasamiBot architecture source code to provide you with additional groundwork for building your own Screeps AI.
+This forked project includes the KasamiBot architecture source code to provide additional groundwork for building your own Screeps AI.
 
 ## Architecture
 
-Managers are used to prioritize your component logic.  
-* The CoreManager is the entry point for the code which controls other Managers.  
-* Using Managers you can organize Roles and functionality to run in priority order based on Game.cpu.bucket.  
+Managers are used to prioritize your component logic.
+* The Core Manager is the entry point for the code which controls other Managers.
+* Using Managers allows Roles and functionality to be organized and run in priority order according to your CPU Bucket.
 
 This code will equip you with the same features explained in the Tutorial (Harvester Role, Upgrader Role, Builder Role, Spawn Logic, Tower Logic, Memory Cleanup) and a foundation you can use to build your own Screeps AI with TypeScript.
 
@@ -20,7 +20,7 @@ You will need:
 - A Package Manager ([Yarn](https://yarnpkg.com/en/docs/getting-started) or [npm](https://docs.npmjs.com/getting-started/installing-node))
 - Rollup CLI (Optional, install via `npm install -g rollup`)
 
-Download the latest source [here](https://github.com/screepers/screeps-typescript-starter/archive/master.zip) and extract it to a folder.
+Download the latest source [here](https://github.com/admon84/screeps-typescript-starter/archive/master.zip) and extract it to a folder.
 
 Open the folder in your terminal and run your package manager to install the required packages and TypeScript declaration files:
 
@@ -51,15 +51,3 @@ Finally, there are also NPM scripts that serve as aliases for these commands in 
 ## Typings
 
 The type definitions for Screeps come from [typed-screeps](https://github.com/screepers/typed-screeps). If you find a problem or have a suggestion, please open an issue there.
-
-## Documentation
-
-We've also spent some time reworking the documentation from the ground-up, which is now generated through [Gitbooks](https://www.gitbook.com/). Includes all the essentials to get you up and running with Screeps AI development in TypeScript, as well as various other tips and tricks to further improve your development workflow.
-
-Maintaining the docs will also become a more community-focused effort, which means you too, can take part in improving the docs for this starter kit.
-
-To visit the docs, [click here](https://screepers.gitbook.io/screeps-typescript-starter/).
-
-## Contributing
-
-Issues, Pull Requests, and contribution to the docs are welcome! See our [Contributing Guidelines](CONTRIBUTING.md) for more details.

@@ -2,20 +2,19 @@ import * as ProfileUtilities from "../utilities/Profiles";
 
 import * as Harvester from "../roles/Harvester";
 
-import {Order} from "../classes/Order";
+import { Order } from "../classes/Order";
 
 import * as OrdersRepository from "../repository/Orders";
 
-import {Role} from "../enums/role";
-import {Priority} from "../enums/priority";
+import { Role } from "../enums/role";
+import { Priority } from "../enums/priority";
 
-import {Manager, ManagerPriority} from "./_Manager";
+import { Manager, ManagerPriority } from "./_Manager";
 
-import {CreepService} from "../services/Creep";
-import {RoomService} from "../services/Room";
+import { CreepService } from "../services/Creep";
+import { RoomService } from "../services/Room";
 
 export class HarvestManager extends Manager {
-
     private roomService: RoomService;
     private creepService: CreepService;
 
@@ -27,14 +26,14 @@ export class HarvestManager extends Manager {
         this.creepService = creepService;
     }
 
-    public run (pri: ManagerPriority): void {
+    public run(pri: ManagerPriority): void {
         if (pri === ManagerPriority.Low) {
             this.creepService.runCreeps(Role.Harvester, Harvester.run);
-            
+
             const lastRun = this.getValue(this.MEMORY_LASTRUN);
             if (lastRun === undefined || lastRun + 20 < Game.time) {
                 const rooms = this.roomService.getNormalRooms();
-                for (let room of rooms) {
+                for (const room of rooms) {
                     this.organizeEnergyHarvesting(room);
                 }
                 this.setValue(this.MEMORY_LASTRUN, Game.time);
@@ -44,7 +43,7 @@ export class HarvestManager extends Manager {
 
     private organizeEnergyHarvesting(room: Room) {
         const sources = room.getSources();
-        for (let source of sources) {
+        for (const source of sources) {
             this.orderHarvesters(room, source.id, room.name);
         }
     }
@@ -55,7 +54,7 @@ export class HarvestManager extends Manager {
             return;
         }
 
-        const sourceTarget = sourceRoom + '-' + sourceId;
+        const sourceTarget = sourceRoom + "-" + sourceId;
         const active = this.creepService.getCreeps(Role.Harvester, sourceTarget, room.name).length;
         const ordered = OrdersRepository.getCreepsInQueue(room, Role.Harvester, sourceTarget);
 

@@ -8,10 +8,10 @@
  * - Gametime reaches set duration
  */
 
-import {ManagerPriority} from "../managers/_Manager";
+import { ManagerPriority } from "../managers/_Manager";
 
-import {OperationType} from "../enums/operationtype";
-import {IOperationData} from "./_OperationData";
+import { OperationType } from "../enums/operationtype";
+import { IOperationData } from "./_OperationData";
 
 export enum VictoryCondition {
     Gametime = 1
@@ -19,7 +19,7 @@ export enum VictoryCondition {
 
 export class Data implements IOperationData {
     operationtype: OperationType = OperationType.Test;
-    active: boolean = true;
+    active = true;
     victoryCondition: VictoryCondition;
     victoryValue: any;
     // You can add additional Operation Data props here!

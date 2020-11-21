@@ -1,7 +1,7 @@
 import * as OperationTest from "../operations/Test";
 
-import {IOperationData} from "../operations/_OperationData";
-import {OperationType} from "../enums/operationtype";
+import { IOperationData } from "../operations/_OperationData";
+import { OperationType } from "../enums/operationtype";
 
 function addOperation(operation: IOperationData) {
     if (Memory.operations === undefined) {
@@ -18,7 +18,7 @@ export function roomHasActiveTestOperation(): boolean {
     if (Memory.operations.length === 0) {
         return false;
     }
-    for (let o of Memory.operations as IOperationData[]) {
+    for (const o of Memory.operations as IOperationData[]) {
         if (o.active && o.operationtype === OperationType.Test) {
             return true;
         }
@@ -27,11 +27,11 @@ export function roomHasActiveTestOperation(): boolean {
 }
 
 export function createTestOperation(): boolean {
-    let op: OperationTest.Data = new OperationTest.Data();
+    const op: OperationTest.Data = new OperationTest.Data();
     op.operationtype = OperationType.Test;
     op.victoryCondition = OperationTest.VictoryCondition.Gametime;
     op.victoryValue = Game.time + 50;
     addOperation(op);
-    console.log('Starting basic test operation for 50 ticks');
+    console.log("Starting basic test operation for 50 ticks");
     return true;
 }

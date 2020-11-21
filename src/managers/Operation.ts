@@ -1,15 +1,14 @@
-import {Manager, ManagerPriority} from "../managers/_Manager";
+import { Manager, ManagerPriority } from "./_Manager";
 
-import {CreepService} from "../services/Creep";
-import {RoomService} from "../services/Room";
+import { CreepService } from "../services/Creep";
+import { RoomService } from "../services/Room";
 
 import * as OperationTest from "../operations/Test";
 
-import {OperationType} from "../enums/operationtype";
-import {IOperationData} from "../operations/_OperationData";
+import { OperationType } from "../enums/operationtype";
+import { IOperationData } from "../operations/_OperationData";
 
 export class OperationManager extends Manager {
-
     private roomService: RoomService;
     private creepService: CreepService;
 
@@ -21,7 +20,7 @@ export class OperationManager extends Manager {
         this.creepService = creepService;
     }
 
-    run (pri: ManagerPriority): void {
+    run(pri: ManagerPriority): void {
         if (pri === ManagerPriority.Trivial) {
             const lastRunMaintain = this.getValue(this.MEMORY_MAINTAIN);
             if (lastRunMaintain === undefined || lastRunMaintain + 1000 < Game.time) {
@@ -34,8 +33,8 @@ export class OperationManager extends Manager {
             Memory.operations = [];
         }
 
-        for (let operation of Memory.operations as IOperationData[]) {
-            switch(operation.operationtype) {
+        for (const operation of Memory.operations as IOperationData[]) {
+            switch (operation.operationtype) {
                 // This is the Test Operation example
                 case OperationType.Test:
                     if (operation.active && !OperationTest.victoryConditionReached(operation as OperationTest.Data)) {

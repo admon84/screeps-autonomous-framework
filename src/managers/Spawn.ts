@@ -1,17 +1,16 @@
-import {Manager} from "../managers/_Manager";
+import { Manager } from "./_Manager";
 
-import {Role} from "../enums/role";
+import { Role } from "../enums/role";
 
-import {Order}  from "../classes/Order";
+import { Order } from "../classes/Order";
 
 import * as OrdersUtilities from "../utilities/Orders";
 
-import {RoomService} from "../services/Room";
+import { RoomService } from "../services/Room";
 
-import {log} from "../tools/Logger";
+import { log } from "../tools/Logger";
 
 export class SpawnManager extends Manager {
-
     private roomService: RoomService;
 
     constructor(roomService: RoomService) {
@@ -21,8 +20,10 @@ export class SpawnManager extends Manager {
 
     public run(): void {
         const rooms = this.roomService.getNormalRooms();
-        for (let room of rooms) {
-            const spawns = _.filter(room.getMySpawns(), function (s: StructureSpawn) { return s.isActive() && !s.spawning; });
+        for (const room of rooms) {
+            const spawns = _.filter(room.getMySpawns(), function (s: StructureSpawn) {
+                return s.isActive() && !s.spawning;
+            });
             if (spawns.length) {
                 this.processQueue(room, spawns);
             }
@@ -30,7 +31,6 @@ export class SpawnManager extends Manager {
     }
 
     private processQueue(room: Room, spawns: StructureSpawn[]): void {
-
         if (room.memory.orders === undefined) {
             room.memory.orders = [];
             return;
@@ -41,8 +41,8 @@ export class SpawnManager extends Manager {
             return;
         }
 
-        room.memory.orders.sort( function(a: Order, b: Order) {
-            return (a.priority > b.priority) ? 1 : ((b.priority > a.priority) ? -1 : 0);
+        room.memory.orders.sort(function (a: Order, b: Order) {
+            return a.priority > b.priority ? 1 : b.priority > a.priority ? -1 : 0;
         });
 
         const order = room.memory.orders.shift() as Order;
@@ -55,9 +55,12 @@ export class SpawnManager extends Manager {
         const status = spawn.spawnCreep(order.body, name, {
             memory: order.memory
         });
-    
+
         if (status === OK) {
-            log.verbose(`Spawned ${Role[order.memory.role]} named ${name} (target: ${order.memory.target})`, spawn.room.name);
+            log.verbose(
+                `Spawned ${Role[order.memory.role]} named ${name} (target: ${order.memory.target})`,
+                spawn.room.name
+            );
         } else {
             // log.alert(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
             room.memory.orders.unshift(order);

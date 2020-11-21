@@ -1,4 +1,4 @@
 export enum OperationType {
-    Test = 0,
+    Test = 0
     // Add more operations here!
 }

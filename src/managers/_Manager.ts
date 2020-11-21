@@ -8,7 +8,6 @@ export enum ManagerPriority {
 }
 
 export abstract class Manager {
-    
     constructor(name: string) {
         this.name = name;
         this.memoryCheck();

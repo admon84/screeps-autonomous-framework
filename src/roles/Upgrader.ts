@@ -4,11 +4,11 @@
  * Upgrade Controllers with energy to increase the Controller Level
  */
 
-import {log} from "../tools/Logger";
+import { log } from "../tools/Logger";
 
 enum State {
     HarvestEnergy = 1,
-    UpgradeController = 2,
+    UpgradeController = 2
 }
 
 export function run(creep: Creep) {
@@ -16,7 +16,7 @@ export function run(creep: Creep) {
         creep.setState(State.HarvestEnergy);
     }
 
-    switch(creep.getState()) {
+    switch (creep.getState()) {
         case State.HarvestEnergy:
             runHarvestEnergy(creep);
             break;
@@ -33,27 +33,27 @@ export function run(creep: Creep) {
 function runHarvestEnergy(creep: Creep) {
     if (creep.isFull()) {
         creep.setState(State.UpgradeController);
-        creep.say('⚡ upgrade');
+        creep.say("⚡ upgrade");
         return;
     }
 
     const sources = creep.room.getSources();
     if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+        creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
     }
 }
 
 function runUpgradeController(creep: Creep) {
     if (creep.isEnergyEmpty()) {
         creep.setState(State.HarvestEnergy);
-        creep.say('🔄 harvest');
+        creep.say("🔄 harvest");
         return;
     }
 
-    let controller = creep.room.controller;
+    const controller = creep.room.controller;
     if (controller instanceof StructureController) {
         if (creep.upgradeController(controller) === ERR_NOT_IN_RANGE) {
-            creep.moveTo(controller, {visualizePathStyle: {stroke: '#ffffff'}});
+            creep.moveTo(controller, { visualizePathStyle: { stroke: "#ffffff" } });
         }
     }
 }

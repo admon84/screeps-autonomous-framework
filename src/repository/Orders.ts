@@ -1,10 +1,10 @@
 import * as ProfilesUtilities from "../utilities/Profiles";
 
-import {Order}  from "../classes/Order";
+import { Order } from "../classes/Order";
 
-import {Role} from "../enums/role";
+import { Role } from "../enums/role";
 
-import {log} from "../tools/Logger";
+import { log } from "../tools/Logger";
 
 /**
  * Insert a new creep order into the room orders queue
@@ -13,16 +13,19 @@ export function orderCreep(room: Room, order: Order): boolean {
     if (room.getSpawn() === undefined) {
         return false;
     }
-    let costOfCreep = ProfilesUtilities.getCostForBody(order.body);
+    const costOfCreep = ProfilesUtilities.getCostForBody(order.body);
     if (costOfCreep > room.energyCapacityAvailable) {
-        log.error("Creep ordered that is more expensive than the room is able to handle: " + JSON.stringify(order.memory), room.name);
+        log.error(
+            "Creep ordered that is more expensive than the room is able to handle: " + JSON.stringify(order.memory),
+            room.name
+        );
         return false;
     }
-    if (order.body.length === 0 ) {
+    if (order.body.length === 0) {
         log.error("Invalid creep ordered, empty body: " + JSON.stringify(order.memory), room.name);
         return false;
     }
-    if (order.body.length > 50 ) {
+    if (order.body.length > 50) {
         log.error("Invalid creep ordered, body larger than 50: " + JSON.stringify(order.memory), room.name);
         return false;
     }
@@ -33,7 +36,7 @@ export function orderCreep(room: Room, order: Order): boolean {
     room.memory.orders.push(order);
 
     const role = Role[order.memory.role];
-    const length = (room.memory.orders.length - 1);
+    const length = room.memory.orders.length - 1;
     log.verbose(`Ordered ${role} (target: ${order.memory.target}) - Queue: ${length}`, room.name);
 
     return true;
@@ -48,9 +51,8 @@ export function getCreepsInQueue(room: Room, role: Role | null = null, target: s
     }
 
     let count = 0;
-    for (let order of room.memory.orders){
-        if ((target === null || order.memory.target === target) &&
-            (role === null || order.memory.role === role)) {
+    for (const order of room.memory.orders) {
+        if ((target === null || order.memory.target === target) && (role === null || order.memory.role === role)) {
             count++;
         }
     }
