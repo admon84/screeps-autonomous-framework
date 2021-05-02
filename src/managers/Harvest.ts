@@ -1,18 +1,12 @@
 import * as ProfileUtilities from "../utilities/Profiles";
-
-import * as Harvester from "../roles/Harvester";
-
-import { Order } from "../classes/Order";
-
 import * as OrdersRepository from "../repository/Orders";
-
+import * as Harvester from "../roles/Harvester";
+import { Order } from "../classes/Order";
 import { Role } from "../enums/role";
 import { Priority } from "../enums/priority";
-
-import { Manager, ManagerPriority } from "./_Manager";
-
 import { CreepService } from "../services/Creep";
 import { RoomService } from "../services/Room";
+import { Manager, ManagerPriority } from "./_Manager";
 
 export class HarvestManager extends Manager {
     private roomService: RoomService;

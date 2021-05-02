@@ -1,8 +1,6 @@
 import * as OperationTest from "../operations/Test";
-
 import { IOperationData } from "../operations/_OperationData";
 import { OperationType } from "../enums/operationtype";
-
 import { log } from "../tools/Logger";
 
 function addOperation(operation: IOperationData) {

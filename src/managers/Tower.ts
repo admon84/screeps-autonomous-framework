@@ -1,6 +1,5 @@
-import { Manager, ManagerPriority } from "./_Manager";
-
 import { RoomService } from "../services/Room";
+import { Manager, ManagerPriority } from "./_Manager";
 
 export class TowerManager extends Manager {
     private roomService: RoomService;

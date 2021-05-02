@@ -1,14 +1,9 @@
-import { Manager } from "./_Manager";
-
-import { Role } from "../enums/role";
-
-import { Order } from "../classes/Order";
-
 import * as OrdersUtilities from "../utilities/Orders";
-
+import { Role } from "../enums/role";
+import { Order } from "../classes/Order";
 import { RoomService } from "../services/Room";
-
 import { log } from "../tools/Logger";
+import { Manager } from "./_Manager";
 
 export class SpawnManager extends Manager {
     private roomService: RoomService;

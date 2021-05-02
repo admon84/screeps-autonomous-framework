@@ -1,14 +1,10 @@
-import { Manager, ManagerPriority } from "./_Manager";
-
+import * as OperationTest from "../operations/Test";
 import { CreepService } from "../services/Creep";
 import { RoomService } from "../services/Room";
-
-import * as OperationTest from "../operations/Test";
-
 import { OperationType } from "../enums/operationtype";
 import { IOperationData } from "../operations/_OperationData";
-
 import { log } from "../tools/Logger";
+import { Manager, ManagerPriority } from "./_Manager";
 
 export class OperationManager extends Manager {
     private roomService: RoomService;

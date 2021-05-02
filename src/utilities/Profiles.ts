@@ -7,6 +7,7 @@ export function getSimpleWorkerBody(tier: number): BodyPartConstant[] {
     }
     return addToBody([], tier, [WORK, CARRY, MOVE]);
 }
+
 export function getMaxTierSimpleWorker(energy: number): number {
     return getMaxTier(energy, getSimpleWorkerBody, 16);
 }
@@ -23,6 +24,7 @@ export function getHeavyWorkerBody(tier: number): BodyPartConstant[] {
     body = addToBody(body, Math.ceil(tier / 2), [WORK, CARRY, MOVE]);
     return body;
 }
+
 export function getMaxTierHeavyWorker(energy: number): number {
     return getMaxTier(energy, getHeavyWorkerBody, 16);
 }

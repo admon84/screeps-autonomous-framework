@@ -1,9 +1,6 @@
 import * as ProfilesUtilities from "../utilities/Profiles";
-
 import { Order } from "../classes/Order";
-
 import { Role } from "../enums/role";
-
 import { log } from "../tools/Logger";
 
 /**

@@ -1,18 +1,12 @@
-import { Manager, ManagerPriority } from "./_Manager";
-
 import * as ProfileUtilities from "../utilities/Profiles";
-
+import * as OrdersRepository from "../repository/Orders";
 import * as Upgrader from "../roles/Upgrader";
-
 import { CreepService } from "../services/Creep";
 import { RoomService } from "../services/Room";
-
-import * as OrdersRepository from "../repository/Orders";
-
 import { Order } from "../classes/Order";
-
 import { Role } from "../enums/role";
 import { Priority } from "../enums/priority";
+import { Manager, ManagerPriority } from "./_Manager";
 
 export class UpgradeManager extends Manager {
     private roomService: RoomService;

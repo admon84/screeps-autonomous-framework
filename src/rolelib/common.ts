@@ -1,5 +1,5 @@
 /**
- * Common instructions that are commonly used by multiple creeps
+ * Common instructions that are used by multiple roles
  */
 
 import { log } from "../tools/Logger";

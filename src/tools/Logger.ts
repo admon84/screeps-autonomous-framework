@@ -6,15 +6,16 @@ export class Logger {
     }
 
     private _log(message: string, room: string | undefined, level: LogLevel, color = "#fff") {
-        if (this._shouldLogMessage(level)) {
-            let output = "";
-            if (room) {
-                output += `<a href="#!/room/${Game.shard.name}/${room}">${room}</a>`;
-                output += '<span style="color:#6e6770"> &rsaquo; </span>';
-            }
-            output += `<span style="color:${color}">${message}</span>`;
-            console.log(output);
+        if (!this._shouldLogMessage(level)) {
+            return;
         }
+        let output = "";
+        if (room) {
+            output += `<a href="#!/room/${Game.shard.name}/${room}">${room}</a>`;
+            output += '<span style="color:#6e6770"> &rsaquo; </span>';
+        }
+        output += `<span style="color:${color}">${message}</span>`;
+        console.log(output);
     }
 
     private _shouldLogMessage(level: LogLevel) {

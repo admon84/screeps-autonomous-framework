@@ -1,10 +1,6 @@
 import "../prototypes/creep";
 import "../prototypes/room";
 import "../prototypes/roomposition";
-// Import additional prototypes here
-
-import { Manager, ManagerPriority } from "./_Manager";
-
 import { MemoryManager } from "./Memory";
 import { OperationManager } from "./Operation";
 import { TowerManager } from "./Tower";
@@ -12,13 +8,11 @@ import { SpawnManager } from "./Spawn";
 import { HarvestManager } from "./Harvest";
 import { BuildManager } from "./Build";
 import { UpgradeManager } from "./Upgrade";
-
 import { CreepService } from "../services/Creep";
 import { RoomService } from "../services/Room";
-
 import { LogLevel } from "../enums/loglevel";
-
 import { log } from "../tools/Logger";
+import { Manager, ManagerPriority } from "./_Manager";
 
 export function run() {
     if (Memory.settings === undefined) {
