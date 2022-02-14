@@ -30,15 +30,12 @@ module.exports = {
   },
   rules: {
     "@typescript-eslint/array-type": "error",
+    "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/consistent-type-definitions": "error",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-member-accessibility": [
-      "error",
-      {
-        accessibility: "explicit"
-      }
-    ],
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-parameter-properties": "off",
     "@typescript-eslint/no-shadow": [
@@ -47,9 +44,15 @@ module.exports = {
         hoist: "all"
       }
     ],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unused-expressions": "error",
     "@typescript-eslint/no-use-before-define": ["error", { functions: false }],
     "@typescript-eslint/prefer-for-of": "error",
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
     "@typescript-eslint/space-within-parens": ["off", "never"],
     "@typescript-eslint/unified-signatures": "error",
     "arrow-parens": ["off", "as-needed"],
@@ -77,13 +80,13 @@ module.exports = {
     "no-throw-literal": "error",
     "no-trailing-spaces": "off",
     "no-undef-init": "error",
-    "no-underscore-dangle": "warn",
+    "no-underscore-dangle": "off",
     "no-var": "error",
     "object-shorthand": "error",
     "one-var": ["error", "never"],
     "quote-props": "off",
     radix: "error",
-    "sort-imports": "warn",
+    "sort-imports": "off",
     "spaced-comment": "error",
   }
 };

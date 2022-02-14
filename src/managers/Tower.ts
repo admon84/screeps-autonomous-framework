@@ -21,11 +21,11 @@ export class TowerManager extends Manager {
     }
 
     private controlTowers(room: Room) {
-        const towersWithEnergy = room.find(FIND_STRUCTURES, {
+        const towersWithEnergy: StructureTower[] = room.find(FIND_STRUCTURES, {
             filter: structure => {
                 return structure.structureType === STRUCTURE_TOWER && structure.store[RESOURCE_ENERGY] > 0;
             }
-        }) as StructureTower[];
+        });
 
         for (const tower of towersWithEnergy) {
             const closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);

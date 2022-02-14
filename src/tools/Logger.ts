@@ -5,8 +5,8 @@ export class Logger {
         Memory.settings.loggingLevel = newLevel;
     }
 
-    private _log(message: string, room: string | undefined, level: LogLevel, color = "#fff") {
-        if (!this._shouldLogMessage(level)) {
+    private log(message: string, room: string | undefined, level: LogLevel, color = "#fff") {
+        if (!this.shouldLogMessage(level)) {
             return;
         }
         let output = "";
@@ -18,7 +18,7 @@ export class Logger {
         console.log(output);
     }
 
-    private _shouldLogMessage(level: LogLevel) {
+    private shouldLogMessage(level: LogLevel) {
         if (Memory.settings?.loggingLevel === undefined) {
             return true;
         }
@@ -29,27 +29,27 @@ export class Logger {
     }
 
     public alert(message: string, room?: string) {
-        this._log(message, room, LogLevel.Alert, "#ff00d0");
+        this.log(message, room, LogLevel.Alert, "#ff00d0");
     }
 
     public error(message: string, room?: string) {
-        this._log(message, room, LogLevel.Error, "#e50000");
+        this.log(message, room, LogLevel.Error, "#e50000");
     }
 
     public warning(message: string, room?: string) {
-        this._log(message, room, LogLevel.Warn, "#f4c542");
+        this.log(message, room, LogLevel.Warn, "#f4c542");
     }
 
     public info(message: string, room?: string) {
-        this._log(message, room, LogLevel.Info, "#efefef");
+        this.log(message, room, LogLevel.Info, "#efefef");
     }
 
     public debug(message: string, room?: string) {
-        this._log(message, room, LogLevel.Debug, "#a6a4a6");
+        this.log(message, room, LogLevel.Debug, "#a6a4a6");
     }
 
     public verbose(message: string, room?: string) {
-        this._log(message, room, LogLevel.Verbose, "#6e6770");
+        this.log(message, room, LogLevel.Verbose, "#6e6770");
     }
 }
 
