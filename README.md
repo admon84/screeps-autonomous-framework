@@ -1,8 +1,8 @@
 # Screeps TypeScript Starter - Extended Version
 
-Screeps TypeScript Starter is a starting point writing your own Screeps bot/AI in Typescript.
+A barebones starter kit for writing your own Screeps bot/AI.
 
-Functionally this bot includes same basic features covered in the [Screeps Tutorial](https://screeps.com/a/#!/sim/tutorial).
+Functionally this bot includes the same basic features covered in the [Screeps Tutorial](https://screeps.com/a/#!/sim/tutorial).
 - Harvester, Upgrader, and Builder roles
 - Spawn Logic
 - Tower Logic
@@ -52,7 +52,7 @@ You will need:
 
 Download the latest source [here](https://github.com/admon84/screeps-typescript-starter/archive/master.zip) and extract it to a folder.
 
-Open the folder in your terminal and run your package manager to install the required packages and TypeScript declaration files:
+Open the folder in your terminal and run your package manager to install the required packages and typescript declaration files:
 
 ```bash
 # npm
