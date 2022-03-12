@@ -11,7 +11,7 @@ export class MemoryManager extends Manager {
         super("MemoryManager");
     }
 
-    public run(pri: ManagerPriority): void {
+    public run(pri: ManagerPriority) {
         if (pri === ManagerPriority.Low) {
             const lastRun = this.getValue(this.MEMORY_LASTRUN);
             if (lastRun === undefined || lastRun + 20 < Game.time) {
@@ -21,7 +21,7 @@ export class MemoryManager extends Manager {
         }
     }
 
-    private deleteCreepsFromMemory(): void {
+    private deleteCreepsFromMemory() {
         for (const i in Memory.creeps) {
             if (!Game.creeps[i]) {
                 delete Memory.creeps[i];

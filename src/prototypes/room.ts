@@ -2,32 +2,30 @@
  * Room prototypes
  */
 
-Room.prototype.getMySpawns = function (): StructureSpawn[] {
+Room.prototype.getMySpawns = function () {
     if (this._mySpawns === undefined) {
-        this._mySpawns = this.find(FIND_MY_SPAWNS) as StructureSpawn[];
+        this._mySpawns = this.find(FIND_MY_SPAWNS);
     }
     return this._mySpawns;
 };
 
-Room.prototype.getSpawn = function (): StructureSpawn | undefined {
-    const spawns = this.getMySpawns();
-    if (spawns === undefined || spawns.length < 1) {
-        return undefined;
+Room.prototype.getSpawn = function () {
+    if (!this._firstSpawn) {
+        this._firstSpawn = this.getMySpawns()?.[0];
     }
-    return spawns[0];
+    return this._firstSpawn;
 };
 
-Room.prototype.getSources = function (): Source[] {
+Room.prototype.getSources = function () {
     if (!this._sources) {
-        this._sources = this.find(FIND_SOURCES) as Source[];
+        this._sources = this.find(FIND_SOURCES);
     }
     return this._sources;
 };
 
-Room.prototype.getMineral = function (): Mineral | undefined {
-    const minerals = this.find(FIND_MINERALS) as Mineral[];
-    if (minerals.length) {
-        return minerals[0];
+Room.prototype.getMineral = function () {
+    if (this._mineral === undefined) {
+        this._mineral = this.find(FIND_MINERALS)?.[0];
     }
-    return undefined;
+    return this._mineral;
 };

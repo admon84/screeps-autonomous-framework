@@ -2,14 +2,16 @@
  * RoomPosition prototypes
  */
 
-RoomPosition.prototype.isBorder = function (): boolean {
-    return this.x === 0 || this.x === 49 || this.y === 0 || this.y === 49;
+RoomPosition.prototype.isEdge = function () {
+    if (this._isEdge === undefined) {
+        this._isEdge = this.x === 0 || this.x === 49 || this.y === 0 || this.y === 49;
+    }
+    return this._isEdge;
 };
 
-RoomPosition.prototype.isBorderOrNextToBorder = function (): boolean {
-    return this.x <= 1 || this.x >= 48 || this.y <= 1 || this.y >= 48;
-};
-
-RoomPosition.prototype.isNextToBorder = function (): boolean {
-    return this.x === 1 || this.x === 48 || this.y === 1 || this.y === 48;
+RoomPosition.prototype.isNearEdge = function () {
+    if (this._isNearEdge === undefined) {
+        this._isNearEdge = this.x === 1 || this.x === 48 || this.y === 1 || this.y === 48;
+    }
+    return this._isNearEdge;
 };

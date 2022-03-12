@@ -6,14 +6,14 @@ import { log } from "../tools/Logger";
 /**
  * Insert a new creep order into the room orders queue
  */
-export function orderCreep(room: Room, order: Order): boolean {
+export function orderCreep(room: Room, order: Order) {
     if (room.getSpawn() === undefined) {
         return false;
     }
-    const costOfCreep = ProfilesUtilities.getCostForBody(order.body);
-    if (costOfCreep > room.energyCapacityAvailable) {
+    const orderBodyCost = ProfilesUtilities.getCostForBody(order.body);
+    if (orderBodyCost > room.energyCapacityAvailable) {
         log.error(
-            "Creep ordered that is more expensive than the room is able to handle: " + JSON.stringify(order.memory),
+            "Creep ordered is more expensive than the room energy capacity: " + JSON.stringify(order.memory),
             room.name
         );
         return false;
@@ -42,7 +42,7 @@ export function orderCreep(room: Room, order: Order): boolean {
 /**
  * Get number of creep orders with same role and target, where either can be null to skip matching
  */
-export function getCreepsInQueue(room: Room, role: Role | null = null, target: string | null = null): number {
+export function getCreepsInQueue(room: Room, role: Role | null = null, target: string | null = null) {
     if (room.memory.orders === undefined) {
         room.memory.orders = [];
     }

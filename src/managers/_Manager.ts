@@ -26,11 +26,11 @@ export abstract class Manager {
 
     public abstract run(pri: ManagerPriority): void;
 
-    protected getValue(name: string): any {
+    protected getValue(name: string) {
         return Memory.manager[this.name][name];
     }
 
-    protected setValue(name: string, value: any): void {
+    protected setValue(name: string, value: any) {
         Memory.manager[this.name][name] = value;
     }
 }

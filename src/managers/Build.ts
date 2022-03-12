@@ -20,7 +20,7 @@ export class BuildManager extends Manager {
         this.creepService = creepService;
     }
 
-    run(pri: ManagerPriority): void {
+    public run(pri: ManagerPriority) {
         if (pri === ManagerPriority.Low) {
             this.creepService.runCreeps(Role.Builder, Builder.run);
 
@@ -39,7 +39,7 @@ export class BuildManager extends Manager {
         }
     }
 
-    private orderBuilder(room: Room): void {
+    private orderBuilder(room: Room) {
         const active = this.creepService.getCreeps(Role.Builder).length;
         const ordered = OrdersRepository.getCreepsInQueue(room, Role.Builder);
 

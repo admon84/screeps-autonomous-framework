@@ -1,39 +1,54 @@
 # Screeps TypeScript Starter [Extended]
 
-Screeps TypeScript Starter is a starting point for a Screeps AI written in Typescript. This extended version includes a sturdy framework based on KasamiBot.
+Screeps TypeScript Starter is a starting point writing your own Screeps bot/AI in Typescript.
 
-This starter kit provides the same features covered in the Screeps Tutorial (Harvester Role, Upgrader Role, Builder Role, Spawn Logic, Tower Logic, and Memory Cleanup) plus a solid foundation for building a top-tier Screeps AI with TypeScript.
+Functionally this bot includes same basic features covered in the [Screeps Tutorial](https://screeps.com/a/#!/sim/tutorial):
+- Harvester, Upgrader, and Builder roles
+- Spawn Logic
+- Tower Logic
+- Memory Cleanup
 
-### Managers & Prioritization
+Additionally this codebase provides a structure that can be used to craft a top-tier Screeps AI
+- Task Managers
+- Priority Spawning Queue
+- Creep Body Profiles
+- Operations
+- Prototypes
 
-Managers are used to prioritize components and Creep roles.
+### Task Managers
 
-The Core manager's `run()` method is called in the main loop and executes all other managers using a CPU-based priority system.
+Task managers are used to prioritize components and Creep roles.
 
-Each manager component is called to run higher priority systems first and lower priority systems later with the possibility that lower priority systems may be skipped if the player's [CPU Bucket](https://docs.screeps.com/cpu-limit.html) has been depleted.
+Core manager's `run()` method entry point for the system which runs other managers using a CPU-based priority system.
 
-This prioritization system allows the player to organize critical and important systems (such as Towers or Room Defense systems) to always run first and foremost.
+The CPU-based priority system runs critical/important tasks first (such as operating Spawns and Towers) and can skip lower priority tasks if the CPU bucket has diminished.
 
-### Other Prominent Systems
+### Priority Spawning Queue
 
-The Orders repository and Spawn manager work together to provide a priority-based queue for spawning creeps that have been ordered by other managers.
+Spawn manager uses an Orders repository which is a Creep spawning queue sorted by the priority of the order.
 
-The Creep and Room services provide a dictionary-style wrapper to Game.creeps and Game.rooms respectively, with helper methods for finding creeps or rooms that match specified criteria.
+### Services
+
+Creep and Room services provide a dictionary-style wrapper to Game.creeps and Game.rooms respectively, with helper methods for finding creeps or rooms that match specified criteria.
+
+### Creep Body Profiles
 
 The Profiles utility is used to define bodies for specialized Creep roles, with a scalable and recursive pattern.
 
+### Operations
+
 Operations can be used to created autonomous "missions" that enable one or more rooms to support a single goal.
 
-Prototypes can be used to extend regular Game objects with additional helper methods or optimizations.
+### Prototypes
 
-Roles are specialized Creep behaviors.  The Builder, Harvester and Upgrader roles provided in this starter kit are state-based versions of the same roles covered in the Screeps Tutorial.
+Prototypes can be used to extend regular Game objects with additional helper methods or optimizations.
 
 ## Basic Usage
 
 You will need:
 
-- [Node.JS](https://nodejs.org/en/download) (10.x || 12.x)
-- A Package Manager ([Yarn](https://yarnpkg.com/en/docs/getting-started) or [npm](https://docs.npmjs.com/getting-started/installing-node))
+- [Node.JS](https://nodejs.org/en/download) (LTS recommended)
+- A Package Manager ([npm](https://docs.npmjs.com/getting-started/installing-node) or [Yarn](https://yarnpkg.com/en/docs/getting-started))
 - Rollup CLI (Optional, install via `npm install -g rollup`)
 
 Download the latest source [here](https://github.com/admon84/screeps-typescript-starter/archive/master.zip) and extract it to a folder.

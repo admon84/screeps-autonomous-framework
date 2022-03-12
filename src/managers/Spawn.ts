@@ -16,16 +16,14 @@ export class SpawnManager extends Manager {
     public run(): void {
         const rooms = this.roomService.getNormalRooms();
         for (const room of rooms) {
-            const spawns = _.filter(room.getMySpawns(), function (s: StructureSpawn) {
-                return s.isActive() && !s.spawning;
-            });
+            const spawns = room.getMySpawns().filter((s: StructureSpawn) => s.isActive() && !s.spawning);
             if (spawns.length) {
                 this.processQueue(room, spawns);
             }
         }
     }
 
-    private processQueue(room: Room, spawns: StructureSpawn[]): void {
+    private processQueue(room: Room, spawns: StructureSpawn[]) {
         if (room.memory.orders === undefined) {
             room.memory.orders = [];
             return;
@@ -36,9 +34,9 @@ export class SpawnManager extends Manager {
             return;
         }
 
-        room.memory.orders.sort(function (a: Order, b: Order) {
-            return a.priority > b.priority ? 1 : b.priority > a.priority ? -1 : 0;
-        });
+        room.memory.orders.sort((a: Order, b: Order) =>
+            a.priority > b.priority ? 1 : b.priority > a.priority ? -1 : 0
+        );
 
         const order = room.memory.orders.shift() as Order;
         const name = Role[order.memory.role] + OrdersUtilities.getUniqueId();

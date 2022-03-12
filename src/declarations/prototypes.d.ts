@@ -6,9 +6,8 @@ interface Creep {
     hasState(): boolean;
     getHomeroom(): string;
     isInHomeroom(): boolean;
-    isEnergyEmpty(): boolean;
+    hasEnergy(): boolean;
     isEmpty(): boolean;
-    isCarrying(): boolean;
     isFull(): boolean;
 }
 
@@ -16,11 +15,10 @@ interface Room {
     getMySpawns(): StructureSpawn[];
     getSpawn(): StructureSpawn | undefined;
     getSources(): Source[];
-    getMineral(): Mineral | undefined;
+    getMineral(): Mineral | null;
 }
 
 interface RoomPosition {
-    isBorder(): boolean;
-    isBorderOrNextToBorder(): boolean;
-    isNextToBorder(): boolean;
+    isEdge(): boolean;
+    isNearEdge(): boolean;
 }

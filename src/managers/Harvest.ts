@@ -20,7 +20,7 @@ export class HarvestManager extends Manager {
         this.creepService = creepService;
     }
 
-    public run(pri: ManagerPriority): void {
+    public run(pri: ManagerPriority) {
         if (pri === ManagerPriority.Low) {
             this.creepService.runCreeps(Role.Harvester, Harvester.run);
 
@@ -42,7 +42,7 @@ export class HarvestManager extends Manager {
         }
     }
 
-    private orderHarvesters(room: Room, sourceId: string, sourceRoom: string): void {
+    private orderHarvesters(room: Room, sourceId: string, sourceRoom: string) {
         const spawn = room.getSpawn();
         if (spawn === undefined) {
             return;

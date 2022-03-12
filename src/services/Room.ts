@@ -7,7 +7,7 @@ export class RoomService {
         this.roomDictionary = this.makeDictionary();
     }
 
-    public getNormalRooms(): Room[] {
+    public getNormalRooms() {
         const rooms: Room[] = [];
         if (this.roomDictionary[Roomtype.Normal] !== undefined) {
             rooms.push(...this.roomDictionary[Roomtype.Normal]);
@@ -15,7 +15,7 @@ export class RoomService {
         return rooms;
     }
 
-    private makeDictionary(): { [type: number]: Room[] } {
+    private makeDictionary() {
         const rooms: { [type: number]: Room[] } = {};
         rooms[Roomtype.Normal] = [];
 

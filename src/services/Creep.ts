@@ -28,8 +28,9 @@ export class CreepService {
         }
     }
 
-    public getCreeps(role: Role | null = null, target: string | null = null, homeroom: string | null = null): Creep[] {
+    public getCreeps(role: Role | null = null, target: string | null = null, homeroom: string | null = null) {
         const creeps: Creep[] = [];
+
         if (role !== null) {
             if (this.creepDictionary[role] === undefined) {
                 return creeps;
@@ -44,30 +45,30 @@ export class CreepService {
                 }
             }
             return creeps;
-        } else {
-            for (const creepName in Game.creeps) {
-                const creep = Game.creeps[creepName];
-                if (
-                    (target === null || creep.memory.target === target) &&
-                    (homeroom === null || creep.memory.homeroom === homeroom) &&
-                    (role === null || creep.memory.role === role) &&
-                    (creep.memory.squad === undefined || creep.memory.squad === null)
-                ) {
-                    creeps.push(creep);
-                }
-            }
-            return creeps;
         }
+
+        for (const creepName in Game.creeps) {
+            const creep = Game.creeps[creepName];
+            if (
+                (target === null || creep.memory.target === target) &&
+                (homeroom === null || creep.memory.homeroom === homeroom) &&
+                (role === null || creep.memory.role === role) &&
+                (creep.memory.squad === undefined || creep.memory.squad === null)
+            ) {
+                creeps.push(creep);
+            }
+        }
+        return creeps;
     }
 
-    public getAllOfRole(role: Role): Creep[] {
+    public getAllOfRole(role: Role) {
         if (this.creepDictionary[role] !== undefined) {
             return this.creepDictionary[role];
         }
         return [];
     }
 
-    private makeDictionary(): { [role: number]: Creep[] } {
+    private makeDictionary() {
         const creeps: { [role: number]: Creep[] } = {};
 
         for (const name in Game.creeps) {

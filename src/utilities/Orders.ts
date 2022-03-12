@@ -3,12 +3,9 @@
  */
 export function getUniqueId(): string {
     let text = "#";
-    const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const lower = "abcdefghijklmnopqrstuvwxyz";
-    text += upper.charAt(Math.floor(Math.random() * upper.length));
-
-    for (let i = 1; i < 3; i++) {
-        text += lower.charAt(Math.floor(Math.random() * lower.length));
+    const charset = "0123456789abcdef";
+    for (let i = 0; i < 8; i++) {
+        text += charset.charAt(Math.floor(Math.random() * charset.length));
     }
     return text;
 }

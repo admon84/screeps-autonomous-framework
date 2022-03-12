@@ -20,7 +20,7 @@ export class UpgradeManager extends Manager {
         this.creepService = creepService;
     }
 
-    run(pri: ManagerPriority): void {
+    run(pri: ManagerPriority) {
         if (pri === ManagerPriority.Low) {
             this.creepService.runCreeps(Role.Upgrader, Upgrader.run);
 
@@ -42,7 +42,7 @@ export class UpgradeManager extends Manager {
         }
     }
 
-    private orderUpgrader(controller: StructureController): void {
+    private orderUpgrader(controller: StructureController) {
         const room = controller.room;
         const active = this.creepService.getCreeps(Role.Upgrader, controller.id).length;
         const ordered = OrdersRepository.getCreepsInQueue(controller.room, Role.Upgrader, controller.id);

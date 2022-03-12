@@ -1,23 +1,27 @@
 /**
  * SimpleWorkers are balanced with equal parts WORK, CARRY, and MOVE
  */
-export function getSimpleWorkerBody(tier: number): BodyPartConstant[] {
-    if (tier > 16) {
-        tier = 16;
+const SIMPLE_WORKER_MAX_TIER = 16;
+
+export function getSimpleWorkerBody(tier: number) {
+    if (tier > SIMPLE_WORKER_MAX_TIER) {
+        tier = SIMPLE_WORKER_MAX_TIER;
     }
     return addToBody([], tier, [WORK, CARRY, MOVE]);
 }
 
-export function getMaxTierSimpleWorker(energy: number): number {
-    return getMaxTier(energy, getSimpleWorkerBody, 16);
+export function getMaxTierSimpleWorker(energy: number) {
+    return getMaxTier(energy, getSimpleWorkerBody, SIMPLE_WORKER_MAX_TIER);
 }
 
 /**
  * HeavyWorkers have more WORK, less CARRY, and need roads to MOVE effectively
  */
-export function getHeavyWorkerBody(tier: number): BodyPartConstant[] {
-    if (tier > 16) {
-        tier = 16;
+const HEAVY_WORKER_MAX_TIER = 16;
+
+export function getHeavyWorkerBody(tier: number) {
+    if (tier > HEAVY_WORKER_MAX_TIER) {
+        tier = HEAVY_WORKER_MAX_TIER;
     }
     let body: BodyPartConstant[] = [];
     body = addToBody(body, Math.floor(tier / 2), [WORK, WORK, MOVE]);
@@ -25,14 +29,14 @@ export function getHeavyWorkerBody(tier: number): BodyPartConstant[] {
     return body;
 }
 
-export function getMaxTierHeavyWorker(energy: number): number {
-    return getMaxTier(energy, getHeavyWorkerBody, 16);
+export function getMaxTierHeavyWorker(energy: number) {
+    return getMaxTier(energy, getHeavyWorkerBody, HEAVY_WORKER_MAX_TIER);
 }
 
 /**
  * Calculate the total cost for a creep body
  */
-export function getCostForBody(body: BodyPartConstant[]): number {
+export function getCostForBody(body: BodyPartConstant[]) {
     let cost = 0;
     for (const bodypart of body) {
         cost += getCostForBodypart(bodypart);
@@ -43,7 +47,7 @@ export function getCostForBody(body: BodyPartConstant[]): number {
 /**
  * Find the max tier possible based on energy and function
  */
-function getMaxTier(energy: number, bodyfunction: Function, maxTier: number): number {
+function getMaxTier(energy: number, bodyfunction: Function, maxTier: number) {
     let tier = 0;
     let maxReached = false;
     for (let i = 1; !maxReached; i++) {
@@ -60,7 +64,7 @@ function getMaxTier(energy: number, bodyfunction: Function, maxTier: number): nu
 /**
  * Determine cost for each creep body part
  */
-function getCostForBodypart(part: BodyPartConstant): number {
+function getCostForBodypart(part: BodyPartConstant) {
     if (part in BODYPART_COST) {
         return BODYPART_COST[part];
     }
@@ -70,7 +74,7 @@ function getCostForBodypart(part: BodyPartConstant): number {
 /**
  * Add parts to a creep body array
  */
-function addToBody(body: BodyPartConstant[], count: number, parts: BodyPartConstant[]): BodyPartConstant[] {
+function addToBody(body: BodyPartConstant[], count: number, parts: BodyPartConstant[]) {
     for (let i = 0; i < count; i++) {
         for (const part of parts) {
             body.push(part);

@@ -32,14 +32,14 @@ export function run(creep: Creep) {
 
 function runHarvestEnergy(creep: Creep) {
     if (creep.isFull()) {
-        creep.say("⚡ transfer");
+        creep.say("💎Transfer");
         creep.setState(State.TransferEnergy);
         runTransferEnergy(creep);
         return;
     }
 
     const source = getTargetSource(creep);
-    if (source instanceof Source) {
+    if (source) {
         if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
             creep.moveTo(source, { visualizePathStyle: { stroke: "#ffaa00" } });
         }
@@ -47,27 +47,24 @@ function runHarvestEnergy(creep: Creep) {
 }
 
 function runTransferEnergy(creep: Creep) {
-    if (creep.isEnergyEmpty()) {
-        creep.say("🔄 harvest");
+    if (!creep.hasEnergy()) {
+        creep.say("⛏️Harvest");
         creep.setState(State.HarvestEnergy);
         runHarvestEnergy(creep);
         return;
     }
 
-    const targets = creep.room.find(FIND_STRUCTURES, {
-        filter: structure => {
-            return (
-                (structure.structureType === STRUCTURE_EXTENSION ||
-                    structure.structureType === STRUCTURE_SPAWN ||
-                    structure.structureType === STRUCTURE_TOWER) &&
-                structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
-            );
-        }
-    }) as Structure[];
+    const targetStructure = creep.room.find(FIND_STRUCTURES, {
+        filter: structure =>
+            (structure.structureType === STRUCTURE_EXTENSION ||
+                structure.structureType === STRUCTURE_SPAWN ||
+                structure.structureType === STRUCTURE_TOWER) &&
+            structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
+    })?.[0];
 
-    if (targets.length) {
-        if (creep.transfer(targets[0], RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-            creep.moveTo(targets[0], { visualizePathStyle: { stroke: "#ffffff" } });
+    if (targetStructure) {
+        if (creep.transfer(targetStructure, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+            creep.moveTo(targetStructure, { visualizePathStyle: { stroke: "#ffffff" } });
         }
     }
 }

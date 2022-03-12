@@ -18,7 +18,7 @@ export class OperationManager extends Manager {
         this.creepService = creepService;
     }
 
-    run(pri: ManagerPriority): void {
+    public run(pri: ManagerPriority) {
         if (pri === ManagerPriority.Trivial) {
             const lastRunMaintain = this.getValue(this.MEMORY_MAINTAIN);
             if (lastRunMaintain === undefined || lastRunMaintain + 1000 < Game.time) {

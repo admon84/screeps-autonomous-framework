@@ -8,7 +8,7 @@ import * as _Common from "../rolelib/common";
 
 enum State {
     HarvestEnergy = 1,
-    Construct = 2
+    BuildConstruction = 2
 }
 
 export function run(creep: Creep) {
@@ -20,8 +20,8 @@ export function run(creep: Creep) {
         case State.HarvestEnergy:
             runHarvestEnergy(creep);
             break;
-        case State.Construct:
-            runConstruct(creep);
+        case State.BuildConstruction:
+            runBuildConstruction(creep);
             break;
         default:
             _Common.logCreepStateWarning(creep);
@@ -32,33 +32,32 @@ export function run(creep: Creep) {
 
 function runHarvestEnergy(creep: Creep) {
     if (creep.isFull()) {
-        creep.say("🚧 build");
-        creep.setState(State.Construct);
-        runConstruct(creep);
+        creep.say("🔧Build");
+        creep.setState(State.BuildConstruction);
+        runBuildConstruction(creep);
         return;
     }
 
-    const sources = creep.room.getSources();
-    const targetSource = sources[0];
-    if (targetSource instanceof Source) {
-        if (creep.harvest(targetSource) === ERR_NOT_IN_RANGE) {
-            creep.moveTo(targetSource, { visualizePathStyle: { stroke: "#ffaa00" } });
+    const source = creep.room.getSources()?.[0];
+    if (source) {
+        if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
+            creep.moveTo(source, { visualizePathStyle: { stroke: "#ffaa00" } });
         }
     }
 }
 
-function runConstruct(creep: Creep) {
-    if (creep.isEnergyEmpty()) {
-        creep.say("🔄 harvest");
+function runBuildConstruction(creep: Creep) {
+    if (!creep.hasEnergy()) {
+        creep.say("⛏️Harvest");
         creep.setState(State.HarvestEnergy);
         runHarvestEnergy(creep);
         return;
     }
 
-    const targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-    if (targets.length) {
-        if (creep.build(targets[0]) === ERR_NOT_IN_RANGE) {
-            creep.moveTo(targets[0], { visualizePathStyle: { stroke: "#ffffff" } });
+    const constructionSite = creep.room.find(FIND_CONSTRUCTION_SITES)?.[0];
+    if (constructionSite) {
+        if (creep.build(constructionSite) === ERR_NOT_IN_RANGE) {
+            creep.moveTo(constructionSite, { visualizePathStyle: { stroke: "#ffffff" } });
         }
     }
 }

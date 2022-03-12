@@ -10,7 +10,7 @@ function addOperation(operation: IOperationData) {
     Memory.operations.push(operation);
 }
 
-export function roomHasActiveTestOperation(): boolean {
+export function roomHasActiveTestOperation() {
     if (Memory.operations === undefined) {
         Memory.operations = [];
     }
@@ -26,12 +26,12 @@ export function roomHasActiveTestOperation(): boolean {
     return false;
 }
 
-export function createTestOperation(): boolean {
+export function createTestOperation() {
     const op: OperationTest.Data = new OperationTest.Data();
     op.operationtype = OperationType.Test;
     op.victoryCondition = OperationTest.VictoryCondition.Gametime;
     op.victoryValue = Game.time + 50;
     addOperation(op);
-    log.info("Starting basic test operation for 50 ticks");
+    log.info("Starting hello world Test operation for 50 ticks");
     return true;
 }

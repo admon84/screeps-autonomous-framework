@@ -11,7 +11,7 @@ export class TowerManager extends Manager {
         this.roomService = roomService;
     }
 
-    public run(pri: ManagerPriority): void {
+    public run(pri: ManagerPriority) {
         if (pri === ManagerPriority.Critical) {
             const normalRooms = this.roomService.getNormalRooms();
             for (const room of normalRooms) {
@@ -22,9 +22,8 @@ export class TowerManager extends Manager {
 
     private controlTowers(room: Room) {
         const towersWithEnergy: StructureTower[] = room.find(FIND_STRUCTURES, {
-            filter: structure => {
-                return structure.structureType === STRUCTURE_TOWER && structure.store[RESOURCE_ENERGY] > 0;
-            }
+            filter: structure =>
+                structure.structureType === STRUCTURE_TOWER && structure.store[RESOURCE_ENERGY] > TOWER_ENERGY_COST
         });
 
         for (const tower of towersWithEnergy) {

@@ -17,11 +17,11 @@ import { Manager, ManagerPriority } from "./_Manager";
 export function run() {
     if (Memory.settings === undefined) {
         Memory.settings = {};
-        log.warning("==== Script Loaded ====");
+        log.warning("💎=== Script Loaded ===💎");
     }
     if (Memory.settings.loggingLevel === undefined) {
         Memory.settings.loggingLevel = LogLevel.Verbose;
-        log.debug("Verbose logging enabled.");
+        log.debug("Logging Level set to Verbose");
     }
     if (Memory.settings.user === undefined) {
         Memory.settings.user = getUserName();
@@ -115,7 +115,7 @@ function runManager(component: Manager | Function, pri: ManagerPriority, ...args
     }
 }
 
-function getUserName(): string | undefined {
+function getUserName() {
     const spawnNames = Object.keys(Game.spawns);
     if (spawnNames.length === 0) {
         return;

@@ -32,28 +32,28 @@ export function run(creep: Creep) {
 
 function runHarvestEnergy(creep: Creep) {
     if (creep.isFull()) {
-        creep.say("⚡ upgrade");
+        creep.say("🙏Upgrade");
         creep.setState(State.UpgradeController);
         runUpgradeController(creep);
         return;
     }
 
-    const sources = creep.room.getSources();
-    if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[0], { visualizePathStyle: { stroke: "#ffaa00" } });
+    const source = creep.room.getSources()?.[0];
+    if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
+        creep.moveTo(source, { visualizePathStyle: { stroke: "#ffaa00" } });
     }
 }
 
 function runUpgradeController(creep: Creep) {
-    if (creep.isEnergyEmpty()) {
-        creep.say("🔄 harvest");
+    if (!creep.hasEnergy()) {
+        creep.say("⛏️Harvest");
         creep.setState(State.HarvestEnergy);
         runHarvestEnergy(creep);
         return;
     }
 
-    const controller = creep.room.controller;
-    if (controller instanceof StructureController) {
+    const { controller } = creep.room;
+    if (controller) {
         if (creep.upgradeController(controller) === ERR_NOT_IN_RANGE) {
             creep.moveTo(controller, { visualizePathStyle: { stroke: "#ffffff" } });
         }

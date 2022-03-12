@@ -2,7 +2,7 @@
  * Operation: Test
  *
  * Operations can be used to created automated "missions"
- * Follow this example to create something more useful
+ * Use this template to create something more useful
  *
  * Victory conditions:
  * - Gametime reaches set duration
