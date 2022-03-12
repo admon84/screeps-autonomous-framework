@@ -11,12 +11,12 @@ Functionally this bot includes the same basic features covered in the [Screeps T
 Additionally this codebase provides a bot framework that can be used to craft a top-tier Screeps AI.
 - Task Managers
 - Priority Spawn Queue
+- Services
 - Creep Body Profiles
 - Operations
 - Prototypes
 
 ### Task Managers
-
 Managers are used to prioritize tasks and Creep roles.
 
 Core manager's `run()` method entry point for the system which runs other managers using a CPU-based priority system.
@@ -24,23 +24,18 @@ Core manager's `run()` method entry point for the system which runs other manage
 The CPU-based priority system runs critical/important tasks first (such as operating Spawns and Towers) and can skip lower priority tasks if the CPU bucket has diminished.
 
 ### Priority Spawn Queue
-
 Spawn manager uses an Orders repository which is a Creep spawning queue sorted by the priority of the order.
 
 ### Services
-
-Creep and Room services provide a dictionary-style wrapper to Game.creeps and Game.rooms respectively, with helper methods for finding creeps or rooms that match specified criteria.
+Creep and Room Services are a dictionary wrapper foor `Game.creeps` and `Game.rooms` containing helper methods for finding creeps or rooms that match specified criteria.
 
 ### Creep Body Profiles
-
 The Profiles utility is used to define the body shape and size of specialized Creep roles using a scalable and recursive pattern.
 
 ### Operations
-
 Operations can be used to created autonomous "missions" that enable one or more rooms to support a single goal.
 
 ### Prototypes
-
 Prototypes can be used to extend regular Game objects with additional helper methods or optimizations.
 
 ## Basic Usage
