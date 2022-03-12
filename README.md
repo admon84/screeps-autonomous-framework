@@ -1,6 +1,6 @@
 # Screeps TypeScript Starter - Extended Version
 
-A barebones starter kit for writing your own Screeps bot/AI.
+An extension of the Screeps TypeScript Starter for developing your own Screeps bot/AI.
 
 Functionally this bot includes the same basic features covered in the [Screeps Tutorial](https://screeps.com/a/#!/sim/tutorial).
 - Harvester, Upgrader, and Builder roles
