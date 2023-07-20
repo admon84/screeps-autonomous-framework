@@ -15,7 +15,7 @@ export function getMaxTierSimpleWorker(energy: number) {
 }
 
 /**
- * HeavyWorkers have more WORK, less CARRY, and need roads to MOVE effectively
+ * HeavyWorkers have 3:1 WORK to CARRY and travel slower without roads
  */
 const HEAVY_WORKER_MAX_TIER = 16;
 
@@ -39,7 +39,7 @@ export function getMaxTierHeavyWorker(energy: number) {
 export function getCostForBody(body: BodyPartConstant[]) {
   let cost = 0;
   for (const bodypart of body) {
-    cost += getCostForBodypart(bodypart);
+    cost += BODYPART_COST[bodypart];
   }
   return cost;
 }
@@ -47,11 +47,11 @@ export function getCostForBody(body: BodyPartConstant[]) {
 /**
  * Find the max tier possible based on energy and function
  */
-function getMaxTier(energy: number, bodyfunction: Function, maxTier: number) {
+function getMaxTier(energy: number, bodyFunction: Function, maxTier: number) {
   let tier = 0;
   let maxReached = false;
   for (let i = 1; !maxReached; i++) {
-    const cost = getCostForBody(bodyfunction(i));
+    const cost = getCostForBody(bodyFunction(i));
     if (cost > energy || i > maxTier) {
       maxReached = true;
     } else {
@@ -59,16 +59,6 @@ function getMaxTier(energy: number, bodyfunction: Function, maxTier: number) {
     }
   }
   return tier;
-}
-
-/**
- * Determine cost for each creep body part
- */
-function getCostForBodypart(part: BodyPartConstant) {
-  if (part in BODYPART_COST) {
-    return BODYPART_COST[part];
-  }
-  return 0;
 }
 
 /**
