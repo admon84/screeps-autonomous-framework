@@ -14,7 +14,7 @@ export class RoomService {
 
   public getNormalRooms() {
     const rooms: Room[] = [];
-    if (this.roomDictionary[Roomtype.Normal] !== undefined) {
+    if (this.roomDictionary[Roomtype.Normal]) {
       rooms.push(...this.roomDictionary[Roomtype.Normal]);
     }
     return rooms;
@@ -26,6 +26,7 @@ export class RoomService {
 
     for (const roomName in Game.rooms) {
       const room = Game.rooms[roomName];
+
       if (!room.controller || !room.controller.my || room.controller.level < 1) {
         continue;
       }

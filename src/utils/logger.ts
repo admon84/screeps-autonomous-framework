@@ -34,7 +34,7 @@ export class Logger {
   }
 
   private log(level: LogLevel, color: string, message: string, roomName?: string) {
-    if (!this.shouldLogMessage(level)) {
+    if (Memory.settings?.loglevel && Memory.settings.loglevel < level) {
       return;
     }
     let output = '';
@@ -44,16 +44,6 @@ export class Logger {
     }
     output += `<span style="color:${color}">${message}</span>`;
     console.log(output);
-  }
-
-  private shouldLogMessage(level: LogLevel) {
-    if (!Memory.settings?.loglevel) {
-      return true;
-    }
-    if (level <= Memory.settings.loglevel) {
-      return true;
-    }
-    return false;
   }
 }
 

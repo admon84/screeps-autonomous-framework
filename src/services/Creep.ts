@@ -65,7 +65,7 @@ export class CreepService {
   }
 
   public getAllOfRole(role: Role) {
-    if (this.creepDictionary[role] !== undefined) {
+    if (this.creepDictionary[role]) {
       return this.creepDictionary[role];
     }
     return [];
@@ -78,7 +78,7 @@ export class CreepService {
       const creep = Game.creeps[name];
 
       if (creep.memory.role === undefined) {
-        log.warning(`Creep ${creep.name} role is undefined`, creep.room.name);
+        log.warning(`Creep ${creep.name} has no role`, creep.room.name);
         continue;
       }
 
