@@ -1,7 +1,7 @@
 /**
  * CreepService
  *
- * Organizes creeps by their role, used by Managers and Operations
+ * Organizes creeps by their role, used in Managers and Operations
  */
 import { Role } from '../enums/role';
 import { log } from '../utils/logger';
@@ -13,7 +13,7 @@ export class CreepService {
     this.creepDictionary = this.makeDictionary();
   }
 
-  public creepShouldRun(creep: Creep): boolean {
+  public creepShouldRun(creep: Creep) {
     if (!creep.memory.homeroom) {
       creep.memory.homeroom = creep.room.name;
     }
@@ -24,11 +24,11 @@ export class CreepService {
     return true;
   }
 
-  public runCreeps(role: Role, roleRunMethod: Function) {
+  public runCreeps(role: Role, creepRunMethod: Function) {
     const creepsWithRole = this.getAllOfRole(role);
     for (const creep of creepsWithRole) {
       if (this.creepShouldRun(creep)) {
-        roleRunMethod(creep);
+        creepRunMethod(creep);
       }
     }
   }

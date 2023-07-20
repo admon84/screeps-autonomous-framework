@@ -1,7 +1,7 @@
 /**
  * Builder
  *
- * Build construction sites into structures
+ * Builds construction sites
  */
 
 import * as _Common from '../rolelib/common';
@@ -32,7 +32,7 @@ export function run(creep: Creep) {
 
 function runHarvestEnergy(creep: Creep) {
   if (creep.isFull()) {
-    creep.say('🔧Build');
+    creep.say('🔨Build');
     creep.setState(State.BuildConstruction);
     runBuildConstruction(creep);
     return;
@@ -47,8 +47,8 @@ function runHarvestEnergy(creep: Creep) {
 }
 
 function runBuildConstruction(creep: Creep) {
-  if (!creep.hasEnergy()) {
-    creep.say('⛏️Harvest');
+  if (!creep.store[RESOURCE_ENERGY]) {
+    creep.say('⚡Harvest');
     creep.setState(State.HarvestEnergy);
     runHarvestEnergy(creep);
     return;

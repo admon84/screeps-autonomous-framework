@@ -63,7 +63,7 @@ export function getCreepsInQueue(room: Room, role: Role | null = null, target: s
 /**
  * Clear orders queue for the specified room
  */
-export function clearOrders(room: Room): void {
+export function clearOrders(room: Room) {
   room.memory.orders = [];
   log.info('Clearing order queue for room', room.name);
 }
@@ -74,7 +74,7 @@ export function clearOrders(room: Room): void {
 export function getUniqueId(prefix = '_') {
   let id = prefix;
   const charset = '0123456789ABCDEF';
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 4; i++) {
     id += charset.charAt(Math.floor(Math.random() * charset.length));
   }
   return id;

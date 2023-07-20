@@ -1,7 +1,7 @@
 /**
  * Harvester
  *
- * Harvest energy from Sources and transfer it to structures
+ * Harvests energy from sources and transfers to structures
  */
 
 import * as _Common from '../rolelib/common';
@@ -32,7 +32,7 @@ export function run(creep: Creep) {
 
 function runHarvestEnergy(creep: Creep) {
   if (creep.isFull()) {
-    creep.say('💎Transfer');
+    creep.say('💫Transfer');
     creep.setState(State.TransferEnergy);
     runTransferEnergy(creep);
     return;
@@ -47,8 +47,8 @@ function runHarvestEnergy(creep: Creep) {
 }
 
 function runTransferEnergy(creep: Creep) {
-  if (!creep.hasEnergy()) {
-    creep.say('⛏️Harvest');
+  if (!creep.store[RESOURCE_ENERGY]) {
+    creep.say('⚡Harvest');
     creep.setState(State.HarvestEnergy);
     runHarvestEnergy(creep);
     return;

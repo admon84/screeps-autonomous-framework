@@ -1,5 +1,6 @@
 import { RoomService } from '../services/Room';
-import { Manager, ManagerPriority } from './_Manager';
+import { Manager } from './_Manager';
+import { Priority } from '../enums/priority';
 
 export class TowerManager extends Manager {
   private roomService: RoomService;
@@ -11,8 +12,8 @@ export class TowerManager extends Manager {
     this.roomService = roomService;
   }
 
-  public run(pri: ManagerPriority) {
-    if (pri === ManagerPriority.Critical) {
+  public run(pri: Priority) {
+    if (pri === Priority.Critical) {
       const normalRooms = this.roomService.getNormalRooms();
       for (const room of normalRooms) {
         this.controlTowers(room);

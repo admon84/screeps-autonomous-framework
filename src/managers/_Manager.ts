@@ -1,11 +1,4 @@
-export enum ManagerPriority {
-  Critical = 1,
-  Standard = 2,
-  Low = 3,
-  Trivial = 4,
-  Overflow = 5,
-  None = 6
-}
+import { Priority } from '../enums/priority';
 
 export abstract class Manager {
   constructor(name: string) {
@@ -24,7 +17,7 @@ export abstract class Manager {
     }
   }
 
-  public abstract run(pri: ManagerPriority): void;
+  public abstract run(pri: Priority): void;
 
   protected getValue(name: string) {
     return Memory.manager[this.name][name];

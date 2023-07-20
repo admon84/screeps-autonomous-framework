@@ -1,7 +1,7 @@
 /**
  * Upgrader
  *
- * Upgrade Controllers with energy to increase the Controller Level
+ * Upgrades the room controller
  */
 
 import * as _Common from '../rolelib/common';
@@ -45,8 +45,8 @@ function runHarvestEnergy(creep: Creep) {
 }
 
 function runUpgradeController(creep: Creep) {
-  if (!creep.hasEnergy()) {
-    creep.say('⛏️Harvest');
+  if (!creep.store[RESOURCE_ENERGY]) {
+    creep.say('⚡Harvest');
     creep.setState(State.HarvestEnergy);
     runHarvestEnergy(creep);
     return;

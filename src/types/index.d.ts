@@ -12,6 +12,11 @@ interface CreepMemory {
   source?: Id<Source>;
 }
 
+interface RoomMemory {
+  orders?: SpawnOrder[];
+  t?: RoomType;
+}
+
 interface PowerCreepMemory {
   [name: string]: any;
 }
@@ -24,15 +29,14 @@ interface SpawnMemory {
   [name: string]: any;
 }
 
-interface RoomMemory {
-  orders?: SpawnOrder[];
-  t?: RoomType;
-}
-
-type ManagerData = Record<string, number>;
+type ManagerData = {
+  [name: string]: number;
+};
 
 interface Memory {
-  manager: Record<string, ManagerData>;
+  manager: {
+    [name: string]: ManagerData;
+  };
 
   operations: IOperationData[];
 

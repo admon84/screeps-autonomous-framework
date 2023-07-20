@@ -8,20 +8,20 @@
  * - Game time reaches set value
  */
 
-import { ManagerPriority } from '../managers/_Manager';
+import { Priority } from '../enums/priority';
 import { Data, VictoryCondition } from './data/TestData';
 
 import { log } from '../utils/logger';
 
-export function run(operation: Data, pri: ManagerPriority): void {
-  if (pri === ManagerPriority.Low) {
+export function run(operation: Data, pri: Priority) {
+  if (pri === Priority.Low) {
     if (Game.time % 10 === 0) {
       testMethod(operation);
     }
   }
 }
 
-export function victoryConditionReached(operation: Data): boolean {
+export function victoryConditionReached(operation: Data) {
   if (operation.victoryCondition === VictoryCondition.Gametime) {
     if (Game.time > operation.victoryValue) {
       log.info('Test Operation finished at tick ' + Game.time);
@@ -32,7 +32,7 @@ export function victoryConditionReached(operation: Data): boolean {
   return false;
 }
 
-function testMethod(operation: Data): void {
+function testMethod(operation: Data) {
   if (Game.time > operation.victoryValue) {
     return;
   }

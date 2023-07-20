@@ -6,7 +6,7 @@ import { RoomService } from '../services/Room';
 import { Order } from '../classes/Order';
 import { Role } from '../enums/role';
 import { Priority } from '../enums/priority';
-import { Manager, ManagerPriority } from './_Manager';
+import { Manager } from './_Manager';
 
 export class UpgradeManager extends Manager {
   private roomService: RoomService;
@@ -20,8 +20,8 @@ export class UpgradeManager extends Manager {
     this.creepService = creepService;
   }
 
-  run(pri: ManagerPriority) {
-    if (pri === ManagerPriority.Low) {
+  run(pri: Priority) {
+    if (pri === Priority.Low) {
       this.creepService.runCreeps(Role.Upgrader, Upgrader.run);
 
       const lastRun = this.getValue(this.MEMORY_LASTRUN);

@@ -2,7 +2,8 @@
  *  Checks all creeps references in memory and deletes any dead creeps
  */
 
-import { Manager, ManagerPriority } from './_Manager';
+import { Manager } from './_Manager';
+import { Priority } from '../enums/priority';
 
 export class MemoryManager extends Manager {
   readonly MEMORY_LASTRUN = 'lastRun';
@@ -11,8 +12,8 @@ export class MemoryManager extends Manager {
     super('MemoryManager');
   }
 
-  public run(pri: ManagerPriority) {
-    if (pri === ManagerPriority.Low) {
+  public run(pri: Priority) {
+    if (pri === Priority.Low) {
       const lastRun = this.getValue(this.MEMORY_LASTRUN);
       if (!lastRun || lastRun + 20 < Game.time) {
         this.deleteCreepsFromMemory();
