@@ -13,9 +13,8 @@
     "noImplicitThis": false,
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false
+    "allowUnreachableCode": false,
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

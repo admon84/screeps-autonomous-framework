@@ -1,62 +1,57 @@
-import * as OrdersUtilities from "../utilities/Orders";
-import { Role } from "../enums/role";
-import { Order } from "../classes/Order";
-import { RoomService } from "../services/Room";
-import { log } from "../tools/Logger";
-import { Manager } from "./_Manager";
+import * as OrderLib from '../lib/order';
+import { Role } from '../enums/role';
+import { Order } from '../classes/Order';
+import { RoomService } from '../services/Room';
+import { log } from '../utils/logger';
+import { Manager } from './_Manager';
 
 export class SpawnManager extends Manager {
-    private roomService: RoomService;
+  private roomService: RoomService;
 
-    constructor(roomService: RoomService) {
-        super("SpawnManager");
-        this.roomService = roomService;
+  constructor(roomService: RoomService) {
+    super('SpawnManager');
+    this.roomService = roomService;
+  }
+
+  public run(): void {
+    const rooms = this.roomService.getNormalRooms();
+    for (const room of rooms) {
+      const spawns = room.getMySpawns().filter((s: StructureSpawn) => s.isActive() && !s.spawning);
+      if (spawns.length) {
+        this.processQueue(room, spawns);
+      }
+    }
+  }
+
+  private processQueue(room: Room, spawns: StructureSpawn[]) {
+    if (!room.memory.orders) {
+      room.memory.orders = [];
+      return;
     }
 
-    public run(): void {
-        const rooms = this.roomService.getNormalRooms();
-        for (const room of rooms) {
-            const spawns = room.getMySpawns().filter((s: StructureSpawn) => s.isActive() && !s.spawning);
-            if (spawns.length) {
-                this.processQueue(room, spawns);
-            }
-        }
+    const spawn = spawns[0];
+    if (!spawn || spawn.spawning || room.memory.orders.length === 0) {
+      return;
     }
 
-    private processQueue(room: Room, spawns: StructureSpawn[]) {
-        if (room.memory.orders === undefined) {
-            room.memory.orders = [];
-            return;
-        }
+    room.memory.orders = room.memory.orders.sort((a, b) => a.priority - b.priority);
 
-        const spawn = spawns[0];
-        if (spawns.length === 0 || spawn.spawning || room.memory.orders.length === 0) {
-            return;
-        }
+    const order = room.memory.orders.shift() as Order;
+    const name = Role[order.memory.role] + OrderLib.getUniqueId();
 
-        room.memory.orders.sort((a: Order, b: Order) =>
-            a.priority > b.priority ? 1 : b.priority > a.priority ? -1 : 0
-        );
-
-        const order = room.memory.orders.shift() as Order;
-        const name = Role[order.memory.role] + OrdersUtilities.getUniqueId();
-
-        if (room.name !== spawn.room.name) {
-            order.memory.homeroom = room.name;
-        }
-
-        const status = spawn.spawnCreep(order.body, name, {
-            memory: order.memory
-        });
-
-        if (status === OK) {
-            log.verbose(
-                `Spawned ${Role[order.memory.role]} named ${name} (target: ${order.memory.target})`,
-                spawn.room.name
-            );
-        } else {
-            // log.warning(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
-            room.memory.orders.unshift(order);
-        }
+    if (room.name !== spawn.room.name) {
+      order.memory.homeroom = room.name;
     }
+
+    const status = spawn.spawnCreep(order.body, name, {
+      memory: order.memory
+    });
+
+    if (status === OK) {
+      log.verbose(`Spawned: ${Role[order.memory.role]} (${order.memory.target}) - ${name}`, spawn.room.name);
+    } else {
+      // log.warning(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
+      room.memory.orders.unshift(order);
+    }
+  }
 }
