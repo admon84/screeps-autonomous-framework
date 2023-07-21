@@ -17,6 +17,7 @@ import { log } from '../utils/logger';
 export function run() {
   if (!Memory.settings) {
     log.warning('💎=== Script Loaded ===💎');
+    Memory.settings = {};
   }
   if (!Memory.settings.loglevel) {
     Memory.settings.loglevel = LogLevel.Verbose;

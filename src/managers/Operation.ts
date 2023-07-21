@@ -49,8 +49,10 @@ export class OperationManager extends Manager {
   private deleteOldOperations() {
     if (Memory.operations) {
       const inactive = Memory.operations.filter(op => !op.active);
-      log.warning(`Removing ${inactive.length} inactive operations`);
-      Memory.operations = Memory.operations.filter(op => op.active);
+      if (inactive.length > 0) {
+        log.warning(`Removing ${inactive.length} inactive operations`);
+        Memory.operations = Memory.operations.filter(op => op.active);
+      }
     }
   }
 }
