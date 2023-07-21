@@ -12,7 +12,7 @@ The Core Manager serves as the system's entry point, running other managers usin
 
 ### Spawn Manager
 
-The Spawn Manager utilizes an Orders repository, which functions as a Creep spawning queue sorted by order priority.
+The Spawn Manager processes orders to spawn creeps from a priority-based queue.
 
 ### Operations
 
@@ -20,7 +20,7 @@ Operations allow you to create autonomous missions that focus on achieving speci
 
 ### Services
 
-Creep and Room Services are used by Managers and Operations to access creeps and room information efficiently.
+Creep and Room Services provide task managers with efficient access to query for creeps and rooms.
 
 ### Prototypes
 
@@ -30,7 +30,7 @@ Prototypes enable you to extend regular Game objects with additional behaviors o
 
 To get started with AutoScreep Starter Bot, ensure you have the following prerequisites:
 
-- [Node.JS](https://nodejs.org/en/download) (LTS recommended)
+- [Node.js](https://nodejs.org/en/download) (LTS recommended)
 
 ### Installation
 
@@ -38,13 +38,7 @@ To get started with AutoScreep Starter Bot, ensure you have the following prereq
 
 2. Open your terminal and navigate to the project folder.
 
-3. Run your preferred package manager to install the required packages and TypeScript declaration files:
-
-```bash
-npm install
-# or if you prefer yarn:
-yarn
-```
+3. Run `npm install` (or `yarn`) to install the required packages and TypeScript declaration files
 
 ### Rollup and Code Upload
 

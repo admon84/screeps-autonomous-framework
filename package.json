@@ -1,7 +1,7 @@
 {
-  "name": "screeps-typescript-starter",
-  "version": "3.0.0",
-  "description": "",
+  "name": "autoscreep-starter-bot",
+  "version": "0.1.0",
+  "description": "Screeps AI bot base architecture framework",
   "main": "src/main.ts",
   "scripts": {
     "lint": "eslint \"src/**/*.ts\" --fix",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/screepers/screeps-typescript-starter.git"
+    "url": "git+https://github.com/admon84/autoscreep-starter-bot.git"
   },
-  "author": "",
+  "author": "admon84",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/screepers/screeps-typescript-starter/issues"
+    "url": "https://github.com/admon84/autoscreep-starter-bot/issues"
   },
-  "homepage": "https://github.com/screepers/screeps-typescript-starter#readme",
+  "homepage": "https://github.com/admon84/autoscreep-starter-bot#readme",
   "engines": {
     "node": "10.x || 12.x"
   },
