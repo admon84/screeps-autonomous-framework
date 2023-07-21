@@ -24,11 +24,11 @@ Creep and Room Services provide task managers with efficient access to query for
 
 ### Prototypes
 
-Prototypes enable you to extend regular Game objects with additional behaviors or optimizations.
+Prototypes allow you to expand the capabilities of regular Game objects with extra behaviors or optimizations.
 
 ## Getting Started
 
-To get started with AutoScreep Starter Bot, ensure you have the following prerequisites:
+To get started with AutoScreep Starter Bot, ensure you have installed:
 
 - [Node.js](https://nodejs.org/en/download) (LTS recommended)
 
