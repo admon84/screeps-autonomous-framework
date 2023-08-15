@@ -46,7 +46,7 @@
     "prettier": "^3.0.0",
     "rollup": "^3.26.3",
     "rollup-plugin-clear": "^2.0.7",
-    "rollup-plugin-screeps": "^1.0.0",
+    "rollup-plugin-screeps-world": "^1.0.2",
     "rollup-plugin-typescript2": "^0.35.0",
     "ts-node": "^10.5.0",
     "tsconfig-paths": "^4.2.0",
