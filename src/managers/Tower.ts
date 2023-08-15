@@ -22,7 +22,7 @@ export class TowerManager extends Manager {
   }
 
   private controlTowers(room: Room) {
-    const towersWithEnergy: StructureTower[] = room.find(FIND_STRUCTURES, {
+    const towersWithEnergy = room.find<StructureTower>(FIND_STRUCTURES, {
       filter: structure =>
         structure.structureType === STRUCTURE_TOWER && structure.store[RESOURCE_ENERGY] > TOWER_ENERGY_COST
     });
