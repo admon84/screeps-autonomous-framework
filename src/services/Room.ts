@@ -35,7 +35,7 @@ export class RoomService {
         room.memory.t = Roomtype.Normal;
       }
 
-      if (rooms[room.memory.t]) {
+      if (!rooms[room.memory.t]) {
         rooms[room.memory.t] = [];
       }
       rooms[room.memory.t].push(room);
