@@ -36,7 +36,7 @@ export class HarvestManager extends Manager {
   }
 
   private organizeEnergyHarvesting(room: Room) {
-    const sources = room.getSources();
+    const sources = room.find(FIND_SOURCES);
     for (const source of sources) {
       this.orderHarvesters(room, source.id, room.name);
     }

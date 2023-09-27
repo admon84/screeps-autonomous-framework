@@ -16,7 +16,7 @@ export class SpawnManager extends Manager {
   public run() {
     const rooms = this.roomService.getNormalRooms();
     for (const room of rooms) {
-      const spawns = room.getMySpawns().filter(s => s.isActive() && !s.spawning);
+      const spawns = room.find(FIND_MY_SPAWNS).filter(s => s.isActive() && !s.spawning);
       if (spawns.length) {
         this.processQueue(room, spawns);
       }

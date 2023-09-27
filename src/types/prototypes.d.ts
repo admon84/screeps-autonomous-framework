@@ -11,8 +11,6 @@ interface Creep {
 }
 
 interface Room {
-  getMySpawns(): StructureSpawn[];
   getSpawn(): StructureSpawn | undefined;
-  getSources(): Source[];
   getMineral(): Mineral | null;
 }

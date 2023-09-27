@@ -38,7 +38,7 @@ function runHarvestEnergy(creep: Creep) {
     return;
   }
 
-  const source = creep.room.getSources()?.[0];
+  const source = creep.room.find(FIND_SOURCES)?.[0];
   if (source) {
     if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
       creep.moveTo(source, { visualizePathStyle: { stroke: '#ffaa00' } });
