@@ -1,6 +1,15 @@
-/**
- * Creep prototypes
- */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface Creep {
+  getState(): number | undefined;
+  setState(state: number): void;
+  hasState(): boolean;
+  getHomeroom(): string;
+  isInHomeroom(): boolean;
+  isEmpty(): boolean;
+  _isEmpty?: boolean;
+  isFull(): boolean;
+  _isFull?: boolean;
+}
 
 Creep.prototype.hasState = function () {
   return this.memory.state !== undefined;

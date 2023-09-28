@@ -1,6 +1,10 @@
-/**
- * Room prototypes
- */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface Room {
+  getSpawn(): StructureSpawn | undefined;
+  _firstSpawn?: StructureSpawn;
+  getMineral(): Mineral | null;
+  _mineral?: Mineral;
+}
 
 Room.prototype.getSpawn = function () {
   if (!this._firstSpawn) {
