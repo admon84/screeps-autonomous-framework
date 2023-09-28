@@ -4,6 +4,17 @@ type RoomType = import('../enums/roomtype').Roomtype;
 type SpawnOrder = import('../classes/Order').Order;
 type IOperationData = import('../operations/data/_OperationData').IOperationData;
 
+interface Memory {
+  creeps: Record<string, CreepMemory>;
+  flags: Record<string, any>;
+  manager: Record<string, ManagerData>;
+  operations: IOperationData[];
+  powerCreeps: Record<string, any>;
+  rooms: Record<string, RoomMemory>;
+  settings: Partial<SettingsData>;
+  spawns: Record<string, any>;
+}
+
 interface CreepMemory {
   role: Role;
   tier: number;
@@ -17,31 +28,9 @@ interface RoomMemory {
   t?: RoomType;
 }
 
-interface PowerCreepMemory {
-  [name: string]: any;
+interface SettingsData {
+  user: string;
+  loglevel: LogLevel;
 }
 
-interface FlagMemory {
-  [name: string]: any;
-}
-
-interface SpawnMemory {
-  [name: string]: any;
-}
-
-interface ManagerData {
-  [name: string]: number;
-}
-
-interface Memory {
-  manager: {
-    [name: string]: ManagerData;
-  };
-
-  operations: IOperationData[];
-
-  settings: Partial<{
-    user: string;
-    loglevel: LogLevel;
-  }>;
-}
+type ManagerData = Record<string, number>;
