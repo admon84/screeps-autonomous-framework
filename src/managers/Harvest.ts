@@ -43,7 +43,7 @@ export class HarvestManager extends Manager {
   }
 
   private orderHarvesters(room: Room, sourceId: string, sourceRoom: string) {
-    const spawn = room.getSpawn();
+    const spawn = room.getMySpawn();
     if (!spawn) {
       return;
     }

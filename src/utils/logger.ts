@@ -6,34 +6,34 @@ export class Logger {
   }
 
   public alert(message: string, roomName?: string) {
-    this.log(LogLevel.Alert, '#ff00d8', message, roomName);
+    this.send(LogLevel.Alert, '#ff00d8', message, roomName);
   }
 
   public success(message: string, roomName?: string) {
-    this.log(LogLevel.Success, '#2e7d32', message, roomName);
+    this.send(LogLevel.Success, '#2e7d32', message, roomName);
   }
 
   public error(message: string, roomName?: string) {
-    this.log(LogLevel.Error, '#d32f2f', message, roomName);
+    this.send(LogLevel.Error, '#d32f2f', message, roomName);
   }
 
   public warning(message: string, roomName?: string) {
-    this.log(LogLevel.Warn, '#feda00', message, roomName);
+    this.send(LogLevel.Warn, '#feda00', message, roomName);
   }
 
   public info(message: string, roomName?: string) {
-    this.log(LogLevel.Info, '#efefef', message, roomName);
+    this.send(LogLevel.Info, '#efefef', message, roomName);
   }
 
   public debug(message: string, roomName?: string) {
-    this.log(LogLevel.Debug, '#9a9a9a', message, roomName);
+    this.send(LogLevel.Debug, '#9a9a9a', message, roomName);
   }
 
   public verbose(message: string, roomName?: string) {
-    this.log(LogLevel.Verbose, '#6e6770', message, roomName);
+    this.send(LogLevel.Verbose, '#6e6770', message, roomName);
   }
 
-  private log(level: LogLevel, color: string, message: string, roomName?: string) {
+  private send(level: LogLevel, color: string, message: string, roomName?: string) {
     if (Memory.settings?.loglevel && Memory.settings.loglevel < level) {
       return;
     }

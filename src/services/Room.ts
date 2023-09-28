@@ -6,7 +6,7 @@
 import { Roomtype } from '../enums/roomtype';
 
 export class RoomService {
-  private roomDictionary: { [type: number]: Room[] };
+  private roomDictionary: Record<Roomtype, Room[]>;
 
   constructor() {
     this.roomDictionary = this.makeDictionary();
@@ -21,8 +21,9 @@ export class RoomService {
   }
 
   private makeDictionary() {
-    const rooms: { [type: number]: Room[] } = {};
-    rooms[Roomtype.Normal] = [];
+    const rooms: Record<Roomtype, Room[]> = {
+      [Roomtype.Normal]: []
+    };
 
     for (const roomName in Game.rooms) {
       const room = Game.rooms[roomName];

@@ -7,7 +7,7 @@ import { log } from '../utils/logger';
  * Insert a new creep order into the room orders queue
  */
 export function orderCreep(room: Room, order: Order) {
-  if (!room.getSpawn()) {
+  if (!room.getMySpawn()) {
     return false;
   }
 

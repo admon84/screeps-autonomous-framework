@@ -18,6 +18,7 @@ interface Memory {
 interface CreepMemory {
   role: Role;
   tier: number;
+  state?: number;
   homeroom?: string;
   target?: string;
   source?: Id<Source>;

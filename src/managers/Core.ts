@@ -1,5 +1,5 @@
-import '../prototypes/creep';
-import '../prototypes/room';
+import '../prototypes/Creep';
+import '../prototypes/Room';
 import { MemoryManager } from './Memory';
 import { Manager } from './_Manager';
 import { OperationManager } from './Operation';
@@ -37,14 +37,13 @@ export function run() {
     new UpgradeManager(roomService, creepService),
     new BuildManager(roomService, creepService),
     new OperationManager(roomService, creepService)
-    // Add other managers to control high-level behaviors
   ];
 
-  const priorities = [Priority.Critical, Priority.Important, Priority.Standard, Priority.Low, Priority.Trivial];
-  for (const pri of priorities) {
+  const priorityList = [Priority.Critical, Priority.Important, Priority.Standard, Priority.Low, Priority.Trivial];
+  for (const priority of priorityList) {
     for (const manager of managerList) {
-      if (pri === Priority.Critical || Game.cpu.getUsed() < cpuLimit) {
-        runManager(manager, pri, pri);
+      if (priority === Priority.Critical || Game.cpu.getUsed() < cpuLimit) {
+        manager.run(priority);
       }
     }
   }
@@ -52,20 +51,12 @@ export function run() {
   if (Game.cpu.bucket > 9500) {
     for (const manager of managerList) {
       if (Game.cpu.getUsed() < cpuLimit) {
-        runManager(manager, Priority.Overflow, Priority.Overflow);
+        manager.run(Priority.Overflow);
       }
     }
   }
 
-  runManager(new SpawnManager(roomService), Priority.Critical);
-}
-
-function runManager(component: Manager | Function, pri: Priority, ...args: any[]) {
-  if (component instanceof Manager) {
-    component.run(pri);
-  } else {
-    component(...args);
-  }
+  new SpawnManager(roomService).run();
 }
 
 function getUserName() {
@@ -75,10 +66,10 @@ function getUserName() {
 
 function getCpuLimit() {
   const { bucket, limit } = Game.cpu;
-  if (!limit) return 10000; // Sim mode
-  if (bucket > 9900) return limit * 1.6;
-  if (bucket > 9500) return limit * 1.3;
-  if (bucket > 9000) return limit * 1.1;
+  if (!limit) return 500; // Sim mode
+  if (bucket > 9500) return limit * 1.6;
+  if (bucket > 9000) return limit * 1.3;
+  if (bucket > 8000) return limit * 1.1;
   if (bucket > 5000) return limit;
   if (bucket > 4000) return limit * 0.9;
   if (bucket > 3000) return limit * 0.8;

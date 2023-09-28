@@ -24,7 +24,7 @@ export function run(operation: Data, pri: Priority) {
 export function victoryConditionReached(operation: Data) {
   if (operation.victoryCondition === VictoryCondition.Gametime) {
     if (Game.time > operation.victoryValue) {
-      log.info('Test Operation finished at tick ' + Game.time);
+      log.info(`Test Operation finished at tick ${Game.time}`);
       operation.active = false;
       return true;
     }
@@ -36,5 +36,5 @@ function testMethod(operation: Data) {
   if (Game.time > operation.victoryValue) {
     return;
   }
-  log.info('Test Operation is active at tick ' + Game.time);
+  log.info(`Test Operation is active at tick ${Game.time}`);
 }

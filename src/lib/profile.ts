@@ -1,5 +1,5 @@
 /**
- * SimpleWorkers are balanced with equal parts WORK, CARRY, and MOVE
+ * SimpleWorkers are balanced with equal parts WORK and CARRY to MOVE
  */
 const SIMPLE_WORKER_MAX_TIER = 16;
 
@@ -7,7 +7,7 @@ export function getSimpleWorkerBody(tier: number) {
   if (tier > SIMPLE_WORKER_MAX_TIER) {
     tier = SIMPLE_WORKER_MAX_TIER;
   }
-  return addToBody([], tier, [WORK, CARRY, MOVE]);
+  return addToBody([], tier, [WORK, MOVE, CARRY, MOVE]);
 }
 
 export function getMaxTierSimpleWorker(energy: number) {
@@ -15,17 +15,17 @@ export function getMaxTierSimpleWorker(energy: number) {
 }
 
 /**
- * HeavyWorkers have 3:1 WORK to CARRY and travel slower without roads
+ * HeavyWorkers have 2:1 WORK to CARRY and travel slower without roads
  */
-const HEAVY_WORKER_MAX_TIER = 16;
+const HEAVY_WORKER_MAX_TIER = 12;
 
 export function getHeavyWorkerBody(tier: number) {
   if (tier > HEAVY_WORKER_MAX_TIER) {
     tier = HEAVY_WORKER_MAX_TIER;
   }
   let body: BodyPartConstant[] = [];
-  body = addToBody(body, Math.floor(tier / 2), [WORK, WORK, MOVE]);
-  body = addToBody(body, Math.ceil(tier / 2), [WORK, CARRY, MOVE]);
+  body = addToBody(body, Math.floor(tier / 2), [WORK, WORK, MOVE, MOVE]);
+  body = addToBody(body, Math.ceil(tier / 2), [WORK, CARRY, MOVE, MOVE]);
   return body;
 }
 

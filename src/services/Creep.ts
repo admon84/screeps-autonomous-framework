@@ -17,11 +17,7 @@ export class CreepService {
     if (!creep.memory.homeroom) {
       creep.memory.homeroom = creep.room.name;
     }
-
-    if (creep.spawning) {
-      return false;
-    }
-    return true;
+    return !creep.spawning;
   }
 
   public runCreeps(role: Role, creepRunMethod: Function) {
