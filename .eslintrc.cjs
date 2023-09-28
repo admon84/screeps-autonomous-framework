@@ -14,6 +14,12 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript'
   ],
+  overrides: [
+    {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
+      files: ['./**/*.cjs']
+    }
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: 'tsconfig.json',

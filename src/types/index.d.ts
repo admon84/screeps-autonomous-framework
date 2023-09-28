@@ -29,9 +29,9 @@ interface SpawnMemory {
   [name: string]: any;
 }
 
-type ManagerData = {
+interface ManagerData {
   [name: string]: number;
-};
+}
 
 interface Memory {
   manager: {

@@ -1,7 +1,7 @@
 {
   "name": "autoscreep-starter-bot",
   "version": "0.1.0",
-  "description": "Screeps AI bot base architecture framework",
+  "description": "Screeps AI bot base framework",
   "main": "src/main.ts",
   "scripts": {
     "lint": "eslint \"src/**/*.ts\" --fix",
