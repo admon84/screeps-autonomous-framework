@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Creep {
   _states?: number[];
   isFull: boolean;
@@ -7,23 +8,23 @@ interface Creep {
 }
 
 Object.defineProperty(Creep.prototype, 'isFull', {
-  get(this: Creep) {
+  get() {
     return !this.store.getFreeCapacity();
   }
 });
 
-Creep.prototype.hadState = function (this: Creep, state: number) {
+Creep.prototype.hadState = function (state: number) {
   if (!this._states) {
     this._states = [];
   }
   return this._states.includes(state);
 };
 
-Creep.prototype.hasState = function (this: Creep, state?: number) {
+Creep.prototype.hasState = function (state?: number) {
   return this.memory.state !== state;
 };
 
-Creep.prototype.setState = function (this: Creep, state: number) {
+Creep.prototype.setState = function (state: number) {
   if (!this._states) {
     this._states = [];
   }

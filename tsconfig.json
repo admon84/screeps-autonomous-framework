@@ -8,12 +8,8 @@
     "baseUrl": "src/",
     "sourceMap": true,
     "strict": true,
-    "experimentalDecorators": true,
-    "noImplicitReturns": false,
-    "noImplicitThis": false,
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
-    "allowUnreachableCode": false,
     "typeRoots": ["./src/types", "./node_modules/@types"]
   },
   "exclude": ["node_modules"]
