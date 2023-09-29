@@ -4,7 +4,7 @@
  * Upgrades the room controller
  */
 
-import * as CreepLib from 'lib/creep';
+import { logCreepStateWarning } from 'utils/creep';
 
 enum State {
   HarvestEnergy = 1,
@@ -24,7 +24,7 @@ export function run(creep: Creep) {
       runUpgradeController(creep);
       break;
     default:
-      CreepLib.logCreepStateWarning(creep);
+      logCreepStateWarning(creep);
       creep.setState(State.HarvestEnergy);
       break;
   }

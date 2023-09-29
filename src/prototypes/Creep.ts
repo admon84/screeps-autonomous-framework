@@ -1,14 +1,19 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface Creep {
-  _states?: number[];
-  isFull: boolean;
-  hadState(state: number): boolean;
-  hasState(state?: number): boolean;
-  setState(state: number): void;
+export {};
+
+declare global {
+  interface Creep {
+    isFull: boolean;
+    hadState(state: number): boolean;
+    hasState(state?: number): boolean;
+    setState(state: number): void;
+
+    // private
+    _states?: number[];
+  }
 }
 
 Object.defineProperty(Creep.prototype, 'isFull', {
-  get() {
+  get(this: Creep) {
     return !this.store.getFreeCapacity();
   }
 });

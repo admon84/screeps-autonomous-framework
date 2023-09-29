@@ -1,12 +1,12 @@
 import { Order } from 'classes/Order';
 import { Priority } from 'enums/priority';
 import { Role } from 'enums/role';
-import * as OrderLib from 'lib/order';
-import * as ProfileLib from 'lib/profile';
 import { Manager } from 'managers/_Manager';
 import * as Harvester from 'roles/Harvester';
 import { CreepService } from 'services/Creep';
 import { RoomService } from 'services/Room';
+import { getCreepsInQueue, orderCreep } from 'utils/order';
+import { getMaxTierSimpleWorker, getSimpleWorkerBody } from 'utils/profile';
 
 export class HarvestManager extends Manager {
   private roomService: RoomService;
@@ -50,12 +50,12 @@ export class HarvestManager extends Manager {
 
     const sourceTarget = sourceRoom + '-' + sourceId;
     const active = this.creepService.getCreeps(Role.Harvester, sourceTarget, room.name).length;
-    const ordered = OrderLib.getCreepsInQueue(room, Role.Harvester, sourceTarget);
+    const ordered = getCreepsInQueue(room, Role.Harvester, sourceTarget);
 
     if (active + ordered === 0) {
       const order = new Order();
-      const maxTier = ProfileLib.getMaxTierSimpleWorker(room.energyCapacityAvailable);
-      order.body = ProfileLib.getSimpleWorkerBody(maxTier);
+      const maxTier = getMaxTierSimpleWorker(room.energyCapacityAvailable);
+      order.body = getSimpleWorkerBody(maxTier);
       if (room.name === sourceRoom) {
         order.priority = Priority.Important;
       } else {
@@ -66,7 +66,7 @@ export class HarvestManager extends Manager {
         tier: maxTier,
         target: sourceTarget
       };
-      OrderLib.orderCreep(room, order);
+      orderCreep(room, order);
     }
   }
 }

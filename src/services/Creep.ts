@@ -4,7 +4,7 @@
  * Organizes creeps by their role, used in Managers and Operations
  */
 import { Role } from 'enums/role';
-import * as Log from 'utils/log';
+import { warning } from 'utils/log';
 
 type CreepDictionary = { [role in Role]?: Creep[] };
 
@@ -79,7 +79,7 @@ export class CreepService {
       const creep = Game.creeps[name];
 
       if (creep.memory.role === undefined) {
-        Log.warning(`Creep ${creep.name} has no role`, creep.room.name);
+        warning(`Creep ${creep.name} has no role`, creep.room.name);
         continue;
       }
 

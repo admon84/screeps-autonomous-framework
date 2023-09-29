@@ -10,7 +10,7 @@
 
 import { Priority } from 'enums/priority';
 import { Data, VictoryCondition } from 'operations/data/TestData';
-import * as Log from 'utils/log';
+import { info } from 'utils/log';
 
 export function run(operation: Data, pri: Priority) {
   if (pri === Priority.Low) {
@@ -23,7 +23,7 @@ export function run(operation: Data, pri: Priority) {
 export function victoryConditionReached(operation: Data) {
   if (operation.victoryCondition === VictoryCondition.Gametime) {
     if (Game.time > operation.victoryValue) {
-      Log.info(`Test Operation finished at tick ${Game.time}`);
+      info(`Test Operation finished at tick ${Game.time}`);
       operation.active = false;
       return true;
     }
@@ -35,5 +35,5 @@ function testMethod(operation: Data) {
   if (Game.time > operation.victoryValue) {
     return;
   }
-  Log.info(`Test Operation is active at tick ${Game.time}`);
+  info(`Test Operation is active at tick ${Game.time}`);
 }

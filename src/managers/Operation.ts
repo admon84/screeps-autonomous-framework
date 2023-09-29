@@ -4,7 +4,7 @@ import { Manager } from 'managers/_Manager';
 import * as OperationTest from 'operations/Test';
 import { CreepService } from 'services/Creep';
 import { RoomService } from 'services/Room';
-import * as Log from 'utils/log';
+import { warning } from 'utils/log';
 
 export class OperationManager extends Manager {
   private roomService: RoomService;
@@ -50,7 +50,7 @@ export class OperationManager extends Manager {
     if (Memory.operations) {
       const inactive = Memory.operations.filter(op => !op.active);
       if (inactive.length > 0) {
-        Log.warning(`Removing ${inactive.length} inactive operations`);
+        warning(`Removing ${inactive.length} inactive operations`);
         Memory.operations = Memory.operations.filter(op => op.active);
       }
     }

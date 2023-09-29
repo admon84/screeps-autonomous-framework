@@ -1,12 +1,12 @@
 import { Order } from 'classes/Order';
 import { Priority } from 'enums/priority';
 import { Role } from 'enums/role';
-import * as OrderLib from 'lib/order';
-import * as ProfileLib from 'lib/profile';
 import { Manager } from 'managers/_Manager';
 import * as Upgrader from 'roles/Upgrader';
 import { CreepService } from 'services/Creep';
 import { RoomService } from 'services/Room';
+import { getCreepsInQueue, orderCreep } from 'utils/order';
+import { getHeavyWorkerBody, getMaxTierHeavyWorker } from 'utils/profile';
 
 export class UpgradeManager extends Manager {
   private roomService: RoomService;
@@ -45,19 +45,19 @@ export class UpgradeManager extends Manager {
   private orderUpgrader(controller: StructureController) {
     const room = controller.room;
     const active = this.creepService.getCreeps(Role.Upgrader, controller.id).length;
-    const ordered = OrderLib.getCreepsInQueue(controller.room, Role.Upgrader, controller.id);
+    const ordered = getCreepsInQueue(controller.room, Role.Upgrader, controller.id);
 
     if (active + ordered === 0) {
       const order = new Order();
-      const maxTier = ProfileLib.getMaxTierHeavyWorker(room.energyCapacityAvailable);
-      order.body = ProfileLib.getHeavyWorkerBody(maxTier);
+      const maxTier = getMaxTierHeavyWorker(room.energyCapacityAvailable);
+      order.body = getHeavyWorkerBody(maxTier);
       order.priority = Priority.Standard;
       order.memory = {
         role: Role.Upgrader,
         target: controller.id,
         tier: maxTier
       };
-      OrderLib.orderCreep(controller.room, order);
+      orderCreep(controller.room, order);
     }
   }
 }

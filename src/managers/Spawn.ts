@@ -1,9 +1,9 @@
 import { Order } from 'classes/Order';
 import { Role } from 'enums/role';
-import * as OrderLib from 'lib/order';
 import { Manager } from 'managers/_Manager';
 import { RoomService } from 'services/Room';
-import * as Log from 'utils/log';
+import { verbose } from 'utils/log';
+import { getUniqueId } from 'utils/order';
 
 export class SpawnManager extends Manager {
   private roomService: RoomService;
@@ -37,7 +37,7 @@ export class SpawnManager extends Manager {
     room.memory.orders = room.memory.orders.sort((a, b) => a.priority - b.priority);
 
     const order = room.memory.orders.shift() as Order;
-    const name = Role[order.memory.role] + OrderLib.getUniqueId();
+    const name = Role[order.memory.role] + getUniqueId();
 
     if (room.name !== spawn.room.name) {
       order.memory.homeroom = room.name;
@@ -48,7 +48,7 @@ export class SpawnManager extends Manager {
     });
 
     if (status === OK) {
-      Log.verbose(`Spawned: ${Role[order.memory.role]} (${order.memory.target}) - ${name}`, spawn.room.name);
+      verbose(`Spawned: ${Role[order.memory.role]} (${order.memory.target}) - ${name}`, spawn.room.name);
     } else {
       // Log.warning(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
       room.memory.orders.unshift(order);

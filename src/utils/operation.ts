@@ -1,7 +1,7 @@
 import { OperationType } from 'enums/operationtype';
 import * as TestData from 'operations/data/TestData';
 import { IOperationData } from 'operations/data/_OperationData';
-import * as Log from 'utils/log';
+import { info } from 'utils/log';
 
 function addOperation(operation: IOperationData) {
   if (!Memory.operations) {
@@ -33,6 +33,6 @@ export function createTestOperation() {
   op.victoryCondition = TestData.VictoryCondition.Gametime;
   op.victoryValue = Game.time + 50;
   addOperation(op);
-  Log.info('Running Test operation for 50 ticks');
+  info('Running Test operation for 50 ticks');
   return true;
 }

@@ -1,7 +1,12 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface Room {
-  _mySpawn?: StructureSpawn;
-  getMySpawn(): StructureSpawn | undefined;
+export {};
+
+declare global {
+  interface Room {
+    getMySpawn(): StructureSpawn | undefined;
+
+    // private
+    _mySpawn?: StructureSpawn;
+  }
 }
 
 Room.prototype.getMySpawn = function () {

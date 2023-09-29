@@ -13,15 +13,15 @@ import { UpgradeManager } from 'managers/Upgrade';
 import { Manager } from 'managers/_Manager';
 import { CreepService } from 'services/Creep';
 import { RoomService } from 'services/Room';
-import * as Log from 'utils/log';
+import { setLogLevel, warning } from 'utils/log';
 
 export function run() {
   if (!Memory.settings) {
-    Log.warning('💎=== Script Loaded ===💎');
+    warning('💎=== Script Loaded ===💎');
     Memory.settings = {};
   }
   if (!Memory.settings.loglevel) {
-    Log.setLogLevel(LogLevel.Verbose);
+    setLogLevel(LogLevel.Verbose);
   }
   if (!Memory.settings.user) {
     Memory.settings.user = getUserName();

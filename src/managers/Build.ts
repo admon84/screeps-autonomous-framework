@@ -1,12 +1,12 @@
 import { Order } from 'classes/Order';
 import { Priority } from 'enums/priority';
 import { Role } from 'enums/role';
-import * as OrderLib from 'lib/order';
-import * as ProfileLib from 'lib/profile';
 import { Manager } from 'managers/_Manager';
 import * as Builder from 'roles/Builder';
 import { CreepService } from 'services/Creep';
 import { RoomService } from 'services/Room';
+import { getCreepsInQueue, orderCreep } from 'utils/order';
+import { getMaxTierSimpleWorker, getSimpleWorkerBody } from 'utils/profile';
 
 export class BuildManager extends Manager {
   private roomService: RoomService;
@@ -41,18 +41,18 @@ export class BuildManager extends Manager {
 
   private orderBuilder(room: Room) {
     const active = this.creepService.getCreeps(Role.Builder).length;
-    const ordered = OrderLib.getCreepsInQueue(room, Role.Builder);
+    const ordered = getCreepsInQueue(room, Role.Builder);
 
     if (active + ordered === 0) {
       const order = new Order();
-      const maxTier = ProfileLib.getMaxTierSimpleWorker(room.energyCapacityAvailable);
-      order.body = ProfileLib.getSimpleWorkerBody(maxTier);
+      const maxTier = getMaxTierSimpleWorker(room.energyCapacityAvailable);
+      order.body = getSimpleWorkerBody(maxTier);
       order.priority = Priority.Standard;
       order.memory = {
         role: Role.Builder,
         tier: maxTier
       };
-      OrderLib.orderCreep(room, order);
+      orderCreep(room, order);
     }
   }
 }
