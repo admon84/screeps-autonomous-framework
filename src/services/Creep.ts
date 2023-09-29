@@ -6,8 +6,10 @@
 import { Role } from '../enums/role';
 import { log } from '../utils/logger';
 
+type CreepDictionary = { [role in Role]?: Creep[] };
+
 export class CreepService {
-  private creepDictionary: { [role: number]: Creep[] };
+  private creepDictionary: CreepDictionary;
 
   constructor() {
     this.creepDictionary = this.makeDictionary();
@@ -22,6 +24,9 @@ export class CreepService {
 
   public runCreeps(role: Role, creepRunMethod: Function) {
     const creepsWithRole = this.getAllOfRole(role);
+    if (!creepsWithRole) {
+      return;
+    }
     for (const creep of creepsWithRole) {
       if (this.creepShouldRun(creep)) {
         creepRunMethod(creep);
@@ -36,19 +41,21 @@ export class CreepService {
       if (!this.creepDictionary[role]) {
         return creeps;
       }
-      for (const creep of this.creepDictionary[role]) {
-        if (
-          (target === null || creep.memory.target === target) &&
-          (homeroom === null || creep.memory.homeroom === homeroom)
-        ) {
-          creeps.push(creep);
+      if (role in this.creepDictionary) {
+        for (const creep of this.creepDictionary[role]!) {
+          if (
+            (target === null || creep.memory.target === target) &&
+            (homeroom === null || creep.memory.homeroom === homeroom)
+          ) {
+            creeps.push(creep);
+          }
         }
       }
       return creeps;
     }
 
-    for (const creepName in Game.creeps) {
-      const creep = Game.creeps[creepName];
+    for (const name in Game.creeps) {
+      const creep = Game.creeps[name];
       if (
         (target === null || creep.memory.target === target) &&
         (homeroom === null || creep.memory.homeroom === homeroom) &&
@@ -67,8 +74,8 @@ export class CreepService {
     return [];
   }
 
-  private makeDictionary() {
-    const creeps: { [role: number]: Creep[] } = {};
+  protected makeDictionary() {
+    const creeps: CreepDictionary = {};
 
     for (const name in Game.creeps) {
       const creep = Game.creeps[name];
@@ -81,7 +88,7 @@ export class CreepService {
       if (!creeps[creep.memory.role]) {
         creeps[creep.memory.role] = [];
       }
-      creeps[creep.memory.role].push(creep);
+      creeps[creep.memory.role]!.push(creep);
     }
     return creeps;
   }

@@ -5,8 +5,10 @@
  */
 import { Roomtype } from '../enums/roomtype';
 
+type RoomDictionary = Record<Roomtype, Room[]>;
+
 export class RoomService {
-  private roomDictionary: Record<Roomtype, Room[]>;
+  private roomDictionary: RoomDictionary;
 
   constructor() {
     this.roomDictionary = this.makeDictionary();
@@ -20,8 +22,8 @@ export class RoomService {
     return rooms;
   }
 
-  private makeDictionary() {
-    const rooms: Record<Roomtype, Room[]> = {
+  protected makeDictionary() {
+    const rooms: RoomDictionary = {
       [Roomtype.Normal]: []
     };
 
