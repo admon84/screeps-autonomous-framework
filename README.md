@@ -1,55 +1,39 @@
-# AutoScreep Starter Bot
+## Screeps Autonomous Framework
 
-AutoScreep Starter Bot is designed to provide a solid foundation for your Screeps AI bot development. It serves as a base bot architecture, offering essential components such as task management and spawning systems. While it may not boast advanced AI capabilities out of the box, it lays the groundwork for your bot's growth and optimization. With AutoScreep Starter Bot, you can jumpstart your Screeps AI journey and build upon this robust foundation to create a bot tailored to your specific needs and objectives.
+Welcome to the Screeps Autonomous Framework project. This framework is intended for those who are seeking to develop a bot for Screeps — a strategy game for programmers. This isn't a ready-to-deploy bot filled with advanced features, but rather, it's a structured starting point, offering clean and clear design patterns to build upon.
 
-## Features
+### **Key Features**
 
-### Task Managers
+- **Solid Foundation:** Provides a well-organized base, allowing you to solely focus on building and innovating.
+- **Developer Friendly:** The framework's design patterns are thoughtful and clear, making bot development more straightforward and less error-prone.
+- **Educational:** Regardless of your experience level with Screeps, this framework serves as a learning tool to understand the principles of autonomous bot creation effectively.
+- **Flexible & Customizable:** Designed to be adaptable, it allows for extensive enhancements and modifications to fit your specific requirements and goals.
 
-Task Managers are essential for prioritizing tasks and managing Creep roles efficiently.
+## **Get Started**
 
-The Core Manager serves as the system's entry point, running other managers using a CPU-based priority system. This prioritization system ensures that critical tasks, such as operating Spawns and Towers, are executed first, and it can automatically skip lower priority tasks when the CPU bucket is running low.
+The Screeps Autonomous Framework is here to aid you in developing a bot that meets your exact needs. Utilize this framework as your starting point and customize it to create a bot with advanced capabilities tailored to your goals.
 
-### Spawn Manager
+### **Requirements**
 
-The Spawn Manager processes orders to spawn creeps from a priority-based queue.
-
-### Operations
-
-Operations allow you to create autonomous missions that focus on achieving specific goals.
-
-### Services
-
-Creep and Room Services provide task managers with efficient access to query for creeps and rooms.
-
-### Prototypes
-
-Prototypes allow you to expand the capabilities of regular Game objects with extra behaviors or optimizations.
-
-## Getting Started
-
-To get started with AutoScreep Starter Bot, ensure you have installed:
+Before diving in, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/en/download) (LTS recommended)
 
-### Installation
+### **Installation**
 
-1. Download and extract or clone the source code to a folder of your choice.
+1. Clone the source code or download and extract it to your preferred directory.
+2. Navigate to the project folder using your terminal.
+3. Run `npm install` or `yarn` to install the necessary packages and TypeScript declaration files.
 
-2. Open your terminal and navigate to the project folder.
+### **Rollup and Code Upload**
 
-3. Run `npm install` (or `yarn`) to install the required packages and TypeScript declaration files
+The Screeps Autonomous Framework employs Rollup for compiling your TypeScript code and uploading it to a Screeps server.
 
-### Rollup and Code Upload
+1. Rename `screeps.sample.json` to `screeps.json` and update it with your Screeps credentials. Modify the destinations as needed to suit your requirements.
+2. Utilize the NPM scripts in `package.json` as aliases for Rollup commands; for instance, `npm run push-main` will build and upload using the "main" destination in your `screeps.json` file.
 
-AutoScreep Starter Bot utilizes Rollup to compile your TypeScript code and upload it to a Screeps server.
+**Note:** For uploading code to a private server, [screepsmod-auth](https://github.com/ScreepsMods/screepsmod-auth) must be installed and configured properly.
 
-1. Move or copy `screeps.sample.json` to `screeps.json` and edit the file, providing your Screeps credentials. Optionally, you can add or remove some of the destinations based on your requirements.
+## **Acknowledgments**
 
-2. The `package.json` includes NPM scripts that serve as aliases for the Rollup commands. For example, running `npm run push-main` will build and push using the "main" destination in your `screeps.json` file.
-
-Note: For uploading code to a private server, you must have [screepsmod-auth](https://github.com/ScreepsMods/screepsmod-auth) installed and configured.
-
-## Credits
-
-This bot is heavily inspired by the public release of KasamiBot, and we extend our gratitude to Kasami for generously sharing their work!
+Special thanks to Kasami for inspiring this project and openly sharing his innovative work on KasamiBot!

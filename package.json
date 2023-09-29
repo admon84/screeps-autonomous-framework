@@ -1,7 +1,7 @@
 {
-  "name": "autoscreep-starter-bot",
+  "name": "screeps-autonomous-framework",
   "version": "0.1.0",
-  "description": "Screeps AI bot base framework",
+  "description": "Screeps Autonomous Framework",
   "main": "src/main.ts",
   "scripts": {
     "lint": "eslint \"src/**/*.ts\" --fix",
@@ -17,20 +17,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/admon84/autoscreep-starter-bot.git"
+    "url": "git+https://github.com/admon84/screeps-autonomous-framework.git"
   },
   "author": "admon84",
   "license": "Unlicense",
   "bugs": {
-    "url": "https://github.com/admon84/autoscreep-starter-bot/issues"
+    "url": "https://github.com/admon84/screeps-autonomous-framework/issues"
   },
-  "homepage": "https://github.com/admon84/autoscreep-starter-bot#readme",
+  "homepage": "https://github.com/admon84/screeps-autonomous-framework#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.4",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@types/lodash": "3.10.x",
     "@types/node": "^20.7.1",
-    "@types/screeps": "admon84/typed-screeps#feat/getRawBuffer",
+    "@types/screeps": "^3.3.4",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
     "@typescript-eslint/typescript-estree": "^6.7.3",
