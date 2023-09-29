@@ -1,7 +1,7 @@
 import { Order } from 'classes/Order';
 import { Role } from 'enums/role';
 import * as ProfileLib from 'lib/profile';
-import { log } from 'utils/logger';
+import * as Log from 'utils/log';
 
 /**
  * Insert a new creep order into the room orders queue
@@ -13,7 +13,7 @@ export function orderCreep(room: Room, order: Order) {
 
   const orderBodyCost = ProfileLib.getCostForBody(order.body);
   if (orderBodyCost > room.energyCapacityAvailable) {
-    log.error(
+    Log.error(
       'Creep ordered is more expensive than the room energy capacity: ' + JSON.stringify(order.memory),
       room.name
     );
@@ -21,12 +21,12 @@ export function orderCreep(room: Room, order: Order) {
   }
 
   if (order.body.length === 0) {
-    log.error('Invalid creep ordered, empty body: ' + JSON.stringify(order.memory), room.name);
+    Log.error('Invalid creep ordered, empty body: ' + JSON.stringify(order.memory), room.name);
     return false;
   }
 
   if (order.body.length > 50) {
-    log.error('Invalid creep ordered, body larger than 50: ' + JSON.stringify(order.memory), room.name);
+    Log.error('Invalid creep ordered, body larger than 50: ' + JSON.stringify(order.memory), room.name);
     return false;
   }
 
@@ -38,7 +38,7 @@ export function orderCreep(room: Room, order: Order) {
 
   const role = Role[order.memory.role];
   const length = room.memory.orders.length - 1;
-  log.verbose(`Ordered: ${role} (${order.memory.target}) - Queue: ${length}`, room.name);
+  Log.verbose(`Ordered: ${role} (${order.memory.target}) - Queue: ${length}`, room.name);
 
   return true;
 }
@@ -65,7 +65,7 @@ export function getCreepsInQueue(room: Room, role: Role | null = null, target: s
  */
 export function clearOrders(room: Room) {
   room.memory.orders = [];
-  log.info('Clearing order queue for room', room.name);
+  Log.info('Clearing order queue for room', room.name);
 }
 
 /**

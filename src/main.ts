@@ -1,7 +1,7 @@
-import * as Core from './managers/Core';
-import { log } from './utils/logger';
+import * as Core from 'managers/Core';
+import * as Log from 'utils/log';
 
-log.alert('✨=== Global Reset ===✨');
+Log.alert('✨=== Global Reset ===✨');
 
 export function loop() {
   Core.run();

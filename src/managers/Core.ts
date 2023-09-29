@@ -3,25 +3,25 @@ import 'prototypes/Room';
 
 import { LogLevel } from 'enums/loglevel';
 import { Priority } from 'enums/priority';
+import { BuildManager } from 'managers/Build';
+import { HarvestManager } from 'managers/Harvest';
+import { MemoryManager } from 'managers/Memory';
+import { OperationManager } from 'managers/Operation';
+import { SpawnManager } from 'managers/Spawn';
+import { TowerManager } from 'managers/Tower';
+import { UpgradeManager } from 'managers/Upgrade';
 import { Manager } from 'managers/_Manager';
 import { CreepService } from 'services/Creep';
 import { RoomService } from 'services/Room';
-import { log } from 'utils/logger';
-import { BuildManager } from './Build';
-import { HarvestManager } from './Harvest';
-import { MemoryManager } from './Memory';
-import { OperationManager } from './Operation';
-import { SpawnManager } from './Spawn';
-import { TowerManager } from './Tower';
-import { UpgradeManager } from './Upgrade';
+import * as Log from 'utils/log';
 
 export function run() {
   if (!Memory.settings) {
-    log.warning('💎=== Script Loaded ===💎');
+    Log.warning('💎=== Script Loaded ===💎');
     Memory.settings = {};
   }
   if (!Memory.settings.loglevel) {
-    Memory.settings.loglevel = LogLevel.Verbose;
+    Log.setLogLevel(LogLevel.Verbose);
   }
   if (!Memory.settings.user) {
     Memory.settings.user = getUserName();

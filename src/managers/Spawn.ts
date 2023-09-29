@@ -3,7 +3,7 @@ import { Role } from 'enums/role';
 import * as OrderLib from 'lib/order';
 import { Manager } from 'managers/_Manager';
 import { RoomService } from 'services/Room';
-import { log } from 'utils/logger';
+import * as Log from 'utils/log';
 
 export class SpawnManager extends Manager {
   private roomService: RoomService;
@@ -48,9 +48,9 @@ export class SpawnManager extends Manager {
     });
 
     if (status === OK) {
-      log.verbose(`Spawned: ${Role[order.memory.role]} (${order.memory.target}) - ${name}`, spawn.room.name);
+      Log.verbose(`Spawned: ${Role[order.memory.role]} (${order.memory.target}) - ${name}`, spawn.room.name);
     } else {
-      // log.warning(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
+      // Log.warning(`Unable to spawn ${Role[order.memory.role]} (status code: ${status})`, spawn.room.name);
       room.memory.orders.unshift(order);
     }
   }

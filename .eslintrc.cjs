@@ -56,6 +56,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unused-expressions': 'error',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
     '@typescript-eslint/prefer-for-of': 'error',
     '@typescript-eslint/restrict-plus-operands': 'off',

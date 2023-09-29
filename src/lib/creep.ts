@@ -1,5 +1,5 @@
-import { log } from 'utils/logger';
+import * as Log from 'utils/log';
 
 export function logCreepStateWarning(creep: Creep) {
-  log.error(`Creep ${creep.name} has unexpected state (${creep.memory.state})`, creep.room.name);
+  Log.error(`Creep ${creep.name} has unexpected state (${creep.memory.state})`, creep.room.name);
 }
