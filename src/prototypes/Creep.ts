@@ -13,18 +13,18 @@ Object.defineProperty(Creep.prototype, 'isFull', {
   }
 });
 
-Creep.prototype.hadState = function (state: number) {
+Creep.prototype.hadState = function (state) {
   if (!this._states) {
     this._states = [];
   }
   return this._states.includes(state);
 };
 
-Creep.prototype.hasState = function (state?: number) {
+Creep.prototype.hasState = function (state) {
   return this.memory.state !== state;
 };
 
-Creep.prototype.setState = function (state: number) {
+Creep.prototype.setState = function (state) {
   if (!this._states) {
     this._states = [];
   }
