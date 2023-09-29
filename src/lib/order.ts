@@ -1,7 +1,7 @@
-import * as ProfileLib from '../lib/profile';
-import { Order } from '../classes/Order';
-import { Role } from '../enums/role';
-import { log } from '../utils/logger';
+import { Order } from 'classes/Order';
+import { Role } from 'enums/role';
+import * as ProfileLib from 'lib/profile';
+import { log } from 'utils/logger';
 
 /**
  * Insert a new creep order into the room orders queue

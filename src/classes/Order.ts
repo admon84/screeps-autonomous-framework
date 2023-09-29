@@ -1,5 +1,5 @@
-import { Priority } from '../enums/priority';
-import { Role } from '../enums/role';
+import { Priority } from 'enums/priority';
+import { Role } from 'enums/role';
 
 export class Order {
   public priority: Priority;

@@ -8,10 +8,9 @@
  * - Game time reaches set value
  */
 
-import { Priority } from '../enums/priority';
+import { Priority } from 'enums/priority';
+import { log } from 'utils/logger';
 import { Data, VictoryCondition } from './data/TestData';
-
-import { log } from '../utils/logger';
 
 export function run(operation: Data, pri: Priority) {
   if (pri === Priority.Low) {

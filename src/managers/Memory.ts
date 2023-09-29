@@ -2,8 +2,8 @@
  *  Checks all creeps references in memory and deletes any dead creeps
  */
 
-import { Manager } from './_Manager';
-import { Priority } from '../enums/priority';
+import { Priority } from 'enums/priority';
+import { Manager } from 'managers/_Manager';
 
 export class MemoryManager extends Manager {
   readonly MEMORY_LASTRUN = 'lastRun';

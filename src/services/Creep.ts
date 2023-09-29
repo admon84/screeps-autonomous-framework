@@ -3,8 +3,8 @@
  *
  * Organizes creeps by their role, used in Managers and Operations
  */
-import { Role } from '../enums/role';
-import { log } from '../utils/logger';
+import { Role } from 'enums/role';
+import { log } from 'utils/logger';
 
 type CreepDictionary = { [role in Role]?: Creep[] };
 

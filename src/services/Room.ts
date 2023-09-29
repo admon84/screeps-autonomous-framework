@@ -3,7 +3,7 @@
  *
  * Organizes rooms by their room type, used in Managers and Operations
  */
-import { Roomtype } from '../enums/roomtype';
+import { Roomtype } from 'enums/roomtype';
 
 type RoomDictionary = Record<Roomtype, Room[]>;
 

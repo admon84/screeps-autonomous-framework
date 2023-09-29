@@ -1,10 +1,10 @@
-import * as OperationTest from '../operations/Test';
-import { CreepService } from '../services/Creep';
-import { RoomService } from '../services/Room';
-import { OperationType } from '../enums/operationtype';
-import { Priority } from '../enums/priority';
-import { log } from '../utils/logger';
-import { Manager } from './_Manager';
+import { OperationType } from 'enums/operationtype';
+import { Priority } from 'enums/priority';
+import { Manager } from 'managers/_Manager';
+import * as OperationTest from 'operations/Test';
+import { CreepService } from 'services/Creep';
+import { RoomService } from 'services/Room';
+import { log } from 'utils/logger';
 
 export class OperationManager extends Manager {
   private roomService: RoomService;

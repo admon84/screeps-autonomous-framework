@@ -1,4 +1,4 @@
-import { Priority } from '../enums/priority';
+import { Priority } from 'enums/priority';
 
 export abstract class Manager {
   constructor(name: string) {

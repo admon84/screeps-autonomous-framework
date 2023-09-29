@@ -1,4 +1,4 @@
-import { OperationType } from '../../enums/operationtype';
+import { OperationType } from 'enums/operationtype';
 
 export interface IOperationData {
   operationtype: OperationType;

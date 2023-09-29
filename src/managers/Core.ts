@@ -1,18 +1,19 @@
-import '../prototypes/Creep';
-import '../prototypes/Room';
-import { MemoryManager } from './Memory';
-import { Manager } from './_Manager';
-import { OperationManager } from './Operation';
-import { TowerManager } from './Tower';
-import { SpawnManager } from './Spawn';
-import { HarvestManager } from './Harvest';
+import 'prototypes/Creep';
+import 'prototypes/Room';
+
+import { LogLevel } from 'enums/loglevel';
+import { Priority } from 'enums/priority';
+import { Manager } from 'managers/_Manager';
+import { CreepService } from 'services/Creep';
+import { RoomService } from 'services/Room';
+import { log } from 'utils/logger';
 import { BuildManager } from './Build';
+import { HarvestManager } from './Harvest';
+import { MemoryManager } from './Memory';
+import { OperationManager } from './Operation';
+import { SpawnManager } from './Spawn';
+import { TowerManager } from './Tower';
 import { UpgradeManager } from './Upgrade';
-import { CreepService } from '../services/Creep';
-import { RoomService } from '../services/Room';
-import { Priority } from '../enums/priority';
-import { LogLevel } from '../enums/loglevel';
-import { log } from '../utils/logger';
 
 export function run() {
   if (!Memory.settings) {

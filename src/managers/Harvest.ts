@@ -1,12 +1,12 @@
-import * as ProfileLib from '../lib/profile';
-import * as OrderLib from '../lib/order';
-import * as Harvester from '../roles/Harvester';
-import { Order } from '../classes/Order';
-import { Role } from '../enums/role';
-import { Priority } from '../enums/priority';
-import { CreepService } from '../services/Creep';
-import { RoomService } from '../services/Room';
-import { Manager } from './_Manager';
+import { Order } from 'classes/Order';
+import { Priority } from 'enums/priority';
+import { Role } from 'enums/role';
+import * as OrderLib from 'lib/order';
+import * as ProfileLib from 'lib/profile';
+import { Manager } from 'managers/_Manager';
+import * as Harvester from 'roles/Harvester';
+import { CreepService } from 'services/Creep';
+import { RoomService } from 'services/Room';
 
 export class HarvestManager extends Manager {
   private roomService: RoomService;

@@ -4,7 +4,7 @@
  * Builds construction sites
  */
 
-import * as _Common from '../rolelib/common';
+import * as CreepLib from 'lib/creep';
 
 enum State {
   HarvestEnergy = 1,
@@ -24,7 +24,7 @@ export function run(creep: Creep) {
       runBuildConstruction(creep);
       break;
     default:
-      _Common.logCreepStateWarning(creep);
+      CreepLib.logCreepStateWarning(creep);
       creep.setState(State.HarvestEnergy);
       break;
   }

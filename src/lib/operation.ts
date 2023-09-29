@@ -1,7 +1,7 @@
-import * as TestData from '../operations/data/TestData';
-import { IOperationData } from '../operations/data/_OperationData';
-import { OperationType } from '../enums/operationtype';
-import { log } from '../utils/logger';
+import { OperationType } from 'enums/operationtype';
+import * as TestData from 'operations/data/TestData';
+import { IOperationData } from 'operations/data/_OperationData';
+import { log } from 'utils/logger';
 
 function addOperation(operation: IOperationData) {
   if (!Memory.operations) {

@@ -1,6 +1,6 @@
-import { RoomService } from '../services/Room';
-import { Manager } from './_Manager';
-import { Priority } from '../enums/priority';
+import { Priority } from 'enums/priority';
+import { Manager } from 'managers/_Manager';
+import { RoomService } from 'services/Room';
 
 export class TowerManager extends Manager {
   private roomService: RoomService;
