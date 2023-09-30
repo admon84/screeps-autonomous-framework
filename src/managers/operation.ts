@@ -1,7 +1,7 @@
 import { OperationType } from 'enums/operationType';
 import { Priority } from 'enums/priority';
 import { Manager } from 'managers/_manager';
-import * as OperationTest from 'operations/test';
+import * as TestOperation from 'operations/test';
 import { CreepService } from 'services/creep';
 import { RoomService } from 'services/room';
 import { warning } from 'utils/log';
@@ -35,8 +35,8 @@ export class OperationManager extends Manager {
       switch (op.type) {
         case OperationType.Test:
           // Note: The Test operation is a minimal example
-          if (op.active && !OperationTest.victoryConditionReached(op)) {
-            OperationTest.run(op, pri);
+          if (op.active && !TestOperation.victoryConditionReached(op)) {
+            TestOperation.run(op, pri);
           } else {
             op.active = false;
           }

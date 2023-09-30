@@ -1,5 +1,5 @@
 import { OperationType } from 'enums/operationType';
-import * as TestData from 'operations/data/testData';
+import * as TestOperation from 'operations/test';
 import { info } from 'utils/log';
 
 function setOperationMemory() {
@@ -29,9 +29,9 @@ export function roomHasActiveTestOperation() {
 }
 
 export function createTestOperation(duration = 50) {
-  const op = new TestData.Data();
+  const op = new TestOperation.Data();
   op.type = OperationType.Test;
-  op.victoryCondition = TestData.VictoryCondition.GameTime;
+  op.victoryCondition = TestOperation.VictoryCondition.GameTime;
   op.victoryValue = Game.time + duration;
   addOperation(op);
   info(`Starting Test operation for ${duration} ticks`);

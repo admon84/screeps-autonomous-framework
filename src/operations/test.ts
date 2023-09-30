@@ -8,14 +8,25 @@
  * - Game time reaches set value
  */
 
+import { OperationType } from 'enums/operationType';
 import { Priority } from 'enums/priority';
-import { Data, VictoryCondition } from 'operations/data/testData';
 import { info } from 'utils/log';
+
+export enum VictoryCondition {
+  GameTime = 1
+}
+
+export class Data implements OperationData {
+  type: OperationType = OperationType.Test;
+  active = true;
+  victoryCondition: VictoryCondition;
+  victoryValue: number;
+}
 
 export function run(operation: Data, pri: Priority) {
   if (pri === Priority.Low) {
     if (Game.time % 10 === 0) {
-      testMethod(operation);
+      helloWorld(operation);
     }
   }
 }
@@ -23,7 +34,7 @@ export function run(operation: Data, pri: Priority) {
 export function victoryConditionReached(operation: Data) {
   if (operation.victoryCondition === VictoryCondition.GameTime) {
     if (Game.time > operation.victoryValue) {
-      info(`Test Operation finished at tick ${Game.time}`);
+      info(`Test Operation finished at ${Game.time}`);
       operation.active = false;
       return true;
     }
@@ -31,9 +42,9 @@ export function victoryConditionReached(operation: Data) {
   return false;
 }
 
-function testMethod(operation: Data) {
+function helloWorld(operation: Data) {
   if (Game.time > operation.victoryValue) {
     return;
   }
-  info(`Test Operation is active at tick ${Game.time}`);
+  info(`Test Operation is active for ${operation.victoryValue - Game.time} ticks`);
 }
