@@ -32,16 +32,15 @@ export class OperationManager extends Manager {
     }
 
     for (const op of Memory.operations) {
-      switch (op.operationtype) {
-        // The Test operation is a minimal example
+      switch (op.type) {
         case OperationType.Test:
+          // Note: The Test operation is a minimal example
           if (op.active && !OperationTest.victoryConditionReached(op)) {
             OperationTest.run(op, pri);
           } else {
             op.active = false;
           }
           break;
-        // Any new operations can be added to this switch
       }
     }
   }

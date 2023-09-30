@@ -1,38 +1,38 @@
 import { OperationType } from 'enums/operationType';
-import { IOperationData } from 'operations/data/_operationData';
 import * as TestData from 'operations/data/testData';
 import { info } from 'utils/log';
 
-function addOperation(operation: IOperationData) {
+function setOperationMemory() {
   if (!Memory.operations) {
     Memory.operations = [];
   }
+}
+
+function addOperation(operation: OperationData) {
+  setOperationMemory();
   Memory.operations.push(operation);
 }
 
 export function roomHasActiveTestOperation() {
-  if (!Memory.operations) {
-    Memory.operations = [];
-  }
+  setOperationMemory();
 
   if (Memory.operations.length === 0) {
     return false;
   }
 
   for (const o of Memory.operations) {
-    if (o.active && o.operationtype === OperationType.Test) {
+    if (o.active && o.type === OperationType.Test) {
       return true;
     }
   }
   return false;
 }
 
-export function createTestOperation() {
+export function createTestOperation(duration = 50) {
   const op = new TestData.Data();
-  op.operationtype = OperationType.Test;
-  op.victoryCondition = TestData.VictoryCondition.Gametime;
-  op.victoryValue = Game.time + 50;
+  op.type = OperationType.Test;
+  op.victoryCondition = TestData.VictoryCondition.GameTime;
+  op.victoryValue = Game.time + duration;
   addOperation(op);
-  info('Running Test operation for 50 ticks');
-  return true;
+  info(`Starting Test operation for ${duration} ticks`);
 }

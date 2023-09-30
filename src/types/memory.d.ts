@@ -2,13 +2,13 @@ type Role = import('enums/role').Role;
 type LogLevel = import('enums/logLevel').LogLevel;
 type RoomType = import('enums/roomType').RoomType;
 type SpawnOrder = import('classes/order').Order;
-type IOperationData = import('operations/data/_operationData').IOperationData;
+type OperationType = import('enums/operationType').OperationType;
 
 interface Memory {
   creeps: Record<string, CreepMemory>;
   flags: Record<string, any>;
   manager: Record<string, ManagerData>;
-  operations: IOperationData[];
+  operations: OperationData[];
   powerCreeps: Record<string, any>;
   rooms: Record<string, RoomMemory>;
   settings: Partial<SettingsData>;
@@ -22,6 +22,13 @@ interface CreepMemory {
   homeroom?: string;
   target?: string;
   source?: Id<Source>;
+}
+
+interface OperationData {
+  type: OperationType;
+  active: boolean;
+  victoryCondition: number;
+  victoryValue: number;
 }
 
 interface RoomMemory {
