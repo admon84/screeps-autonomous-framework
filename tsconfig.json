@@ -10,7 +10,7 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./src/types", "./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"]
   },
   "exclude": ["node_modules"]
 }
