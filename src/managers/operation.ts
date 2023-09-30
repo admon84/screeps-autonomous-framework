@@ -1,6 +1,6 @@
 import { OperationType } from 'enums/operationType';
 import { Priority } from 'enums/priority';
-import { Manager } from 'managers/_manager';
+import { Manager } from 'managers/manager';
 import * as TestOperation from 'operations/test';
 import { CreepService } from 'services/creep';
 import { RoomService } from 'services/room';

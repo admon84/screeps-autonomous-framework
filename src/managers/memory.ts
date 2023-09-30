@@ -3,7 +3,7 @@
  */
 
 import { Priority } from 'enums/priority';
-import { Manager } from 'managers/_manager';
+import { Manager } from 'managers/manager';
 
 export class MemoryManager extends Manager {
   readonly MEMORY_LASTRUN = 'lastRun';
@@ -23,9 +23,9 @@ export class MemoryManager extends Manager {
   }
 
   private deleteCreepsFromMemory() {
-    for (const i in Memory.creeps) {
-      if (!Game.creeps[i]) {
-        delete Memory.creeps[i];
+    for (const name in Memory.creeps) {
+      if (!Game.creeps[name]) {
+        delete Memory.creeps[name];
       }
     }
   }

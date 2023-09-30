@@ -1,7 +1,7 @@
 import { Order } from 'classes/order';
 import { Priority } from 'enums/priority';
 import { Role } from 'enums/role';
-import { Manager } from 'managers/_manager';
+import { Manager } from 'managers/manager';
 import * as Builder from 'roles/builder';
 import { CreepService } from 'services/creep';
 import { RoomService } from 'services/room';
