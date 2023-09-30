@@ -18,16 +18,7 @@ import { alert, setLogLevel, warning } from 'utils/log';
 alert('✨=== Global Reset ===✨');
 
 export function loop() {
-  if (!Memory.settings) {
-    warning('💎=== Script Loaded ===💎');
-    Memory.settings = {};
-  }
-  if (!Memory.settings.loglevel) {
-    setLogLevel(LogLevel.Verbose);
-  }
-  if (!Memory.settings.user) {
-    Memory.settings.user = getUserNameOnSpawn();
-  }
+  initMemory();
 
   const creepService = new CreepService();
   const roomService = new RoomService();
@@ -60,6 +51,19 @@ export function loop() {
   }
 
   new SpawnManager(roomService).run();
+}
+
+function initMemory() {
+  if (!Memory.settings) {
+    warning('💎=== Script Loaded ===💎');
+    Memory.settings = {};
+  }
+  if (!Memory.settings.loglevel) {
+    setLogLevel(LogLevel.Verbose);
+  }
+  if (!Memory.settings.user) {
+    Memory.settings.user = getUserNameOnSpawn();
+  }
 }
 
 function getUserNameOnSpawn() {
