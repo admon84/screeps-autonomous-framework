@@ -1,5 +1,5 @@
-import { OperationType } from 'enums/operationtype';
-import { IOperationData } from 'operations/data/_OperationData';
+import { OperationType } from 'enums/operationType';
+import { IOperationData } from 'operations/data/_operationData';
 
 export enum VictoryCondition {
   Gametime = 1

@@ -1,7 +1,7 @@
-import { Order } from 'classes/Order';
+import { Order } from 'classes/order';
 import { Role } from 'enums/role';
-import { Manager } from 'managers/_Manager';
-import { RoomService } from 'services/Room';
+import { Manager } from 'managers/_manager';
+import { RoomService } from 'services/room';
 import { verbose } from 'utils/log';
 import { getUniqueId } from 'utils/order';
 

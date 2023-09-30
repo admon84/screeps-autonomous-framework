@@ -1,4 +1,4 @@
-import { Order } from 'classes/Order';
+import { Order } from 'classes/order';
 import { Role } from 'enums/role';
 import { error, info, verbose } from 'utils/log';
 import { getCostForBody } from 'utils/profile';

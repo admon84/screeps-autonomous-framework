@@ -1,9 +1,9 @@
-import { OperationType } from 'enums/operationtype';
+import { OperationType } from 'enums/operationType';
 import { Priority } from 'enums/priority';
-import { Manager } from 'managers/_Manager';
-import * as OperationTest from 'operations/Test';
-import { CreepService } from 'services/Creep';
-import { RoomService } from 'services/Room';
+import { Manager } from 'managers/_manager';
+import * as OperationTest from 'operations/test';
+import { CreepService } from 'services/creep';
+import { RoomService } from 'services/room';
 import { warning } from 'utils/log';
 
 export class OperationManager extends Manager {

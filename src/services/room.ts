@@ -3,9 +3,9 @@
  *
  * Organizes rooms by their room type, used in Managers and Operations
  */
-import { Roomtype } from 'enums/roomtype';
+import { RoomType } from 'enums/roomType';
 
-type RoomDictionary = Record<Roomtype, Room[]>;
+type RoomDictionary = Record<RoomType, Room[]>;
 
 export class RoomService {
   private roomDictionary: RoomDictionary;
@@ -16,15 +16,15 @@ export class RoomService {
 
   public getNormalRooms() {
     const rooms: Room[] = [];
-    if (this.roomDictionary[Roomtype.Normal]) {
-      rooms.push(...this.roomDictionary[Roomtype.Normal]);
+    if (this.roomDictionary[RoomType.Normal]) {
+      rooms.push(...this.roomDictionary[RoomType.Normal]);
     }
     return rooms;
   }
 
   protected makeDictionary() {
     const rooms: RoomDictionary = {
-      [Roomtype.Normal]: []
+      [RoomType.Normal]: []
     };
 
     for (const roomName in Game.rooms) {
@@ -35,7 +35,7 @@ export class RoomService {
       }
 
       if (!room.memory.t) {
-        room.memory.t = Roomtype.Normal;
+        room.memory.t = RoomType.Normal;
       }
 
       if (!rooms[room.memory.t]) {

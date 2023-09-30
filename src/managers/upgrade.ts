@@ -1,10 +1,10 @@
-import { Order } from 'classes/Order';
+import { Order } from 'classes/order';
 import { Priority } from 'enums/priority';
 import { Role } from 'enums/role';
-import { Manager } from 'managers/_Manager';
-import * as Upgrader from 'roles/Upgrader';
-import { CreepService } from 'services/Creep';
-import { RoomService } from 'services/Room';
+import { Manager } from 'managers/_manager';
+import * as Upgrader from 'roles/upgrader';
+import { CreepService } from 'services/creep';
+import { RoomService } from 'services/room';
 import { getCreepsInQueue, orderCreep } from 'utils/order';
 import { getHeavyWorkerBody, getMaxTierHeavyWorker } from 'utils/profile';
 

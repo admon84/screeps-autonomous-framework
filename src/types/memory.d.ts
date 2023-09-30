@@ -1,8 +1,8 @@
 type Role = import('enums/role').Role;
-type LogLevel = import('enums/loglevel').LogLevel;
-type RoomType = import('enums/roomtype').Roomtype;
-type SpawnOrder = import('classes/Order').Order;
-type IOperationData = import('operations/data/_OperationData').IOperationData;
+type LogLevel = import('enums/logLevel').LogLevel;
+type RoomType = import('enums/roomType').RoomType;
+type SpawnOrder = import('classes/order').Order;
+type IOperationData = import('operations/data/_operationData').IOperationData;
 
 interface Memory {
   creeps: Record<string, CreepMemory>;

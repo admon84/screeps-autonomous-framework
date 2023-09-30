@@ -1,4 +1,4 @@
-import { LogLevel } from 'enums/loglevel';
+import { LogLevel } from 'enums/logLevel';
 
 export function setLogLevel(level: LogLevel) {
   Memory.settings.loglevel = level;

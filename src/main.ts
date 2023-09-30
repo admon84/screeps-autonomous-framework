@@ -1,4 +1,4 @@
-import * as Core from 'managers/Core';
+import * as Core from 'managers/core';
 import { alert } from 'utils/log';
 
 alert('✨=== Global Reset ===✨');

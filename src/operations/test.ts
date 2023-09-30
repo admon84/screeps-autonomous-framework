@@ -9,7 +9,7 @@
  */
 
 import { Priority } from 'enums/priority';
-import { Data, VictoryCondition } from 'operations/data/TestData';
+import { Data, VictoryCondition } from 'operations/data/testData';
 import { info } from 'utils/log';
 
 export function run(operation: Data, pri: Priority) {

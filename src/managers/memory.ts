@@ -3,7 +3,7 @@
  */
 
 import { Priority } from 'enums/priority';
-import { Manager } from 'managers/_Manager';
+import { Manager } from 'managers/_manager';
 
 export class MemoryManager extends Manager {
   readonly MEMORY_LASTRUN = 'lastRun';

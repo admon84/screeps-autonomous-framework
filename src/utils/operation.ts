@@ -1,6 +1,6 @@
-import { OperationType } from 'enums/operationtype';
-import * as TestData from 'operations/data/TestData';
-import { IOperationData } from 'operations/data/_OperationData';
+import { OperationType } from 'enums/operationType';
+import { IOperationData } from 'operations/data/_operationData';
+import * as TestData from 'operations/data/testData';
 import { info } from 'utils/log';
 
 function addOperation(operation: IOperationData) {
