@@ -6,7 +6,6 @@ import { LogLevel } from 'enums/logLevel';
 import { Priority } from 'enums/priority';
 import { BuildManager } from 'managers/build';
 import { HarvestManager } from 'managers/harvest';
-import { Manager } from 'managers/manager';
 import { MemoryManager } from 'managers/memory';
 import { OperationManager } from 'managers/operation';
 import { SpawnManager } from 'managers/spawn';
@@ -34,7 +33,7 @@ export function loop() {
   const roomService = new RoomService();
 
   const cpuLimit = getCpuLimit();
-  const managerList: Manager[] = [
+  const managerList = [
     new MemoryManager(),
     new TowerManager(roomService),
     new HarvestManager(roomService, creepService),
