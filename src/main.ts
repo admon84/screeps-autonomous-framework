@@ -1,6 +1,6 @@
 import 'prototypes/creep';
 import 'prototypes/room';
-import 'types/global';
+import 'types';
 
 import { LogLevel } from 'enums/logLevel';
 import { Priority } from 'enums/priority';
