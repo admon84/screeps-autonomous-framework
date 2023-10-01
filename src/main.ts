@@ -15,8 +15,16 @@ import { CreepService } from 'services/creep';
 import { RoomService } from 'services/room';
 import { alert, setLogLevel, warning } from 'utils/log';
 
+/**
+ * Display an alert when global resets.
+ * @see https://wiki.screepspl.us/index.php/Global_reset
+ */
 alert('✨=== Global Reset ===✨');
 
+/**
+ * Screeps executes scripts using the main loop as the entry point.
+ * @see https://docs.screeps.com/game-loop.html
+ */
 export function loop() {
   initSettings();
 
@@ -53,6 +61,9 @@ export function loop() {
   new SpawnManager(roomService).run();
 }
 
+/**
+ * Initialize bot settings
+ */
 function initSettings() {
   if (!Memory.settings) {
     warning('💎=== Script Loaded ===💎');
@@ -66,11 +77,19 @@ function initSettings() {
   }
 }
 
+/**
+ * Identify bot owner using `Game.spawns`.
+ * @returns Owner of the first spawn structure.
+ */
 function getUserNameOnSpawn() {
   const spawns = Object.values(Game.spawns);
   return spawns[0]?.owner.username;
 }
 
+/**
+ * Get the CPU limit based on CPU in bucket.
+ * @returns CPU limit for this tick.
+ */
 function getCpuLimit() {
   const { bucket, limit } = Game.cpu;
   if (!limit) return 500; // Sim mode

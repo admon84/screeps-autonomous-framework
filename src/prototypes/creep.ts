@@ -7,7 +7,7 @@ declare global {
     hasState(state?: number): boolean;
     setState(state: number): void;
 
-    // private
+    /** @hidden */
     _states?: number[];
   }
 }

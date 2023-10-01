@@ -4,7 +4,7 @@ declare global {
   interface Room {
     getMySpawn(): StructureSpawn | undefined;
 
-    // private
+    /** @hidden */
     _mySpawn?: StructureSpawn;
   }
 }

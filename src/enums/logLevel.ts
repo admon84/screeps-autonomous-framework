@@ -1,3 +1,7 @@
+/**
+ * Log levels are used by the log utility to color console messages.
+ */
+
 export enum LogLevel {
   Alert = 1,
   Success = 2,

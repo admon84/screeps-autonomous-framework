@@ -1,7 +1,7 @@
 /**
- * Upgrader
- *
- * Upgrades the room controller
+ * ### Upgrader
+ * Harvests energy from sources and upgrades the room controller.
+ * @module
  */
 
 import { logCreepStateWarning } from 'utils/creep';

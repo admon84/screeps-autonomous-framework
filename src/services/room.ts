@@ -1,19 +1,24 @@
-/**
- * RoomService
- *
- * Organizes rooms by their room type, used in Managers and Operations
- */
 import { RoomType } from 'enums/roomType';
 
+// An object to organize owned rooms by type.
 type RoomDictionary = Record<RoomType, Room[]>;
 
+/**
+ * A class to facilitate accessing owned rooms by type.
+ */
 export class RoomService {
+  /**
+   * An object containing all owned rooms indexed by type.
+   */
   private roomDictionary: RoomDictionary;
 
   constructor() {
     this.roomDictionary = this.makeDictionary();
   }
 
+  /**
+   * Fetches all owned rooms with the Normal room type.
+   */
   public getNormalRooms() {
     const rooms: Room[] = [];
     if (this.roomDictionary[RoomType.Normal]) {
@@ -22,6 +27,9 @@ export class RoomService {
     return rooms;
   }
 
+  /**
+   * Creates an object of all owned rooms indexed by type using `Game.rooms`.
+   */
   protected makeDictionary() {
     const rooms: RoomDictionary = {
       [RoomType.Normal]: []

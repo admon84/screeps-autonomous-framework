@@ -1,7 +1,7 @@
 /**
- * Harvester
- *
- * Harvests energy from sources and transfers to structures
+ * ### Harvester
+ * Harvests energy from sources and transfers to structures.
+ * @module
  */
 
 import { logCreepStateWarning } from 'utils/creep';

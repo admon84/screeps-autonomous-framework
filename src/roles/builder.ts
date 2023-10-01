@@ -1,7 +1,7 @@
 /**
- * Builder
- *
- * Builds construction sites
+ * ### Builder
+ * Harvests energy from sources and builds construction sites into structures.
+ * @module
  */
 
 import { logCreepStateWarning } from 'utils/creep';

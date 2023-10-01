@@ -5,6 +5,10 @@ import { RoomService } from 'services/room';
 import { verbose } from 'utils/log';
 import { getUniqueId } from 'utils/order';
 
+/**
+ * Spawn Manager controls the spawning of creeps using the orders
+ * queue saved in each room's memory.
+ */
 export class SpawnManager extends Manager {
   private roomService: RoomService;
 
