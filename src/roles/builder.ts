@@ -1,6 +1,5 @@
 /**
- * ### Builder
- * Harvests energy from sources and builds construction sites into structures.
+ * A creep role that constructs structures.
  * @module
  */
 

@@ -1,5 +1,5 @@
 /**
- * Log levels are used by the log utility to color console messages.
+ * The `LogLevel` enum is used by the log utility to color console messages.
  */
 
 export enum LogLevel {

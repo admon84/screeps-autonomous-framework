@@ -16,6 +16,11 @@
 <li><a href="../modules/managers_memory.html">managers/memory</a></li>
 <li><a href="managers_memory.MemoryManager.html">MemoryManager</a></li></ul>
 <h1>Class MemoryManager</h1></div>
+<section class="tsd-panel tsd-comment">
+<div class="tsd-comment tsd-typography"><p>The <code>MemoryManager</code> class orchestrates memory clean up efforts for the bot.</p>
+<p>Expired creeps will be removed from <code>Memory.creeps</code> when the creep is gone from <code>Game.creeps</code></p>
+</div>
+<div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
@@ -23,7 +28,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">MemoryManager</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/memory.ts#L8">src/managers/memory.ts:8</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/memory.ts#L10">src/managers/memory.ts:10</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -32,10 +37,6 @@
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Constructors</h3>
 <div class="tsd-index-list"><a href="managers_memory.MemoryManager.html#constructor" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-512"></use></svg><span>constructor</span></a>
-</div></section>
-<section class="tsd-index-section">
-<h3 class="tsd-index-heading">Properties</h3>
-<div class="tsd-index-list"><a href="managers_memory.MemoryManager.html#MEMORY_LASTRUN" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>MEMORY_<wbr/>LASTRUN</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Methods</h3>
@@ -55,14 +56,7 @@
 <h4 class="tsd-returns-title">Returns <a href="managers_memory.MemoryManager.html" class="tsd-signature-type tsd-kind-class">MemoryManager</a></h4><aside class="tsd-sources">
 <p>Overrides <a href="managers_manager.Manager.html">Manager</a>.<a href="managers_manager.Manager.html#constructor">constructor</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/memory.ts#L11">src/managers/memory.ts:11</a></li></ul></aside></li></ul></section></section>
-<section class="tsd-panel-group tsd-member-group">
-<h2>Properties</h2>
-<section class="tsd-panel tsd-member"><a id="MEMORY_LASTRUN" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagReadonly">Readonly</code> <span>MEMORY_<wbr/>LASTRUN</span><a href="#MEMORY_LASTRUN" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">MEMORY_<wbr/>LASTRUN</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;lastRun&quot;</span><span class="tsd-signature-symbol"> = &#39;lastRun&#39;</span></div><aside class="tsd-sources">
-<ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/memory.ts#L9">src/managers/memory.ts:9</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/memory.ts#L14">src/managers/memory.ts:14</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="deleteCreepsFromMemory" class="tsd-anchor"></a>
@@ -72,7 +66,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/memory.ts#L25">src/managers/memory.ts:25</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/memory.ts#L28">src/managers/memory.ts:28</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="getValue" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>get<wbr/>Value</span><a href="#getValue" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
@@ -86,7 +80,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="managers_manager.Manager.html">Manager</a>.<a href="managers_manager.Manager.html#getValue">getValue</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L22">src/managers/manager.ts:22</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L30">src/managers/manager.ts:30</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="memoryCheck" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>memory<wbr/>Check</span><a href="#memoryCheck" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
@@ -95,7 +89,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="managers_manager.Manager.html">Manager</a>.<a href="managers_manager.Manager.html#memoryCheck">memoryCheck</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L13">src/managers/manager.ts:13</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L21">src/managers/manager.ts:21</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="run" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>run</span><a href="#run" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -109,7 +103,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <p>Overrides <a href="managers_manager.Manager.html">Manager</a>.<a href="managers_manager.Manager.html#run">run</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/memory.ts#L15">src/managers/memory.ts:15</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/memory.ts#L18">src/managers/memory.ts:18</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-protected tsd-is-inherited"><a id="setValue" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>set<wbr/>Value</span><a href="#setValue" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-protected tsd-is-inherited">
@@ -125,7 +119,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <p>Inherited from <a href="managers_manager.Manager.html">Manager</a>.<a href="managers_manager.Manager.html#setValue">setValue</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L26">src/managers/manager.ts:26</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L34">src/managers/manager.ts:34</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -146,7 +140,6 @@
 <div class="tsd-accordion-details">
 <ul>
 <li><a href="#constructor" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-512"></use></svg><span>constructor</span></a></li>
-<li><a href="#MEMORY_LASTRUN" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>MEMORY_<wbr/>LASTRUN</span></a></li>
 <li><a href="#deleteCreepsFromMemory" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>delete<wbr/>Creeps<wbr/>From<wbr/>Memory</span></a></li>
 <li><a href="#getValue" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>get<wbr/>Value</span></a></li>
 <li><a href="#memoryCheck" class="tsd-is-protected tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>memory<wbr/>Check</span></a></li>

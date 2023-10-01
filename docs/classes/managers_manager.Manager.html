@@ -16,6 +16,13 @@
 <li><a href="../modules/managers_manager.html">managers/manager</a></li>
 <li><a href="managers_manager.Manager.html">Manager</a></li></ul>
 <h1>Class Manager<code class="tsd-tag ts-flagAbstract">Abstract</code> </h1></div>
+<section class="tsd-panel tsd-comment">
+<div class="tsd-comment tsd-typography"><p>The <code>Manager</code> class serves as the foundational abstract class for all manager-type classes within
+the framework, orchestrating the general behaviors and functionalities shared amongst them.</p>
+<p>This class should not be instantiated directly but instead should be extended by other manager classes
+requiring foundational functionalities and structures.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
@@ -29,7 +36,7 @@
 <li><a href="managers_tower.TowerManager.html" class="tsd-signature-type tsd-kind-class">TowerManager</a></li>
 <li><a href="managers_upgrade.UpgradeManager.html" class="tsd-signature-type tsd-kind-class">UpgradeManager</a></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L3">src/managers/manager.ts:3</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L11">src/managers/manager.ts:11</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -64,14 +71,14 @@
 <h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="managers_manager.Manager.html" class="tsd-signature-type tsd-kind-class">Manager</a></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L6">src/managers/manager.ts:6</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L14">src/managers/manager.ts:14</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L4">src/managers/manager.ts:4</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L12">src/managers/manager.ts:12</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-is-protected"><a id="getValue" class="tsd-anchor"></a>
@@ -86,7 +93,7 @@
 <h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L22">src/managers/manager.ts:22</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L30">src/managers/manager.ts:30</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-protected"><a id="memoryCheck" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>memory<wbr/>Check</span><a href="#memoryCheck" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-protected">
@@ -94,7 +101,7 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L13">src/managers/manager.ts:13</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L21">src/managers/manager.ts:21</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="run" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagAbstract">Abstract</code> <span>run</span><a href="#run" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -107,7 +114,7 @@
 <h5><span class="tsd-kind-parameter">pri</span>: <a href="../enums/enums_priority.Priority.html" class="tsd-signature-type tsd-kind-enum">Priority</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L11">src/managers/manager.ts:11</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L19">src/managers/manager.ts:19</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-protected"><a id="setValue" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>set<wbr/>Value</span><a href="#setValue" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-protected">
@@ -122,7 +129,7 @@
 <h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/5c92ede/src/managers/manager.ts#L26">src/managers/manager.ts:26</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/managers/manager.ts#L34">src/managers/manager.ts:34</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

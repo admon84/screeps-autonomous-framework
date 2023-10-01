@@ -1,5 +1,5 @@
 /**
- * Priority levels ensure important tasks are performed first.
+ * The `Priority` enum is used to ensure important tasks are performed first.
  *
  * Spawns use the priority on orders to spawn more important creeps first.
  */

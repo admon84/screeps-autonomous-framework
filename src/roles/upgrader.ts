@@ -1,6 +1,5 @@
 /**
- * ### Upgrader
- * Harvests energy from sources and upgrades the room controller.
+ * A creep role that works on upgrading the controller.
  * @module
  */
 

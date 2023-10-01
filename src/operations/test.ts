@@ -1,6 +1,5 @@
 /**
- * ### Test Operation
- * Operations can be used to facilitate specialized missions. This operation provides an example template.
+ * Operations can be used to facilitate special missions. This operation provides an example template.
  * @module
  */
 
@@ -9,7 +8,7 @@ import { Priority } from 'enums/priority';
 import { info } from 'utils/log';
 
 /**
- * Conditions to signal when the operation is complete.
+ * Conditions to indicate the operation is complete.
  */
 export enum VictoryCondition {
   GameTime = 1

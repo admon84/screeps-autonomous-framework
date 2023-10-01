@@ -8,10 +8,18 @@ import { RoomService } from 'services/room';
 import { getCreepsInQueue, orderCreep } from 'utils/order';
 import { getHeavyWorkerBody, getMaxTierHeavyWorker } from 'utils/profile';
 
+/**
+ * The `UpgradeManager` class orchestrates the controller upgrading activities and behaviors of the bot.
+ *
+ * This class should be utilized whenever you need to control and manage Upgrader creeps and their
+ * associated tasks within the framework.
+ */
+
 export class UpgradeManager extends Manager {
   private roomService: RoomService;
   private creepService: CreepService;
 
+  /** @hidden */
   readonly MEMORY_LASTRUN = 'lastRun';
 
   constructor(roomService: RoomService, creepService: CreepService) {

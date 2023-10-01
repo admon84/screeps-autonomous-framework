@@ -1,5 +1,5 @@
 /**
- * Operation types describe specialized missions.
+ * The `OperationType` enum is used to classify special missions.
  */
 
 export enum OperationType {

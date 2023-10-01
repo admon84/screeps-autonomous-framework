@@ -1,6 +1,5 @@
 /**
- * ### Harvester
- * Harvests energy from sources and transfers to structures.
+ * A creep role responsible for collecting energy.
  * @module
  */
 
