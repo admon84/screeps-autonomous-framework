@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint \"src/**/*.ts\" --fix",
     "build": "rollup -c",
+    "build:docs": "typedoc",
     "push-main": "rollup -c --environment DEST:main",
     "push-pserver": "rollup -c --environment DEST:pserver",
     "push-season": "rollup -c --environment DEST:season",
