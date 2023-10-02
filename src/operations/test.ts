@@ -1,21 +1,22 @@
 /**
- * Operation: Test
- *
- * Operations can be used to created automated "missions"
- * Use this template to create something more useful
- *
- * Victory condition:
- * - Game time reaches set value
+ * Operations can be used to facilitate special missions. This operation provides an example template.
+ * @module
  */
 
 import { OperationType } from 'enums/operationType';
 import { Priority } from 'enums/priority';
-import { info } from 'utils/log';
+import { info, success } from 'utils/log';
 
+/**
+ * Conditions to indicate the operation is complete.
+ */
 export enum VictoryCondition {
   GameTime = 1
 }
 
+/**
+ * Memory data used for the operation.
+ */
 export class Data implements OperationData {
   type: OperationType = OperationType.Test;
   active = true;
@@ -23,6 +24,9 @@ export class Data implements OperationData {
   victoryValue: number;
 }
 
+/**
+ * Perform tasks while the operation is active.
+ */
 export function run(operation: Data, pri: Priority) {
   if (pri === Priority.Low) {
     if (Game.time % 10 === 0) {
@@ -31,10 +35,13 @@ export function run(operation: Data, pri: Priority) {
   }
 }
 
+/**
+ * Check if the operation has been completed.
+ */
 export function victoryConditionReached(operation: Data) {
   if (operation.victoryCondition === VictoryCondition.GameTime) {
     if (Game.time > operation.victoryValue) {
-      info(`Test Operation finished at ${Game.time}`);
+      success(`Test operation finished at ${Game.time}.`);
       operation.active = false;
       return true;
     }
@@ -46,5 +53,5 @@ function helloWorld(operation: Data) {
   if (Game.time > operation.victoryValue) {
     return;
   }
-  info(`Test Operation is active for ${operation.victoryValue - Game.time} ticks`);
+  info(`Test operation is active for ${operation.victoryValue - Game.time} more ticks.`);
 }

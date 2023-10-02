@@ -1,10 +1,9 @@
 /**
- * Harvester
- *
- * Harvests energy from sources and transfers to structures
+ * A creep role responsible for collecting energy.
+ * @module
  */
 
-import { logCreepStateWarning } from 'utils/creep';
+import { logUnknownState } from 'utils/creep';
 
 enum State {
   HarvestEnergy = 1,
@@ -24,7 +23,7 @@ export function run(creep: Creep) {
       runTransferEnergy(creep);
       break;
     default:
-      logCreepStateWarning(creep);
+      logUnknownState(creep);
       creep.setState(State.HarvestEnergy);
       break;
   }

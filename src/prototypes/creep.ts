@@ -2,12 +2,16 @@ export {};
 
 declare global {
   interface Creep {
+    /** Checks if a creep is carrying the max amount of resources. */
     isFull: boolean;
+    /** Checks if a creep had a specific state (task) this tick. */
     hadState(state: number): boolean;
+    /** Checks if a creep currently has a specific state (task). */
     hasState(state?: number): boolean;
+    /** Changes the current state (task) for a creep. */
     setState(state: number): void;
 
-    // private
+    /** @private */
     _states?: number[];
   }
 }

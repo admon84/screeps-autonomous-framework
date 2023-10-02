@@ -12,5 +12,12 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types"]
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typedocOptions": {
+    "entryPointStrategy": "expand",
+    "entryPoints": ["src/"],
+    "excludeExternals": true,
+    "plugin": ["typedoc-plugin-missing-exports"],
+    "out": "docs"
+  }
 }

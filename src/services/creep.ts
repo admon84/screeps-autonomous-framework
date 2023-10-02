@@ -1,20 +1,28 @@
-/**
- * CreepService
- *
- * Organizes creeps by their role, used in Managers and Operations
- */
 import { Role } from 'enums/role';
 import { warning } from 'utils/log';
 
+/**
+ * An object to organize creeps by role.
+ */
 type CreepDictionary = { [role in Role]?: Creep[] };
 
+/**
+ * A class to facilitate accessing creeps by role, target, or home room.
+ */
 export class CreepService {
+  /**
+   * An object containing all creeps in the colony.
+   */
   private creepDictionary: CreepDictionary;
 
   constructor() {
     this.creepDictionary = this.makeDictionary();
   }
 
+  /**
+   * Checks if a creep should continue executing tasks.
+   * @param creep The creep to consider.
+   */
   public creepShouldRun(creep: Creep) {
     if (!creep.memory.homeroom) {
       creep.memory.homeroom = creep.room.name;
@@ -22,6 +30,11 @@ export class CreepService {
     return !creep.spawning;
   }
 
+  /**
+   * Instructs all creeps with a matching role to perform tasks using a specific method.
+   * @param role The role that will be used to find relavent creeps.
+   * @param creepRunMethod The method that will be used to run tasks.
+   */
   public runCreeps(role: Role, creepRunMethod: Function) {
     const creepsWithRole = this.getAllOfRole(role);
     if (!creepsWithRole) {
@@ -34,6 +47,12 @@ export class CreepService {
     }
   }
 
+  /**
+   * Fetch creeps by role, target, and/or homeroom.
+   * @param role (optional) The role of creeps to be fetched.
+   * @param target (optional) The target of creeps to be fetched.
+   * @param homeroom (optional) The home room of creeps to be fetched.
+   */
   public getCreeps(role: Role | null = null, target: string | null = null, homeroom: string | null = null) {
     const creeps: Creep[] = [];
 
@@ -65,6 +84,10 @@ export class CreepService {
     return creeps;
   }
 
+  /**
+   * Fetch creeps by role.
+   * @param role The role of creeps to be fetched.
+   */
   public getAllOfRole(role: Role) {
     if (this.creepDictionary[role]) {
       return this.creepDictionary[role];
@@ -72,6 +95,9 @@ export class CreepService {
     return [];
   }
 
+  /**
+   * Creates an object of all creeps organized by role using `Game.creeps`.
+   */
   protected makeDictionary() {
     const creeps: CreepDictionary = {};
 

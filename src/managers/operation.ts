@@ -6,6 +6,15 @@ import { CreepService } from 'services/creep';
 import { RoomService } from 'services/room';
 import { warning } from 'utils/log';
 
+/**
+ * The `OperationManager` class orchestrates the administration of operations or special missions.
+ *
+ * This class should be utilized to implement and perform any new missions.
+ *
+ * The `RoomService` and `CreepService` are readily available to provide critical infrastructure
+ * management to your operation run sequence.
+ */
+
 export class OperationManager extends Manager {
   private roomService: RoomService;
   private creepService: CreepService;
@@ -49,7 +58,7 @@ export class OperationManager extends Manager {
     if (Memory.operations) {
       const inactive = Memory.operations.filter(op => !op.active);
       if (inactive.length > 0) {
-        warning(`Removing ${inactive.length} inactive operations`);
+        warning(`Removing ${inactive.length} inactive operations.`);
         Memory.operations = Memory.operations.filter(op => op.active);
       }
     }

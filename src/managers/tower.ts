@@ -2,6 +2,13 @@ import { Priority } from 'enums/priority';
 import { Manager } from 'managers/manager';
 import { RoomService } from 'services/room';
 
+/**
+ * The `TowerManager` class orchestrates the defensive tower structure behaviors of the bot.
+ *
+ * This class should be utilized whenever you need to control towers and their associated logic
+ * for attacking or healing creeps, or repairing structures.
+ */
+
 export class TowerManager extends Manager {
   private roomService: RoomService;
 

@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint \"src/**/*.ts\" --fix",
     "build": "rollup -c",
+    "build:docs": "typedoc",
     "push-main": "rollup -c --environment DEST:main",
     "push-pserver": "rollup -c --environment DEST:pserver",
     "push-season": "rollup -c --environment DEST:season",
@@ -48,6 +49,8 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "ts-node": "^10.5.0",
     "tsconfig-paths": "^4.2.0",
+    "typedoc": "^0.25.1",
+    "typedoc-plugin-missing-exports": "^2.1.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {

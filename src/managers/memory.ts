@@ -1,9 +1,11 @@
-/**
- *  Checks all creeps references in memory and deletes any dead creeps
- */
-
 import { Priority } from 'enums/priority';
 import { Manager } from 'managers/manager';
+
+/**
+ * The `MemoryManager` class orchestrates memory clean up efforts for the bot.
+ *
+ * Expired creeps will be removed from `Memory.creeps` when the creep is gone from `Game.creeps`
+ */
 
 export class MemoryManager extends Manager {
   readonly MEMORY_LASTRUN = 'lastRun';

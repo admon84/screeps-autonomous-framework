@@ -5,6 +5,13 @@ import { RoomService } from 'services/room';
 import { verbose } from 'utils/log';
 import { getUniqueId } from 'utils/order';
 
+/**
+ * The `SpawnManager` class orchestrates the spawning of creeps using the priority-based orders queue.
+ *
+ * This class should be utilized whenever you need to control spawns and their associated logic
+ * for creating, renewing and recycling creeps.
+ */
+
 export class SpawnManager extends Manager {
   private roomService: RoomService;
 

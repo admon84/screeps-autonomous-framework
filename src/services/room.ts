@@ -1,19 +1,26 @@
-/**
- * RoomService
- *
- * Organizes rooms by their room type, used in Managers and Operations
- */
 import { RoomType } from 'enums/roomType';
 
+/**
+ * An object to manage rooms in the colony by type.
+ */
 type RoomDictionary = Record<RoomType, Room[]>;
 
+/**
+ * A class to facilitate accessing rooms in the colony.
+ */
 export class RoomService {
+  /**
+   * An object containing all rooms in the colony.
+   */
   private roomDictionary: RoomDictionary;
 
   constructor() {
     this.roomDictionary = this.makeDictionary();
   }
 
+  /**
+   * Fetches all rooms in the colony with the Normal room type.
+   */
   public getNormalRooms() {
     const rooms: Room[] = [];
     if (this.roomDictionary[RoomType.Normal]) {
@@ -22,6 +29,9 @@ export class RoomService {
     return rooms;
   }
 
+  /**
+   * Creates an object of all rooms in the colony indexed by type using `Game.rooms`.
+   */
   protected makeDictionary() {
     const rooms: RoomDictionary = {
       [RoomType.Normal]: []

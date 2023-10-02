@@ -1,10 +1,9 @@
 /**
- * Upgrader
- *
- * Upgrades the room controller
+ * A creep role that works on upgrading the controller.
+ * @module
  */
 
-import { logCreepStateWarning } from 'utils/creep';
+import { logUnknownState } from 'utils/creep';
 
 enum State {
   HarvestEnergy = 1,
@@ -24,7 +23,7 @@ export function run(creep: Creep) {
       runUpgradeController(creep);
       break;
     default:
-      logCreepStateWarning(creep);
+      logUnknownState(creep);
       creep.setState(State.HarvestEnergy);
       break;
   }

@@ -8,6 +8,13 @@ import { RoomService } from 'services/room';
 import { getCreepsInQueue, orderCreep } from 'utils/order';
 import { getMaxTierSimpleWorker, getSimpleWorkerBody } from 'utils/profile';
 
+/**
+ * The `BuildManager` class orchestrates the build-related activities and behaviors of the bot.
+ *
+ * This class should be utilized whenever you need to control and manage Builder creeps and their
+ * associated tasks within the framework.
+ */
+
 export class BuildManager extends Manager {
   private roomService: RoomService;
   private creepService: CreepService;

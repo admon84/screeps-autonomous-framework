@@ -2,9 +2,10 @@ export {};
 
 declare global {
   interface Room {
+    /** Finds the first owned spawn in a room if available. */
     getMySpawn(): StructureSpawn | undefined;
 
-    // private
+    /** @private */
     _mySpawn?: StructureSpawn;
   }
 }

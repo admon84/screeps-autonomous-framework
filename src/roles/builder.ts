@@ -1,10 +1,9 @@
 /**
- * Builder
- *
- * Builds construction sites
+ * A creep role that constructs structures.
+ * @module
  */
 
-import { logCreepStateWarning } from 'utils/creep';
+import { logUnknownState } from 'utils/creep';
 
 enum State {
   HarvestEnergy = 1,
@@ -24,7 +23,7 @@ export function run(creep: Creep) {
       runBuildConstruction(creep);
       break;
     default:
-      logCreepStateWarning(creep);
+      logUnknownState(creep);
       creep.setState(State.HarvestEnergy);
       break;
   }
