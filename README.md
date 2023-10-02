@@ -1,3 +1,6 @@
+[![repo](https://custom-icon-badges.demolab.com/badge/repo-dodgerblue.svg?logo=repo)](https://github.com/admon84/screeps-autonomous-framework)
+[![docs](https://custom-icon-badges.demolab.com/badge/docs-seagreen.svg?logo=book)](https://admon84.github.io/screeps-autonomous-framework/)
+
 ## Screeps Autonomous Framework
 
 Welcome to the Screeps Autonomous Framework project. This framework is intended for those who are seeking to develop a bot for Screeps — a strategy game for programmers. This isn't a ready-to-deploy bot filled with advanced features, but rather, it's a structured starting point, offering clean and clear design patterns to build upon.
