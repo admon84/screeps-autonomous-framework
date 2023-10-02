@@ -21,7 +21,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">Creep</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/prototypes/creep.ts#L4">src/prototypes/creep.ts:4</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/prototypes/creep.ts#L4">src/prototypes/creep.ts:4</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -29,7 +29,8 @@
 <div class="tsd-accordion-details">
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Properties</h3>
-<div class="tsd-index-list"><a href="prototypes_creep.Creep.html#isFull" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Full</span></a>
+<div class="tsd-index-list"><a href="prototypes_creep.Creep.html#_states" class="tsd-index-link tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>_states?</span></a>
+<a href="prototypes_creep.Creep.html#isFull" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Full</span></a>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Methods</h3>
@@ -39,11 +40,20 @@
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
+<section class="tsd-panel tsd-member tsd-is-private"><a id="_states" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <code class="tsd-tag ts-flagPrivate">Private</code> <span>_states</span><a href="#_states" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">_states</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/prototypes/creep.ts#L15">src/prototypes/creep.ts:15</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="isFull" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Full</span><a href="#isFull" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Full</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div><aside class="tsd-sources">
+<div class="tsd-signature"><span class="tsd-kind-property">is<wbr/>Full</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+<div class="tsd-comment tsd-typography"><p>Checks if a creep is carrying the max amount of resources.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/prototypes/creep.ts#L5">src/prototypes/creep.ts:5</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/prototypes/creep.ts#L6">src/prototypes/creep.ts:6</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member"><a id="hadState" class="tsd-anchor"></a>
@@ -51,40 +61,49 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="hadState.hadState-1"><span class="tsd-kind-call-signature">had<wbr/>State</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">state</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#hadState.hadState-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Checks if a creep had a specific state (task) this tick.</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
 <h5><span class="tsd-kind-parameter">state</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/prototypes/creep.ts#L6">src/prototypes/creep.ts:6</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/prototypes/creep.ts#L8">src/prototypes/creep.ts:8</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="hasState" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>has<wbr/>State</span><a href="#hasState" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="hasState.hasState-1"><span class="tsd-kind-call-signature">has<wbr/>State</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">state</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#hasState.hasState-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Checks if a creep currently has a specific state (task).</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
 <h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">state</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/prototypes/creep.ts#L7">src/prototypes/creep.ts:7</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/prototypes/creep.ts#L10">src/prototypes/creep.ts:10</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="setState" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>set<wbr/>State</span><a href="#setState" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="setState.setState-1"><span class="tsd-kind-call-signature">set<wbr/>State</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">state</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#setState.setState-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Changes the current state (task) for a creep.</p>
+</div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
 <h5><span class="tsd-kind-parameter">state</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/prototypes/creep.ts#L8">src/prototypes/creep.ts:8</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/prototypes/creep.ts#L12">src/prototypes/creep.ts:12</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -96,14 +115,14 @@
 <ul id="tsd-filter-options">
 <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Protected</span></label></li>
 <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Private</span></label></li>
-<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Inherited</span></label></li>
-<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>External</span></label></li></ul></form></div>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Inherited</span></label></li></ul></form></div>
 <div class="tsd-theme-toggle">
 <h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
 <details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
 <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
 <div class="tsd-accordion-details">
 <ul>
+<li><a href="#_states" class="tsd-is-private"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>_states</span></a></li>
 <li><a href="#isFull" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>is<wbr/>Full</span></a></li>
 <li><a href="#hadState" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>had<wbr/>State</span></a></li>
 <li><a href="#hasState" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>has<wbr/>State</span></a></li>

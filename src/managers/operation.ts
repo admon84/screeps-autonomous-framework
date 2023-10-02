@@ -19,7 +19,6 @@ export class OperationManager extends Manager {
   private roomService: RoomService;
   private creepService: CreepService;
 
-  /** @hidden */
   readonly MEMORY_MAINTAIN = 'lastRunMaintain';
 
   constructor(roomService: RoomService, creepService: CreepService) {
@@ -59,7 +58,7 @@ export class OperationManager extends Manager {
     if (Memory.operations) {
       const inactive = Memory.operations.filter(op => !op.active);
       if (inactive.length > 0) {
-        warning(`Removing ${inactive.length} inactive operations`);
+        warning(`Removing ${inactive.length} inactive operations.`);
         Memory.operations = Memory.operations.filter(op => op.active);
       }
     }

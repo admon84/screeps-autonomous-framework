@@ -5,7 +5,7 @@
 
 import { OperationType } from 'enums/operationType';
 import { Priority } from 'enums/priority';
-import { info } from 'utils/log';
+import { info, success } from 'utils/log';
 
 /**
  * Conditions to indicate the operation is complete.
@@ -41,7 +41,7 @@ export function run(operation: Data, pri: Priority) {
 export function victoryConditionReached(operation: Data) {
   if (operation.victoryCondition === VictoryCondition.GameTime) {
     if (Game.time > operation.victoryValue) {
-      info(`Test Operation finished at ${Game.time}`);
+      success(`Test operation finished at ${Game.time}.`);
       operation.active = false;
       return true;
     }
@@ -53,5 +53,5 @@ function helloWorld(operation: Data) {
   if (Game.time > operation.victoryValue) {
     return;
   }
-  info(`Test Operation is active for ${operation.victoryValue - Game.time} ticks`);
+  info(`Test operation is active for ${operation.victoryValue - Game.time} more ticks.`);
 }

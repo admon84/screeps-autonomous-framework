@@ -1,14 +1,16 @@
 import { RoomType } from 'enums/roomType';
 
-// An object to organize owned rooms by type.
+/**
+ * An object to manage rooms in the colony by type.
+ */
 type RoomDictionary = Record<RoomType, Room[]>;
 
 /**
- * A class to facilitate accessing owned rooms by type.
+ * A class to facilitate accessing rooms in the colony.
  */
 export class RoomService {
   /**
-   * An object containing all owned rooms indexed by type.
+   * An object containing all rooms in the colony.
    */
   private roomDictionary: RoomDictionary;
 
@@ -17,7 +19,7 @@ export class RoomService {
   }
 
   /**
-   * Fetches all owned rooms with the Normal room type.
+   * Fetches all rooms in the colony with the Normal room type.
    */
   public getNormalRooms() {
     const rooms: Room[] = [];
@@ -28,7 +30,7 @@ export class RoomService {
   }
 
   /**
-   * Creates an object of all owned rooms indexed by type using `Game.rooms`.
+   * Creates an object of all rooms in the colony indexed by type using `Game.rooms`.
    */
   protected makeDictionary() {
     const rooms: RoomDictionary = {

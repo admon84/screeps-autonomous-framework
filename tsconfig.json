@@ -16,6 +16,8 @@
   "typedocOptions": {
     "entryPointStrategy": "expand",
     "entryPoints": ["src/"],
+    "excludeExternals": true,
+    "plugin": ["typedoc-plugin-missing-exports"],
     "out": "docs"
   }
 }

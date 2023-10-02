@@ -1,38 +1,58 @@
+/**
+ * The operation utility provides methods for handling special missions.
+ * @module
+ */
+
 import { OperationType } from 'enums/operationType';
 import * as TestOperation from 'operations/test';
-import { info } from 'utils/log';
+import { success } from 'utils/log';
 
-function setOperationMemory() {
+/**
+ * Initialize bot operations memory.
+ */
+function initOperations() {
   if (!Memory.operations) {
     Memory.operations = [];
   }
 }
 
+/**
+ * Insert a new operation into memory.
+ * @param operation The data of the new operation.
+ */
 function addOperation(operation: OperationData) {
-  setOperationMemory();
+  initOperations();
   Memory.operations.push(operation);
 }
 
-export function roomHasActiveTestOperation() {
-  setOperationMemory();
+/**
+ * Checks if a Test operation is currently active.
+ */
+export function isTestOperationActive() {
+  initOperations();
 
   if (Memory.operations.length === 0) {
     return false;
   }
 
-  for (const o of Memory.operations) {
-    if (o.active && o.type === OperationType.Test) {
+  for (const op of Memory.operations) {
+    if (op.active && op.type === OperationType.Test) {
       return true;
     }
   }
   return false;
 }
 
-export function createTestOperation(duration = 50) {
+/**
+ * Creates a Test operation for a specified amount of time.
+ * @param duration (optional) The amount of time the operation will be active.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function createTestOperation(duration = 50, print = true) {
   const op = new TestOperation.Data();
   op.type = OperationType.Test;
   op.victoryCondition = TestOperation.VictoryCondition.GameTime;
   op.victoryValue = Game.time + duration;
   addOperation(op);
-  info(`Starting Test operation for ${duration} ticks`);
+  return success(`Test operation started at ${Game.time} for ${duration} ticks.`, null, print);
 }

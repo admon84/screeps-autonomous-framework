@@ -12,7 +12,6 @@ import { RoomService } from 'services/room';
 export class TowerManager extends Manager {
   private roomService: RoomService;
 
-  /** @hidden */
   readonly MEMORY_LASTRUN = 'lastRun';
 
   constructor(roomService: RoomService) {

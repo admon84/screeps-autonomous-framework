@@ -1,10 +1,17 @@
+/**
+ * The order utility provides methods for managing orders to spawn creeps.
+ * @module
+ */
+
 import { Order } from 'classes/order';
 import { Role } from 'enums/role';
 import { error, info, verbose } from 'utils/log';
 import { getCostForBody } from 'utils/profile';
 
 /**
- * Insert a new creep order into the room orders queue
+ * Insert a new order into the orders queue for spawning a creep.
+ * @param room The `Room` that will spawn the creep.
+ * @param order The `Order` containing details about the creep.
  */
 export function orderCreep(room: Room, order: Order) {
   if (!room.getMySpawn()) {
@@ -41,7 +48,10 @@ export function orderCreep(room: Room, order: Order) {
 }
 
 /**
- * Get number of creep orders with same role and target, where either can be null to skip matching
+ * Get number of creep orders with same role and target, where either can be null to skip matching.
+ * @param room The `Room` used to find orders.
+ * @param role (optional) The `Role` to search for matching orders.
+ * @param target (optional) The target room name to search for matching orders.
  */
 export function getCreepsInQueue(room: Room, role: Role | null = null, target: string | null = null) {
   if (!room.memory.orders) {
@@ -58,7 +68,8 @@ export function getCreepsInQueue(room: Room, role: Role | null = null, target: s
 }
 
 /**
- * Clear orders queue for the specified room
+ * Clear orders queue for the specified room.
+ * @param room The `Room` used to clear orders.
  */
 export function clearOrders(room: Room) {
   room.memory.orders = [];
@@ -66,7 +77,8 @@ export function clearOrders(room: Room) {
 }
 
 /**
- * Create unique identifier
+ * Create unique identifier.
+ * @param prefix (optional) The string to prepend before the unique identifier.
  */
 export function getUniqueId(prefix = '_') {
   let id = prefix;

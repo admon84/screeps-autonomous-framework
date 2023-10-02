@@ -1,6 +1,7 @@
 import 'prototypes/creep';
 import 'prototypes/room';
 import 'types';
+import 'utils/commands';
 
 import { LogLevel } from 'enums/logLevel';
 import { Priority } from 'enums/priority';
@@ -22,7 +23,7 @@ import { alert, setLogLevel, warning } from 'utils/log';
 alert('✨=== Global Reset ===✨');
 
 /**
- * Screeps executes scripts using the main loop as the entry point.
+ * The main loop is the entry point for the bot.
  * @see https://docs.screeps.com/game-loop.html
  */
 export function loop() {
@@ -62,7 +63,7 @@ export function loop() {
 }
 
 /**
- * Initialize bot settings
+ * Initialize bot settings memory.
  */
 function initSettings() {
   if (!Memory.settings) {

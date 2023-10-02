@@ -8,7 +8,6 @@ import { Manager } from 'managers/manager';
  */
 
 export class MemoryManager extends Manager {
-  /** @hidden */
   readonly MEMORY_LASTRUN = 'lastRun';
 
   constructor() {

@@ -1,38 +1,97 @@
+/**
+ * The log utility provides colorful log message functionality.
+ * @module
+ */
+
 import { LogLevel } from 'enums/logLevel';
 
+/**
+ * Updates the log level setting of the bot.
+ * @param level The new log level for rendering log messages.
+ */
 export function setLogLevel(level: LogLevel) {
   Memory.settings.loglevel = level;
 }
 
-export function alert(message: string, roomName?: string) {
-  sendLog(LogLevel.Alert, '#ff00d8', message, roomName);
+/**
+ * Log an alert message to the console.
+ * @param message The message to log in the console.
+ * @param roomName (optional) The room to link in the console.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function alert(message: string, roomName?: string | null, print = true) {
+  return send(LogLevel.Alert, '#ff00d8', message, roomName, print);
 }
 
-export function success(message: string, roomName?: string) {
-  sendLog(LogLevel.Success, '#2e7d32', message, roomName);
+/**
+ * Log a success message to the console.
+ * @param message The message to log in the console.
+ * @param roomName (optional) The room to link in the console.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function success(message: string, roomName?: string | null, print = true) {
+  return send(LogLevel.Success, '#2e7d32', message, roomName, print);
 }
 
-export function error(message: string, roomName?: string) {
-  sendLog(LogLevel.Error, '#d32f2f', message, roomName);
+/**
+ * Log an error message to the console.
+ * @param message The message to log in the console.
+ * @param roomName (optional) The room to link in the console.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function error(message: string, roomName?: string | null, print = true) {
+  return send(LogLevel.Error, '#d32f2f', message, roomName, print);
 }
 
-export function warning(message: string, roomName?: string) {
-  sendLog(LogLevel.Warn, '#feda00', message, roomName);
+/**
+ * Log a warning message to the console.
+ * @param message The message to log in the console.
+ * @param roomName (optional) The room to link in the console.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function warning(message: string, roomName?: string | null, print = true) {
+  return send(LogLevel.Warn, '#feda00', message, roomName, print);
 }
 
-export function info(message: string, roomName?: string) {
-  sendLog(LogLevel.Info, '#efefef', message, roomName);
+/**
+ * Log a message to the console.
+ * @param message The message to log in the console.
+ * @param roomName (optional) The room to link in the console.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function info(message: string, roomName?: string | null, print = true) {
+  return send(LogLevel.Info, '#efefef', message, roomName, print);
 }
 
-export function debug(message: string, roomName?: string) {
-  sendLog(LogLevel.Debug, '#9a9a9a', message, roomName);
+/**
+ * Log a debug message to the console.
+ * @param message The message to log in the console.
+ * @param roomName (optional) The room to link in the console.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function debug(message: string, roomName?: string | null, print = true) {
+  return send(LogLevel.Debug, '#9a9a9a', message, roomName, print);
 }
 
-export function verbose(message: string, roomName?: string) {
-  sendLog(LogLevel.Verbose, '#6e6770', message, roomName);
+/**
+ * Log a verbose debug message to the console.
+ * @param message The message to log in the console.
+ * @param roomName (optional) The room to link in the console.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+export function verbose(message: string, roomName?: string | null, print = true) {
+  return send(LogLevel.Verbose, '#6e6770', message, roomName, print);
 }
 
-function sendLog(level: LogLevel, color: string, message: string, roomName?: string) {
+/**
+ * Outputs a colorful log message.
+ * @param level The level used to filter logs based on the log level setting.
+ * @param color The color of the message.
+ * @param message The log message.
+ * @param roomName (optional) The room to link.
+ * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
+ */
+function send(level: LogLevel, color: string, message: string, roomName?: string | null, print = true) {
   if (Memory.settings?.loglevel && Memory.settings.loglevel < level) {
     return;
   }
@@ -42,5 +101,8 @@ function sendLog(level: LogLevel, color: string, message: string, roomName?: str
     output += '<span style="color:#6e6770"> &rsaquo; </span>';
   }
   output += `<span style="color:${color}">${message}</span>`;
-  console.log(output);
+  if (print) {
+    return console.log(output);
+  }
+  return output;
 }

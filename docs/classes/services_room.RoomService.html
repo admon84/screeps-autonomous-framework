@@ -17,7 +17,7 @@
 <li><a href="services_room.RoomService.html">RoomService</a></li></ul>
 <h1>Class RoomService</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>A class to facilitate accessing owned rooms by type.</p>
+<div class="tsd-comment tsd-typography"><p>A class to facilitate accessing rooms in the colony.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -25,7 +25,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">RoomService</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/services/room.ts#L9">src/services/room.ts:9</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/services/room.ts#L11">src/services/room.ts:11</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -53,17 +53,17 @@
 <li class="tsd-description">
 <h4 class="tsd-returns-title">Returns <a href="services_room.RoomService.html" class="tsd-signature-type tsd-kind-class">RoomService</a></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/services/room.ts#L15">src/services/room.ts:15</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/services/room.ts#L17">src/services/room.ts:17</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member tsd-is-private"><a id="roomDictionary" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagPrivate">Private</code> <span>room<wbr/>Dictionary</span><a href="#roomDictionary" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">room<wbr/>Dictionary</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type ">RoomDictionary</span></div>
-<div class="tsd-comment tsd-typography"><p>An object containing all owned rooms indexed by type.</p>
+<div class="tsd-signature"><span class="tsd-kind-property">room<wbr/>Dictionary</span><span class="tsd-signature-symbol">:</span> <a href="../types/services_room._internal_.RoomDictionary.html" class="tsd-signature-type tsd-kind-type-alias">RoomDictionary</a></div>
+<div class="tsd-comment tsd-typography"><p>An object containing all rooms in the colony.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/services/room.ts#L13">src/services/room.ts:13</a></li></ul></aside></section></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/services/room.ts#L15">src/services/room.ts:15</a></li></ul></aside></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member"><a id="getNormalRooms" class="tsd-anchor"></a>
@@ -71,23 +71,23 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="getNormalRooms.getNormalRooms-1"><span class="tsd-kind-call-signature">get<wbr/>Normal<wbr/>Rooms</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">Room</span><span class="tsd-signature-symbol">[]</span><a href="#getNormalRooms.getNormalRooms-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Fetches all owned rooms with the Normal room type.</p>
+<div class="tsd-comment tsd-typography"><p>Fetches all rooms in the colony with the Normal room type.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">Room</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/services/room.ts#L22">src/services/room.ts:22</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/services/room.ts#L24">src/services/room.ts:24</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-protected"><a id="makeDictionary" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagProtected">Protected</code> <span>make<wbr/>Dictionary</span><a href="#makeDictionary" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-protected">
-<li class="tsd-signature tsd-anchor-link" id="makeDictionary.makeDictionary-1"><span class="tsd-kind-call-signature">make<wbr/>Dictionary</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type ">RoomDictionary</span><a href="#makeDictionary.makeDictionary-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="makeDictionary.makeDictionary-1"><span class="tsd-kind-call-signature">make<wbr/>Dictionary</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../types/services_room._internal_.RoomDictionary.html" class="tsd-signature-type tsd-kind-type-alias">RoomDictionary</a><a href="#makeDictionary.makeDictionary-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Creates an object of all owned rooms indexed by type using <code>Game.rooms</code>.</p>
+<div class="tsd-comment tsd-typography"><p>Creates an object of all rooms in the colony indexed by type using <code>Game.rooms</code>.</p>
 </div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type ">RoomDictionary</span></h4>
+<h4 class="tsd-returns-title">Returns <a href="../types/services_room._internal_.RoomDictionary.html" class="tsd-signature-type tsd-kind-type-alias">RoomDictionary</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/c250c68/src/services/room.ts#L33">src/services/room.ts:33</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/admon84/screeps-typescript-starter/blob/d1cfda5/src/services/room.ts#L35">src/services/room.ts:35</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -99,8 +99,7 @@
 <ul id="tsd-filter-options">
 <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Protected</span></label></li>
 <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Private</span></label></li>
-<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Inherited</span></label></li>
-<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>External</span></label></li></ul></form></div>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><use href="#icon-checkbox"></use></svg><span>Inherited</span></label></li></ul></form></div>
 <div class="tsd-theme-toggle">
 <h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
 <details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">

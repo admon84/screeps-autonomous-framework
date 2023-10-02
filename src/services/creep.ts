@@ -1,7 +1,9 @@
 import { Role } from 'enums/role';
 import { warning } from 'utils/log';
 
-// An object to organize creeps by role.
+/**
+ * An object to organize creeps by role.
+ */
 type CreepDictionary = { [role in Role]?: Creep[] };
 
 /**
@@ -9,7 +11,7 @@ type CreepDictionary = { [role in Role]?: Creep[] };
  */
 export class CreepService {
   /**
-   * An object containing all creeps indexed by role.
+   * An object containing all creeps in the colony.
    */
   private creepDictionary: CreepDictionary;
 

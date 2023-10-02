@@ -6,8 +6,16 @@ import { RoomType } from 'enums/roomType';
 import _ from 'lodash';
 
 declare global {
+  /**
+   * Imported Lodash types.
+   * @hidden
+   */
   const _: typeof _;
 
+  /**
+   * Global `Memory` object.
+   * @see https://docs.screeps.com/global-objects.html#Memory-object
+   */
   interface Memory {
     creeps: Record<string, CreepMemory>;
     flags: Record<string, FlagMemory>;

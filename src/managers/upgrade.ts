@@ -19,7 +19,6 @@ export class UpgradeManager extends Manager {
   private roomService: RoomService;
   private creepService: CreepService;
 
-  /** @hidden */
   readonly MEMORY_LASTRUN = 'lastRun';
 
   constructor(roomService: RoomService, creepService: CreepService) {
