@@ -96,7 +96,7 @@ function send(level: LogLevel, color: string, message: string, roomName?: string
     return;
   }
   let output = '';
-  if (roomName) {
+  if (roomName && roomName !== 'sim') {
     output += `<a href="#!/room/${Game.shard.name}/${roomName}">${roomName}</a>`;
     output += '<span style="color:#6e6770"> &rsaquo; </span>';
   }

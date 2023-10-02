@@ -93,7 +93,7 @@ function getUserNameOnSpawn() {
  */
 function getCpuLimit() {
   const { bucket, limit } = Game.cpu;
-  if (!limit) return 500; // Sim mode
+  if (!limit) return 500; // Simulation mode
   if (bucket > 9500) return limit * 1.6;
   if (bucket > 9000) return limit * 1.3;
   if (bucket > 8000) return limit * 1.1;
