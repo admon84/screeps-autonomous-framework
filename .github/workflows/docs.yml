@@ -37,7 +37,6 @@ jobs:
       - name: Build docs
         run: npm run build:docs
       - name: Upload artifact
-      - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./docs
