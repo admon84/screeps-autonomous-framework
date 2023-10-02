@@ -19,19 +19,19 @@ export abstract class Manager {
   public abstract run(pri: Priority): void;
 
   protected memoryCheck() {
-    if (!Memory.manager) {
-      Memory.manager = {};
+    if (!Memory.managers) {
+      Memory.managers = {};
     }
-    if (!Memory.manager[this.name]) {
-      Memory.manager[this.name] = {};
+    if (!Memory.managers[this.name]) {
+      Memory.managers[this.name] = {};
     }
   }
 
   protected getValue(name: string) {
-    return Memory.manager[this.name][name];
+    return Memory.managers[this.name][name];
   }
 
   protected setValue(name: string, value: number) {
-    Memory.manager[this.name][name] = value;
+    Memory.managers[this.name][name] = value;
   }
 }

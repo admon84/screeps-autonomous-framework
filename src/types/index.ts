@@ -19,11 +19,11 @@ declare global {
   interface Memory {
     creeps: Record<string, CreepMemory>;
     flags: Record<string, FlagMemory>;
-    manager: Record<string, ManagerData>;
+    managers: Record<string, ManagerMemory>;
     operations: OperationData[];
     powerCreeps: Record<string, PowerCreepMemory>;
     rooms: Record<string, RoomMemory>;
-    settings: Partial<SettingsData>;
+    settings: Partial<SettingsMemory>;
     spawns: Record<string, SpawnMemory>;
   }
 
@@ -48,10 +48,10 @@ declare global {
     t?: RoomType;
   }
 
-  interface SettingsData {
+  interface SettingsMemory {
     user: string;
     loglevel: LogLevel;
   }
 
-  type ManagerData = Record<string, number>;
+  type ManagerMemory = Record<string, number>;
 }

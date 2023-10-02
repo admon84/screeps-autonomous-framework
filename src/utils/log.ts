@@ -20,7 +20,7 @@ export function setLogLevel(level: LogLevel) {
  * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
  */
 export function alert(message: string, roomName?: string | null, print = true) {
-  return send(LogLevel.Alert, '#ff00d8', message, roomName, print);
+  return send(LogLevel.Alert, '#ff1493', message, roomName, print);
 }
 
 /**
@@ -30,7 +30,7 @@ export function alert(message: string, roomName?: string | null, print = true) {
  * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
  */
 export function success(message: string, roomName?: string | null, print = true) {
-  return send(LogLevel.Success, '#2e7d32', message, roomName, print);
+  return send(LogLevel.Success, '#32cd32', message, roomName, print);
 }
 
 /**
@@ -40,7 +40,7 @@ export function success(message: string, roomName?: string | null, print = true)
  * @param print (optional) Print using `console.log()` if true, otherwise returns the colorful log message.
  */
 export function error(message: string, roomName?: string | null, print = true) {
-  return send(LogLevel.Error, '#d32f2f', message, roomName, print);
+  return send(LogLevel.Error, '#ff2222', message, roomName, print);
 }
 
 /**
