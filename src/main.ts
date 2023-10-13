@@ -14,6 +14,7 @@ import { TowerManager } from 'managers/tower';
 import { UpgradeManager } from 'managers/upgrade';
 import { CreepService } from 'services/creep';
 import { RoomService } from 'services/room';
+import { ErrorMapper } from 'utils/errorMapper';
 import { alert, setLogLevel, warning } from 'utils/log';
 
 /**
@@ -26,7 +27,7 @@ alert('✨=== Global Reset ===✨');
  * The main loop is the entry point for the bot.
  * @see https://docs.screeps.com/game-loop.html
  */
-export function loop() {
+export const loop = ErrorMapper.wrapLoop(() => {
   initSettings();
 
   const creepService = new CreepService();
@@ -60,7 +61,7 @@ export function loop() {
   }
 
   new SpawnManager(roomService).run();
-}
+});
 
 /**
  * Initialize bot settings memory.
