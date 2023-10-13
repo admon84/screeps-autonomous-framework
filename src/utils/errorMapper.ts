@@ -6,11 +6,10 @@ export class ErrorMapper {
   private static _consumer?: SourceMapConsumer;
 
   public static get consumer(): SourceMapConsumer {
-    if (this._consumer == null) {
+    if (!this._consumer) {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       this._consumer = new SourceMapConsumer(require('main.js.map'));
     }
-
     return this._consumer;
   }
 
@@ -46,14 +45,14 @@ export class ErrorMapper {
 
         if (pos.line != null) {
           if (pos.name) {
-            outStack += `\n    at ${pos.name} (${pos.source}:${pos.line}:${pos.column})`;
+            outStack += `\n  at ${pos.name} (${pos.source}:${pos.line}:${pos.column})`;
           } else {
             if (match[1]) {
               // no original source file name known - use file name from given trace
-              outStack += `\n    at ${match[1]} (${pos.source}:${pos.line}:${pos.column})`;
+              outStack += `\n  at ${match[1]} (${pos.source}:${pos.line}:${pos.column})`;
             } else {
               // no original source file name known or in given trace - omit name
-              outStack += `\n    at ${pos.source}:${pos.line}:${pos.column}`;
+              outStack += `\n  at ${pos.source}:${pos.line}:${pos.column}`;
             }
           }
         } else {
@@ -76,16 +75,17 @@ export class ErrorMapper {
         loop();
       } catch (e) {
         if (e instanceof Error) {
-          if ('sim' in Game.rooms) {
-            // Source maps don't work in the simulator - displaying original error
-            log.error(`${_.escape(e.stack)}`);
+          if ('sim' in Game.rooms || Game.cpu.bucket < Game.cpu.tickLimit) {
+            // Display original error in simulator or when bucket is very low
+            log.error(_.escape(e.stack));
           } else {
             log.error(_.escape(this.sourceMappedStackTrace(e)));
           }
-        } else {
-          // can't handle it
-          throw e;
+          return;
         }
+
+        // can't handle it
+        throw e;
       }
     };
   }

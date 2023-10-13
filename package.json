@@ -37,7 +37,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
-    "rollup": "2.x",
+    "rollup": "~2.79.1",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-screeps-world": "^1.0.4",
     "rollup-plugin-typescript2": "^0.36.0",

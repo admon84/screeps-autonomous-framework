@@ -1,9 +1,11 @@
+// eslint-disable-next-line import/no-unresolved
+import _ from 'lodash';
+
 import { Order } from 'classes/order';
 import { LogLevel } from 'enums/logLevel';
 import { OperationType } from 'enums/operationType';
 import { Role } from 'enums/role';
 import { RoomType } from 'enums/roomType';
-import _ from 'lodash';
 
 declare global {
   /**
