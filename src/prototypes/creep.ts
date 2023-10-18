@@ -30,7 +30,10 @@ Creep.prototype.hadState = function (state) {
 };
 
 Creep.prototype.hasState = function (state) {
-  return this.memory.state !== state;
+  if (state === undefined) {
+    return this.memory.state !== state;
+  }
+  return this.memory.state === state;
 };
 
 Creep.prototype.setState = function (state) {

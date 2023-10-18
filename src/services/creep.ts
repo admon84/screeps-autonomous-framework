@@ -27,7 +27,18 @@ export class CreepService {
     if (!creep.memory.homeroom) {
       creep.memory.homeroom = creep.room.name;
     }
-    return !creep.spawning;
+
+    // Wait to run when creep is spawning
+    if (creep.spawning) {
+      return false;
+    }
+
+    // Add current state to creep._stateEvents
+    if (creep.memory.state) {
+      creep.setState(creep.memory.state);
+    }
+
+    return true;
   }
 
   /**
