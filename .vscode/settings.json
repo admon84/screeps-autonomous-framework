@@ -1,9 +1,5 @@
 {
   "editor.tabSize": 2,
-  "workbench.colorCustomizations": {
-    "editorInlayHint.foreground": "#8a888f",
-    "editorInlayHint.background": "#00000000"
-  },
   "files.encoding": "utf8",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
