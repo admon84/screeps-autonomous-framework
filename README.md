@@ -3,22 +3,20 @@
 
 ## Screeps Autonomous Framework
 
-Welcome to the Screeps Autonomous Framework project. This framework is intended for those who are seeking to develop a bot for Screeps — a strategy game for programmers. This isn't a ready-to-deploy bot filled with advanced features, but rather, it's a structured starting point, offering clean and clear design patterns to build upon.
+Welcome to the Screeps Autonomous Framework. This framework is a structured starting point for developing your own bot for Screeps World, a strategy game for programmers.
 
 ### **Key Features**
 
-- **Solid Foundation:** Provides a well-organized base, allowing you to solely focus on building and innovating.
-- **Developer Friendly:** The framework's design patterns are thoughtful and clear, making bot development more straightforward and less error-prone.
-- **Educational:** Regardless of your experience level with Screeps, this framework serves as a learning tool to understand the principles of autonomous bot creation effectively.
-- **Flexible & Customizable:** Designed to be adaptable, it allows for extensive enhancements and modifications to fit your specific requirements and goals.
+- **Solid Foundation:** A well-organized base for you to focus on innovation.
+- **Developer Friendly:** Clear and thoughtful design patterns for straightforward and error-free development.
+- **Educational:** A learning tool for understanding autonomous bot creation, regardless of your Screeps experience level.
+- **Flexible & Customizable:** Adaptable design allowing for extensive customization to meet your specific needs.
 
 ## **Get Started**
 
-The Screeps Autonomous Framework is here to aid you in developing a bot that meets your exact needs. Utilize this framework as your starting point and customize it to create a bot with advanced capabilities tailored to your goals.
+Leverage the Screeps Autonomous Framework as your launchpad for bot development. Customize it to create an advanced bot that aligns with your objectives.
 
 ### **Requirements**
-
-Before diving in, ensure you have the following installed:
 
 - [Node.js](https://nodejs.org/en/download) (LTS recommended)
 
@@ -26,7 +24,7 @@ Before diving in, ensure you have the following installed:
 
 1. Clone the source code or download and extract it to your preferred directory.
 2. Navigate to the project folder using your terminal.
-3. Run `npm install` or `yarn` to install the necessary packages and TypeScript declaration files.
+3. Run `npm i` or `yarn` to install the dependencies.
 
 ### **Rollup and Code Upload**
 
