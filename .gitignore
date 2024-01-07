@@ -1,27 +1,10 @@
-# lock files
-package-lock.json
-yarn.lock
-
-# folders
-.rpt2_cache/
-build/
-docs/
-dist/
-node_modules/
-tsc-out/
-
-# screeps config
+# screeps server config
 screeps.json
 
-# always-ignore extensions
-*.diff
-*.lnk
-*.log
-*.rej
-*.swp
-*.zip
+# folders
+dist/
+node_modules/
 
 # system generated
 .DS_Store
-Desktop.ini
 Thumbs.db
