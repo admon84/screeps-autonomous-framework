@@ -4,21 +4,14 @@
     "lib": ["es2018"],
     "target": "es2018",
     "moduleResolution": "node10",
-    "outDir": "dist",
-    "baseUrl": "src/",
+    "outDir": "./dist/",
+    "baseUrl": "./src/",
     "sourceMap": true,
     "strict": true,
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types"]
   },
-  "exclude": ["node_modules"],
-  "include": ["src/**/*"],
-  "typedocOptions": {
-    "entryPointStrategy": "expand",
-    "entryPoints": ["src/"],
-    "excludeExternals": true,
-    "plugin": ["typedoc-plugin-missing-exports"],
-    "out": "docs"
-  }
+  "include": ["./src/"],
+  "exclude": ["node_modules"]
 }

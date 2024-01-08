@@ -9,8 +9,7 @@ import { RoomType } from 'enums/roomType';
 
 declare global {
   /**
-   * Imported Lodash types.
-   * @hidden
+   * Lodash types.
    */
   const _: typeof _;
 

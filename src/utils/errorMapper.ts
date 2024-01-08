@@ -1,6 +1,23 @@
 import { SourceMapConsumer } from 'source-map';
 import * as log from './log';
 
+/**
+ * Set to `true` to enable error mapping.
+ */
+export const USE_ERROR_MAPPER = true;
+
+/**
+ * ErrorMapper
+ *
+ * This error mapper is designed to wrap the main `loop` function in a try/catch block
+ * and provide stack traces which are mapped to your source code via source maps.
+ *
+ * This allows you to see the original source code when an error occurs, rather than
+ * the compiled code, making debugging much nicer.
+ *
+ * This does however come with a CPU cost, especially on the first call after a reset,
+ * so you can disable this feature by setting `USE_ERROR_MAPPER` to `false` if needed.
+ */
 export class ErrorMapper {
   // Cache consumer
   private static _consumer?: SourceMapConsumer;

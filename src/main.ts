@@ -14,7 +14,7 @@ import { TowerManager } from 'managers/tower';
 import { UpgradeManager } from 'managers/upgrade';
 import { CreepService } from 'services/creep';
 import { RoomService } from 'services/room';
-import { ErrorMapper } from 'utils/errorMapper';
+import { ErrorMapper, USE_ERROR_MAPPER } from 'utils/errorMapper';
 import { alert, setLogLevel, warning } from 'utils/log';
 
 /**
@@ -24,17 +24,22 @@ import { alert, setLogLevel, warning } from 'utils/log';
 alert('✨=== Global Reset ===✨');
 
 /**
+ * Wrap the main loop with the error mapper if enabled.
+ */
+const loopWrapper = USE_ERROR_MAPPER ? ErrorMapper.wrapLoop.bind(ErrorMapper) : (f: () => void) => f();
+
+/**
  * The main loop is the entry point for the bot.
  * @see https://docs.screeps.com/game-loop.html
  */
-export const loop = ErrorMapper.wrapLoop(() => {
+export const loop = loopWrapper(() => {
   initSettings();
 
   const creepService = new CreepService();
   const roomService = new RoomService();
-
   const cpuLimit = getCpuLimit();
-  const managerList = [
+
+  const taskManagers = [
     new MemoryManager(),
     new TowerManager(roomService),
     new HarvestManager(roomService, creepService),
@@ -45,7 +50,7 @@ export const loop = ErrorMapper.wrapLoop(() => {
 
   const priorityList = [Priority.Critical, Priority.Important, Priority.Standard, Priority.Low, Priority.Trivial];
   for (const priority of priorityList) {
-    for (const manager of managerList) {
+    for (const manager of taskManagers) {
       if (priority === Priority.Critical || Game.cpu.getUsed() < cpuLimit) {
         manager.run(priority);
       }
@@ -53,7 +58,7 @@ export const loop = ErrorMapper.wrapLoop(() => {
   }
 
   if (Game.cpu.bucket > 9500) {
-    for (const manager of managerList) {
+    for (const manager of taskManagers) {
       if (Game.cpu.getUsed() < cpuLimit) {
         manager.run(Priority.Overflow);
       }
@@ -64,7 +69,7 @@ export const loop = ErrorMapper.wrapLoop(() => {
 });
 
 /**
- * Initialize bot settings memory.
+ * Initialize bot settings in memory.
  */
 function initSettings() {
   if (!Memory.settings) {
@@ -94,14 +99,16 @@ function getUserNameOnSpawn() {
  */
 function getCpuLimit() {
   const { bucket, limit } = Game.cpu;
-  if (!limit) return 500; // Simulation mode
-  if (bucket > 9500) return limit * 1.6;
-  if (bucket > 9000) return limit * 1.3;
-  if (bucket > 8000) return limit * 1.1;
-  if (bucket > 5000) return limit;
-  if (bucket > 4000) return limit * 0.9;
-  if (bucket > 3000) return limit * 0.8;
-  if (bucket > 2000) return limit * 0.7;
-  if (bucket > 1000) return limit * 0.6;
+  if (!limit) return 500; // Sim room
+
+  const multipliers = [1.5, 1.3, 1.1, 1, 0.9, 0.8, 0.7, 0.6, 0.5];
+  const thresholds = [9500, 9000, 8000, 5000, 4000, 3000, 2000, 1000];
+
+  for (let i = 0; i < thresholds.length; i++) {
+    if (bucket > thresholds[i]) {
+      return limit * multipliers[i];
+    }
+  }
+
   return limit * 0.5;
 }
