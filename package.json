@@ -2,9 +2,11 @@
   "name": "screeps-autonomous-framework",
   "version": "1.0.0",
   "description": "Screeps World Autonomous Bot Framework Base",
+  "author": "admon84",
   "homepage": "https://admon84.github.io/screeps-autonomous-framework/",
   "repository": "github:admon84/screeps-autonomous-framework",
   "bugs": "https://github.com/admon84/screeps-autonomous-framework/issues",
+  "license": "Unlicense",
   "main": "src/main.ts",
   "scripts": {
     "lint": "eslint src --ext .ts",
@@ -14,12 +16,9 @@
     "push-main": "rollup -c --environment DEST:main",
     "push-season": "rollup -c --environment DEST:season",
     "push-pserver": "rollup -c --environment DEST:pserver",
-    "push-screeps": "rollup -c --environment DEST:screeps",
     "push-sim": "rollup -c --environment DEST:sim",
     "watch-sim": "rollup -cw --environment DEST:sim"
   },
-  "author": "admon84",
-  "license": "Unlicense",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
