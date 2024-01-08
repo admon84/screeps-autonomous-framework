@@ -1,40 +1,34 @@
-[![repo](https://custom-icon-badges.demolab.com/badge/repo-dodgerblue.svg?logo=repo)](https://github.com/admon84/screeps-autonomous-framework)
-[![docs](https://custom-icon-badges.demolab.com/badge/docs-seagreen.svg?logo=book)](https://admon84.github.io/screeps-autonomous-framework/)
-
 ## Screeps Autonomous Framework
 
-Welcome to the Screeps Autonomous Framework. This framework is a structured starting point for developing your own bot for Screeps World, a strategy game for programmers.
+Screeps Autonomous Framework is a starter kit for developing your own Screeps bot with TypeScript.
 
-### **Key Features**
+Begin your Screeps bot development journey with this minimal, well-structured framework, offering a solid foundation for you to innovate and implement your unique strategies.
 
-- **Solid Foundation:** A well-organized base for you to focus on innovation.
-- **Developer Friendly:** Clear and thoughtful design patterns for straightforward and error-free development.
-- **Educational:** A learning tool for understanding autonomous bot creation, regardless of your Screeps experience level.
-- **Flexible & Customizable:** Adaptable design allowing for extensive customization to meet your specific needs.
+## Get Started
 
-## **Get Started**
+### Prerequisites
 
-Leverage the Screeps Autonomous Framework as your launchpad for bot development. Customize it to create an advanced bot that aligns with your objectives.
+Make sure you have [Node.js](https://nodejs.org/en/download) (LTS) installed on your system.
 
-### **Requirements**
+### Install
 
-- [Node.js](https://nodejs.org/en/download) (LTS recommended)
+1. Clone the source code or download and extract it.
+2. Navigate to the project folder in your terminal.
+3. Run `npm install` to install dependencies.
 
-### **Installation**
+### Compile and Upload
 
-1. Clone the source code or download and extract it to your preferred directory.
-2. Navigate to the project folder using your terminal.
-3. Run `npm i` or `yarn` to install the dependencies.
+Use the NPM scripts as aliases for Rollup commands to simplify the build and upload process.
 
-### **Rollup and Code Upload**
+1. Configure your Screeps server destinations.
+   - Rename `screeps.sample.json` to `screeps.json`.
+   - Update `screeps.json` with your Screeps credentials.
+2. Use the NPM scripts in `package.json` as aliases for Rollup commands.
+   - `npm run build` will compile but not upload.
+   - `npm run push-main` will compile and upload to the "main" destination in `screeps.json`.
 
-The Screeps Autonomous Framework employs Rollup for compiling your TypeScript code and uploading it to a Screeps server.
+**Note:** For uploading code to a private server, you must create your username and password on the server with the help of [screepsmod-auth](https://github.com/ScreepsMods/screepsmod-auth).
 
-1. Rename `screeps.sample.json` to `screeps.json` and update it with your Screeps credentials. Modify the destinations as needed to suit your requirements.
-2. Utilize the NPM scripts in `package.json` as aliases for Rollup commands; for instance, `npm run push-main` will build and upload using the "main" destination in your `screeps.json` file.
+## Kudos
 
-**Note:** For uploading code to a private server, [screepsmod-auth](https://github.com/ScreepsMods/screepsmod-auth) must be installed and configured properly.
-
-## **Acknowledgments**
-
-Special thanks to Kasami for inspiring this project and openly sharing his innovative work on KasamiBot!
+Special thanks to @kasami for inspiring this project with the original KasamiBot.
