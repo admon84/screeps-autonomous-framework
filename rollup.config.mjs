@@ -5,7 +5,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import fs from 'fs';
 import del from 'rollup-plugin-delete';
 import screeps from 'rollup-plugin-screeps-world';
-import typescript from 'rollup-plugin-typescript2';
+import swc from 'rollup-plugin-swc3';
 
 let config;
 const { DEST } = process.env;
@@ -26,7 +26,15 @@ export default {
     del({ targets: 'dist/*' }),
     resolve({ rootDir: 'src' }),
     commonjs(),
-    typescript({ tsconfig: './tsconfig.json' }),
+    swc({
+      sourceMaps: true,
+      jsc: {
+        baseUrl: 'src',
+        paths: {
+          '*': ['*']
+        }
+      }
+    }),
     screeps({ config, dryRun: !config })
   ]
 };
