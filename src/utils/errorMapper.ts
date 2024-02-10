@@ -21,6 +21,8 @@ export const USE_ERROR_MAPPER = true;
 export class ErrorMapper {
   // Cache consumer
   private static _consumer?: SourceMapConsumer;
+  private static _regexPrefix = /^\.\.\//;
+  private static _regexSearch = /^\s+at\s+(.+?\s+)?\(?([0-z._\-\\/]+):(\d+):(\d+)\)?$/gm;
 
   public static get consumer(): SourceMapConsumer {
     if (!this._consumer) {
@@ -48,12 +50,10 @@ export class ErrorMapper {
       return this.cache[stack];
     }
 
-    // eslint-disable-next-line no-useless-escape
-    const re = /^\s+at\s+(.+?\s+)?\(?([0-z._\-\\\/]+):(\d+):(\d+)\)?$/gm;
     let match: RegExpExecArray | null;
     let outStack = error.toString();
 
-    while ((match = re.exec(stack))) {
+    while ((match = this._regexSearch.exec(stack))) {
       if (match[2] === 'main') {
         const pos = this.consumer.originalPositionFor({
           column: parseInt(match[4], 10),
@@ -61,15 +61,16 @@ export class ErrorMapper {
         });
 
         if (pos.line != null) {
+          const file = pos.source.replace(this._regexPrefix, '');
           if (pos.name) {
-            outStack += `\n  at ${pos.name} (${pos.source}:${pos.line}:${pos.column})`;
+            outStack += `\n    at ${pos.name} (${file}:${pos.line}:${pos.column})`;
           } else {
             if (match[1]) {
               // no original source file name known - use file name from given trace
-              outStack += `\n  at ${match[1]} (${pos.source}:${pos.line}:${pos.column})`;
+              outStack += `\n    at ${match[1]} (${file}:${pos.line}:${pos.column})`;
             } else {
               // no original source file name known or in given trace - omit name
-              outStack += `\n  at ${pos.source}:${pos.line}:${pos.column}`;
+              outStack += `\n    at ${file}:${pos.line}:${pos.column}`;
             }
           }
         } else {
