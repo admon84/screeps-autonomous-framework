@@ -17,8 +17,7 @@ if (!DEST) {
   throw new Error(`Upload destination "${DEST}" not found in screeps.json`);
 }
 
-const rootDir = 'src';
-const baseUrl = path.resolve(path.dirname(fileURLToPath(import.meta.url)), rootDir);
+const baseUrl = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src');
 
 export default {
   input: 'src/main.ts',
@@ -29,7 +28,7 @@ export default {
   },
   plugins: [
     del({ targets: 'dist/*' }),
-    resolve({ rootDir }),
+    resolve({ rootDir: 'src' }),
     commonjs(),
     swc({
       sourceMaps: true,
