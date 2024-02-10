@@ -3,9 +3,11 @@
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import fs from 'fs';
+import path from 'path';
 import del from 'rollup-plugin-delete';
 import screeps from 'rollup-plugin-screeps-world';
-import typescript from 'rollup-plugin-typescript2';
+import swc from 'rollup-plugin-swc3';
+import { fileURLToPath } from 'url';
 
 let config;
 const { DEST } = process.env;
@@ -14,6 +16,8 @@ if (!DEST) {
 } else if (!(config = JSON.parse(fs.readFileSync('./screeps.json'))[DEST])) {
   throw new Error(`Upload destination "${DEST}" not found in screeps.json`);
 }
+
+const baseUrl = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src');
 
 export default {
   input: 'src/main.ts',
@@ -26,7 +30,12 @@ export default {
     del({ targets: 'dist/*' }),
     resolve({ rootDir: 'src' }),
     commonjs(),
-    typescript({ tsconfig: './tsconfig.json' }),
+    swc({
+      sourceMaps: true,
+      jsc: {
+        baseUrl
+      }
+    }),
     screeps({ config, dryRun: !config })
   ]
 };
