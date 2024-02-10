@@ -21,14 +21,12 @@ declare global {
 /**
  * Return log messages to the console instead of calling `console.log()`.
  */
-const print = false;
-
 global.addTestOperation = (duration = 50) => {
   if (duration < 10) {
-    return error('Test operation duration must be at least 10 ticks.', null, print);
+    return error('Test operation duration must be at least 10 ticks.', null, false);
   }
   if (isTestOperationActive()) {
-    return error('Test operation is already active.', null, print);
+    return error('Test operation is already active.', null, false);
   }
-  return createTestOperation(duration, print);
+  return createTestOperation(duration, false);
 };
