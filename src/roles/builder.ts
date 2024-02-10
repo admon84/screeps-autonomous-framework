@@ -24,7 +24,7 @@ export function run(creep: Creep) {
       break;
     default:
       logUnknownState(creep);
-      creep.setState(State.HarvestEnergy);
+      creep.setStateAndRun(State.HarvestEnergy, runHarvestEnergy);
       break;
   }
 }
@@ -32,8 +32,7 @@ export function run(creep: Creep) {
 function runHarvestEnergy(creep: Creep) {
   if (creep.isFull) {
     creep.say('🔨Build');
-    creep.setState(State.BuildConstruction);
-    runBuildConstruction(creep);
+    creep.setStateAndRun(State.BuildConstruction, runBuildConstruction);
     return;
   }
 
@@ -48,8 +47,7 @@ function runHarvestEnergy(creep: Creep) {
 function runBuildConstruction(creep: Creep) {
   if (!creep.store[RESOURCE_ENERGY]) {
     creep.say('⚡Harvest');
-    creep.setState(State.HarvestEnergy);
-    runHarvestEnergy(creep);
+    creep.setStateAndRun(State.HarvestEnergy, runHarvestEnergy);
     return;
   }
 
