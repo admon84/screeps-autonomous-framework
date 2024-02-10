@@ -10,6 +10,8 @@ declare global {
     hasState(state?: number): boolean;
     /** Changes the current state (task) for a creep. */
     setState(state: number): void;
+    /** Changes the current state (task) for a creep and executes the runFunction. */
+    setStateAndRun(state: number, runFunction: (...args: any[]) => void, ...args: any[]): void;
 
     /** @private */
     _states?: number[];
@@ -42,4 +44,12 @@ Creep.prototype.setState = function (state) {
   }
   this._states.push(state);
   this.memory.state = state;
+};
+
+Creep.prototype.setStateAndRun = function (state, runFunction, ...args) {
+  const canRunFunction = !this.hadState(state);
+  this.setState(state);
+  if (canRunFunction) {
+    runFunction(this, args);
+  }
 };
