@@ -14,5 +14,10 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.workingDirectories": [{ "mode": "location" }]
+  "eslint.workingDirectories": [
+    {
+      "mode": "location"
+    }
+  ],
+  "CodeGPT.apiKey": "Ollama"
 }

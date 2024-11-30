@@ -10,6 +10,7 @@ import { HarvestManager } from 'managers/harvest';
 import { MemoryManager } from 'managers/memory';
 import { OperationManager } from 'managers/operation';
 import { SpawnManager } from 'managers/spawn';
+import { TransportManager } from 'managers/transport';
 import { TowerManager } from 'managers/tower';
 import { UpgradeManager } from 'managers/upgrade';
 import { CreepService } from 'services/creep';
@@ -19,7 +20,7 @@ import { alert, setLogLevel, warning } from 'utils/log';
 
 /**
  * Display an alert when global resets.
- * @see https://wiki.screepspl.us/index.php/Global_reset
+ * @see https://wiki.screepspl.us/ind……ex.php/Global_reset
  */
 alert('✨=== Global Reset ===✨');
 
@@ -33,55 +34,56 @@ const loopWrapper = USE_ERROR_MAPPER ? ErrorMapper.wrapLoop.bind(ErrorMapper) : 
  * @see https://docs.screeps.com/game-loop.html
  */
 export const loop = loopWrapper(() => {
-  initSettings();
+	initSettings();
 
-  const creepService = new CreepService();
-  const roomService = new RoomService();
-  const cpuLimit = getCpuLimit();
+	const creepService = new CreepService();
+	const roomService = new RoomService();
+	const cpuLimit = getCpuLimit();
 
-  const taskManagers = [
-    new MemoryManager(),
-    new TowerManager(roomService),
-    new HarvestManager(roomService, creepService),
-    new UpgradeManager(roomService, creepService),
-    new BuildManager(roomService, creepService),
-    new OperationManager(roomService, creepService)
-  ];
+	const taskManagers = [
+		new MemoryManager(),
+		new TowerManager(roomService),
+		new HarvestManager(roomService, creepService),
+		new UpgradeManager(roomService, creepService),
+		new BuildManager(roomService, creepService),
+		new OperationManager(roomService, creepService),
+		new TransportManager(roomService, creepService)
+	];
 
-  const priorityList = [Priority.Critical, Priority.Important, Priority.Standard, Priority.Low, Priority.Trivial];
-  for (const priority of priorityList) {
-    for (const manager of taskManagers) {
-      if (priority === Priority.Critical || Game.cpu.getUsed() < cpuLimit) {
-        manager.run(priority);
-      }
-    }
-  }
+	const priorityList = [Priority.Critical, Priority.Important, Priority.Standard, Priority.Low, Priority.Trivial];
+	for (const priority of priorityList) {
+		for (const manager of taskManagers) {
+			if (priority === Priority.Critical || Game.cpu.getUsed() < cpuLimit) {
+				manager.run(priority);
+			}
+		}
+	}
 
-  if (Game.cpu.bucket > 9500) {
-    for (const manager of taskManagers) {
-      if (Game.cpu.getUsed() < cpuLimit) {
-        manager.run(Priority.Overflow);
-      }
-    }
-  }
+	if (Game.cpu.bucket > 9500) {
+		for (const manager of taskManagers) {
+			if (Game.cpu.getUsed() < cpuLimit) {
+				manager.run(Priority.Overflow);
+			}
+		}
+	}
 
-  new SpawnManager(roomService).run();
+	new SpawnManager(roomService).run();
 });
 
 /**
  * Initialize bot settings in memory.
  */
 function initSettings() {
-  if (!Memory.settings) {
-    warning('💎=== Script Loaded ===💎');
-    Memory.settings = {};
-  }
-  if (!Memory.settings.loglevel) {
-    setLogLevel(LogLevel.Verbose);
-  }
-  if (!Memory.settings.user) {
-    Memory.settings.user = getUserNameOnSpawn();
-  }
+	if (!Memory.settings) {
+		warning('💎=== Script Loaded ===💎');
+		Memory.settings = {};
+	}
+	if (!Memory.settings.loglevel) {
+		setLogLevel(LogLevel.Verbose);
+	}
+	if (!Memory.settings.user) {
+		Memory.settings.user = getUserNameOnSpawn();
+	}
 }
 
 /**
@@ -89,8 +91,8 @@ function initSettings() {
  * @returns Owner of the first spawn structure.
  */
 function getUserNameOnSpawn() {
-  const spawns = Object.values(Game.spawns);
-  return spawns[0]?.owner.username;
+	const spawns = Object.values(Game.spawns);
+	return spawns[0]?.owner.username;
 }
 
 /**
@@ -98,17 +100,17 @@ function getUserNameOnSpawn() {
  * @returns CPU limit for this tick.
  */
 function getCpuLimit() {
-  const { bucket, limit } = Game.cpu;
-  if (!limit) return 500; // Sim room
+	const { bucket, limit } = Game.cpu;
+	if (!limit) return 500; // Sim room
 
-  const multipliers = [1.5, 1.3, 1.1, 1, 0.9, 0.8, 0.7, 0.6, 0.5];
-  const thresholds = [9500, 9000, 8000, 5000, 4000, 3000, 2000, 1000];
+	const multipliers = [1.5, 1.3, 1.1, 1, 0.9, 0.8, 0.7, 0.6, 0.5];
+	const thresholds = [9500, 9000, 8000, 5000, 4000, 3000, 2000, 1000];
 
-  for (let i = 0; i < thresholds.length; i++) {
-    if (bucket > thresholds[i]) {
-      return limit * multipliers[i];
-    }
-  }
+	for (let i = 0; i < thresholds.length; i++) {
+		if (bucket > thresholds[i]) {
+			return limit * multipliers[i];
+		}
+	}
 
-  return limit * 0.5;
+	return limit * 0.5;
 }

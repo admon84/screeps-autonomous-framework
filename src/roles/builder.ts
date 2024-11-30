@@ -7,7 +7,8 @@ import { logUnknownState } from 'utils/creep';
 
 enum State {
 	HarvestEnergy = 1,
-	BuildConstruction = 2
+	BuildConstruction = 2,
+	UpgradeController = 3
 }
 
 export function run(creep: Creep) {
@@ -21,6 +22,9 @@ export function run(creep: Creep) {
 			break;
 		case State.BuildConstruction:
 			runBuildConstruction(creep);
+			break;
+		case State.UpgradeController:
+			runUpgradeController(creep);
 			break;
 		default:
 			logUnknownState(creep);
@@ -55,6 +59,23 @@ function runBuildConstruction(creep: Creep) {
 	if (constructionSite) {
 		if (creep.build(constructionSite) === ERR_NOT_IN_RANGE) {
 			creep.moveTo(constructionSite, { visualizePathStyle: { stroke: '#ffffff' } });
+		}
+		return;
+	}
+	creep.setStateAndRun(State.UpgradeController, runUpgradeController);
+}
+
+function runUpgradeController(creep: Creep) {
+	if (!creep.store[RESOURCE_ENERGY]) {
+		creep.say('⚡Harvest');
+		creep.setStateAndRun(State.HarvestEnergy, runHarvestEnergy);
+		return;
+	}
+
+	const { controller } = creep.room;
+	if (controller) {
+		if (creep.upgradeController(controller) === ERR_NOT_IN_RANGE) {
+			creep.moveTo(controller, { visualizePathStyle: { stroke: '#ffffff' } });
 		}
 	}
 }
