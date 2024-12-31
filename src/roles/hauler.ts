@@ -6,7 +6,8 @@
 import { logUnknownState } from 'utils/creep';
 
 enum State {
-	TransferEnergy = 1
+	TransferEnergy = 1,
+	HarvestEnergy = 2
 }
 
 export function run(creep: Creep) {
@@ -49,6 +50,9 @@ function runTransferEnergy(creep: Creep) {
 	const targets = creep.room.find(FIND_MY_STRUCTURES, {
 		filter: (structure) => (structure.structureType === STRUCTURE_EXTENSION || structure.structureType === STRUCTURE_SPAWN),
 	});
+	if (containers.length === 0) {
+
+	};
 	for (const container of containers) {
 
 		if (creep.withdraw(container, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
@@ -65,21 +69,8 @@ function runTransferEnergy(creep: Creep) {
 			}
 			return;
 		}
-	} // creep's not full and no more to pickup, so drop off anyway
-	creep.say('💫Transfer');
-	const targetStructure = creep.room.find(FIND_STRUCTURES, {
-		filter: structure =>
-			(structure.structureType === STRUCTURE_EXTENSION ||
-				structure.structureType === STRUCTURE_SPAWN ||
-				structure.structureType === STRUCTURE_TOWER) &&
-			structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0
-	})?.[0];
-
-	if (targetStructure) {
-		if (creep.transfer(targetStructure, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-			creep.moveTo(targetStructure, { visualizePathStyle: { stroke: '#ffffff' } });
-		}
 	}
+
 
 }
 
