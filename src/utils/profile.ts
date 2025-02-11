@@ -3,19 +3,18 @@
  * @module
  */
 
-const SIMPLE_WORKER_MAX_TIER = 16;
-const HEAVY_WORKER_MAX_TIER = 12;
-
 /**
  * Assembles a body for a Simple Worker creep which has 1:1 WORK to CARRY parts.
  * @param tier The scaling size of the creep body.
  * @returns The creep body array.
  */
 export function getSimpleWorkerBody(tier: number) {
-  if (tier > SIMPLE_WORKER_MAX_TIER) {
-    tier = SIMPLE_WORKER_MAX_TIER;
+  const parts = [WORK, MOVE, CARRY, MOVE];
+  const maxTier = Math.floor(MAX_CREEP_SIZE / parts.length);
+  if (tier > maxTier) {
+    tier = maxTier;
   }
-  return addToBody([], tier, [WORK, MOVE, CARRY, MOVE]);
+  return addToBody([], tier, parts);
 }
 
 /**
@@ -24,7 +23,7 @@ export function getSimpleWorkerBody(tier: number) {
  * @returns The maximum tier for the amount of energy.
  */
 export function getMaxTierSimpleWorker(energy: number) {
-  return getMaxTier(energy, getSimpleWorkerBody, SIMPLE_WORKER_MAX_TIER);
+  return getMaxTier(energy, getSimpleWorkerBody);
 }
 
 /**
@@ -33,12 +32,16 @@ export function getMaxTierSimpleWorker(energy: number) {
  * @returns The creep body array.
  */
 export function getHeavyWorkerBody(tier: number) {
-  if (tier > HEAVY_WORKER_MAX_TIER) {
-    tier = HEAVY_WORKER_MAX_TIER;
+  const workParts = [WORK, WORK, MOVE, MOVE];
+  const carryParts = [WORK, CARRY, MOVE, MOVE];
+  const partsPerTier = [...workParts, ...carryParts];
+  const maxTier = Math.floor(MAX_CREEP_SIZE / partsPerTier.length);
+  if (tier > maxTier) {
+    tier = maxTier;
   }
   let body: BodyPartConstant[] = [];
-  body = addToBody(body, Math.floor(tier / 2), [WORK, WORK, MOVE, MOVE]);
-  body = addToBody(body, Math.ceil(tier / 2), [WORK, CARRY, MOVE, MOVE]);
+  body = addToBody(body, Math.floor(tier / 2), workParts);
+  body = addToBody(body, Math.ceil(tier / 2), carryParts);
   return body;
 }
 
@@ -48,7 +51,7 @@ export function getHeavyWorkerBody(tier: number) {
  * @returns The maximum tier for the amount of energy.
  */
 export function getMaxTierHeavyWorker(energy: number) {
-  return getMaxTier(energy, getHeavyWorkerBody, HEAVY_WORKER_MAX_TIER);
+  return getMaxTier(energy, getHeavyWorkerBody);
 }
 
 /**
@@ -67,12 +70,12 @@ export function getCostForBody(body: BodyPartConstant[]) {
  * Determines the maximum size based on energy for a creep body method.
  *
  */
-function getMaxTier(energy: number, bodyFunction: Function, maxTier: number) {
+function getMaxTier(energy: number, bodyFunction: Function) {
   let tier = 0;
   let maxReached = false;
   for (let i = 1; !maxReached; i++) {
     const cost = getCostForBody(bodyFunction(i));
-    if (cost > energy || i > maxTier) {
+    if (cost > energy || bodyFunction(i).length > MAX_CREEP_SIZE) {
       maxReached = true;
     } else {
       tier = i;
