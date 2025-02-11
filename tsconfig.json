@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "module": "esnext",
-    "lib": ["es2018"],
+    "lib": [
+      "es2018"
+    ],
     "target": "es2018",
     "moduleResolution": "node10",
     "outDir": "./dist/",
@@ -10,8 +12,14 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
-  "include": ["./src/"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src/"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
