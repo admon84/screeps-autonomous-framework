@@ -15,13 +15,10 @@ if (!DEST) {
   throw new Error(`Upload destination "${DEST}" not found in screeps.json`);
 }
 
+/** @type {import('rollup').RollupOptions} */
 export default {
   input: 'src/main.ts',
-  output: {
-    file: 'dist/main.js',
-    format: 'cjs',
-    sourcemap: true
-  },
+  output: { file: 'dist/main.js', format: 'cjs', sourcemap: true },
   plugins: [
     del({ targets: 'dist/*' }),
     resolve({ rootDir: 'src' }),

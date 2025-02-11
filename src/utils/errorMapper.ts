@@ -26,7 +26,6 @@ export class ErrorMapper {
 
   public static get consumer(): SourceMapConsumer {
     if (!this._consumer) {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
       this._consumer = new SourceMapConsumer(require('main.js.map'));
     }
     return this._consumer;
@@ -55,10 +54,7 @@ export class ErrorMapper {
 
     while ((match = this._regexSearch.exec(stack))) {
       if (match[2] === 'main') {
-        const pos = this.consumer.originalPositionFor({
-          column: parseInt(match[4], 10),
-          line: parseInt(match[3], 10)
-        });
+        const pos = this.consumer.originalPositionFor({ column: parseInt(match[4], 10), line: parseInt(match[3], 10) });
 
         if (pos.line != null) {
           const file = pos.source.replace(this._regexPrefix, '');

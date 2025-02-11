@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import _ from 'lodash';
 
 import { Order } from 'classes/order';
@@ -8,9 +7,8 @@ import { Role } from 'enums/role';
 import { RoomType } from 'enums/roomType';
 
 declare global {
-  /**
-   * Lodash types.
-   */
+  // Lodash 3.10 types
+  // @ts-ignore
   const _: typeof _;
 
   /**
