@@ -39,7 +39,7 @@
     "rollup-plugin-screeps-world": "^1.0.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "dependencies": {
     "source-map": "0.6.1"
