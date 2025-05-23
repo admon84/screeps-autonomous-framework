@@ -25,7 +25,7 @@
     "@types/lodash": "3.10.9",
     "@types/node": "^10.17.6",
     "@types/screeps": "^3.3.8",
-    "@typescript-eslint/eslint-plugin": "^8.24.0",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.24.0",
     "eslint": "^9.27.0",
     "eslint-config-prettier": "^10.0.1",
