@@ -6,6 +6,7 @@ updates:
       interval: 'monthly'
     ignore:
       - dependency-name: '@types/lodash'
+      - dependency-name: '@types/node'
       - dependency-name: 'lodash'
       - dependency-name: 'rollup'
       - dependency-name: 'source-map'
