@@ -18,7 +18,7 @@
   ],
   "packageRules": [
     {
-      "description": "Pin Node.js and Screeps-specific packages",
+      "description": "Pinned packages",
       "matchPackageNames": [
         "@types/node",
         "@types/lodash",
