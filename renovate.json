@@ -21,7 +21,7 @@
       "description": "Pin Node.js and Screeps-specific packages",
       "matchPackageNames": [
         "@types/node",
-        "@types/screeps",
+        "@types/lodash",
         "source-map"
       ],
       "enabled": false
