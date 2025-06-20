@@ -18,11 +18,13 @@ declare global {
   }
 }
 
-Object.defineProperty(Creep.prototype, 'isFull', {
-  get(this: Creep) {
-    return !this.store.getFreeCapacity();
-  }
-});
+if (!Object.prototype.hasOwnProperty.call(Creep.prototype, 'isFull')) {
+  Object.defineProperty(Creep.prototype, 'isFull', {
+    get(this: Creep) {
+      return !this.store.getFreeCapacity();
+    }
+  });
+}
 
 Creep.prototype.hadState = function (state) {
   if (!this._states) {

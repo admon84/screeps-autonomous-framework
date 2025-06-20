@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Screeps World Autonomous Bot Framework Base",
   "author": "admon84",
-  "homepage": "https://admon84.github.io/screeps-autonomous-framework/",
+  "homepage": "https://github.com/admon84/screeps-autonomous-framework/",
   "repository": "github:admon84/screeps-autonomous-framework",
   "bugs": "https://github.com/admon84/screeps-autonomous-framework/issues",
   "license": "Unlicense",
@@ -20,28 +20,29 @@
     "watch-sim": "rollup -cw --environment DEST:sim"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.3",
+    "@admon-dev/rollup-plugin-screeps": "^0.2.2",
+    "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/lodash": "3.10.9",
-    "@types/node": "10.17.6",
+    "@types/node": "10.17.60",
     "@types/screeps": "^3.3.8",
-    "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
-    "eslint": "^9.27.0",
+    "@typescript-eslint/eslint-plugin": "^8.34.1",
+    "@typescript-eslint/parser": "^8.34.1",
+    "@typescript-eslint/typescript-estree": "^8.34.1",
+    "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
-    "eslint-import-resolver-typescript": "^4.3.5",
+    "eslint-import-resolver-typescript": "^4.4.3",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-prettier": "^5.4.0",
+    "eslint-plugin-prettier": "^5.5.0",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
-    "rollup": "2.79.1",
+    "rollup": "4.44.0",
     "rollup-plugin-delete": "^3.0.1",
-    "rollup-plugin-screeps-world": "^1.0.4",
     "rollup-plugin-typescript2": "^0.36.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "source-map": "0.6.1"
+    "source-map": "^0.6.1"
   }
 }

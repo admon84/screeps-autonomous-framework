@@ -19,5 +19,7 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      - name: Create screeps.json
+        run: cp screeps.sample.json screeps.json
       - name: Build
         run: npm run build
