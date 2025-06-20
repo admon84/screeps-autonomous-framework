@@ -1,5 +1,6 @@
 # screeps config
-screeps.json
+screeps*.json
+!screeps.sample.json
 
 # folders
 dist/
