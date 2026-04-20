@@ -38,7 +38,7 @@
     "prettier-plugin-organize-imports": "^4.3.0",
     "rollup": "^4.59.0",
     "rollup-plugin-delete": "^3.0.2",
-    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-typescript2": "^0.37.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3"
   },
