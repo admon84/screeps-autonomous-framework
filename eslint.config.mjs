@@ -14,7 +14,7 @@ export default [
     languageOptions: {
       ecmaVersion: 2018,
       parser: typescriptEslintParser,
-      parserOptions: { project: 'tsconfig.json', tsconfigRootDir: __dirname, sourceType: 'module' },
+      parserOptions: { project: 'tsconfig.json', tsconfigRootDir: import.meta.dirname, sourceType: 'module' },
       globals: { es6: true, node: true }
     },
     plugins: { '@typescript-eslint': typescriptEslintPlugin, import: importPlugin, prettier: prettierPlugin },
