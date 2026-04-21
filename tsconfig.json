@@ -2,18 +2,24 @@
   "compilerOptions": {
     "module": "esnext",
     "lib": [
-      "es2018"
+      "es2025"
     ],
-    "target": "es2018",
-    "moduleResolution": "node10",
-    "rootDir": "./src/",
-    "outDir": "./dist/",
-    "baseUrl": "./src/",
-    "sourceMap": true,
-    "strict": true,
-    "strictPropertyInitialization": false,
-    "allowSyntheticDefaultImports": true,
+    "target": "es2025",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "ignoreDeprecations": "6.0",
+    "sourceMap": false,
+    "removeComments": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": true,
+    "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "./node_modules/@types"
     ],

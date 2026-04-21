@@ -1,7 +1,6 @@
 import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptEslintParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import-x';
-import importPlugin from 'eslint-plugin-import-x';
 import prettierPlugin from 'eslint-plugin-prettier';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
