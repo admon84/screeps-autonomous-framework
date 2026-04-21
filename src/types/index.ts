@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import lodash from 'lodash';
 
 import { Order } from 'classes/order';
 import { LogLevel } from 'enums/logLevel';
@@ -8,8 +8,8 @@ import { RoomType } from 'enums/roomType';
 
 declare global {
   // Lodash 3.10 types
-  // @ts-ignore
-  const _: typeof _;
+  // @ts-expect-error
+  const _: typeof lodash;
 
   /**
    * Global `Memory` object.

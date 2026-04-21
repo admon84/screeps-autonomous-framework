@@ -1,7 +1,11 @@
 import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptEslintParser from '@typescript-eslint/parser';
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
 import prettierPlugin from 'eslint-plugin-prettier';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('eslint').Linter.Config} */
 export default [
@@ -10,7 +14,7 @@ export default [
     languageOptions: {
       ecmaVersion: 2018,
       parser: typescriptEslintParser,
-      parserOptions: { project: 'tsconfig.json', tsconfigRootDir: './', sourceType: 'module' },
+      parserOptions: { project: 'tsconfig.json', tsconfigRootDir: __dirname, sourceType: 'module' },
       globals: { es6: true, node: true }
     },
     plugins: { '@typescript-eslint': typescriptEslintPlugin, import: importPlugin, prettier: prettierPlugin },

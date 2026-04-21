@@ -56,7 +56,7 @@ export class ErrorMapper {
       if (match[2] === 'main') {
         const pos = this.consumer.originalPositionFor({ column: parseInt(match[4], 10), line: parseInt(match[3], 10) });
 
-        if (pos.line != null) {
+        if (pos.line != null && pos.source != null) {
           const file = pos.source.replace(this._regexPrefix, '');
           if (pos.name) {
             outStack += `\n    at ${pos.name} (${file}:${pos.line}:${pos.column})`;

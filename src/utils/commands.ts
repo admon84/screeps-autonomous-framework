@@ -6,7 +6,7 @@
 import { error } from 'utils/log';
 import { createTestOperation, isTestOperationActive } from 'utils/operation';
 
-declare global {
+declare namespace global {
   /* eslint-disable no-var */
 
   /**
